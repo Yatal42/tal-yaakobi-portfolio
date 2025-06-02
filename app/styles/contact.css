@@ -1,0 +1,33 @@
+/* Social links */
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 2.5rem;
+}
+
+.social-link {
+  color: var(--text);
+  transition: none;
+  padding: 0.5rem;
+  border-radius: 1rem;
+  text-decoration: none;
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+}
+
+.email-link {
+  transition: all 0.15s ease-out;
+}
+
+.email-link:hover {
+  color: var(--primary);
+  transform: translateY(-8px) rotate(5deg) scale(1.1);
+}
+
+.social-icon {
+  width: 3.5rem;
+  height: 3.5rem;
+  pointer-events: none;
+} 
