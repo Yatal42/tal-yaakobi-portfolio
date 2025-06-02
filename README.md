@@ -55,26 +55,6 @@ npm start
 
 ## Deployment
 
-### Docker Deployment
-
-To build and run using Docker:
-
-```bash
-docker build -t tal-yaakobi-portfolio .
-
-# Run the container
-docker run -p 3000:3000 tal-yaakobi-portfolio
-```
-
-The containerized application can be deployed to any platform that supports Docker, including:
-
-- AWS ECS
-- Google Cloud Run
-- Azure Container Apps
-- Digital Ocean App Platform
-- Fly.io
-- Railway
-
 ### DIY Deployment
 
 If you're familiar with deploying Node applications, the built-in app server is production-ready.
@@ -88,6 +68,17 @@ Make sure to deploy the output of `npm run build`
 │   ├── client/    # Static assets
 │   └── server/    # Server-side code
 ```
+
+### Platform Deployment
+
+The application can be deployed to various platforms:
+
+- **Vercel** - Recommended for React Router v7 projects
+- **Netlify** - Static site hosting with serverless functions
+- **Railway** - Full-stack application hosting
+- **Render** - Web services and static sites
+- **AWS Amplify** - Full-stack development platform
+- **Digital Ocean App Platform** - Application hosting platform
 
 ## Project Structure
 
