@@ -2,9 +2,6 @@
 
 My personal portfolio website showcasing my work as a creative developer focused on accessibility solutions and innovative experiences.
 
-## 🌐 Live Site
-[View Portfolio](https://tal-yaakobi-portfolio.vercel.app) *(update with actual URL when deployed)*
-
 ## 🛠️ Built With
 - React Router v7
 - TypeScript  
