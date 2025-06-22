@@ -69,3 +69,8 @@ coverage/
 # Temporary folders
 tmp/
 temp/
+
+# Video files - ignore all except the background video
+*.mov
+*.mp4
+!public/3.mp4

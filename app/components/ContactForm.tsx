@@ -19,20 +19,19 @@ export default function ContactForm() {
   return (
     <motion.button
       onClick={handleEmailClick}
-      className="social-link message-link"
+      className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-16 lg:h-16 flex items-center justify-center text-[#05082e] transition-all duration-200"
       aria-label="Copy Email Address"
       whileHover={{ 
         y: -8, 
         rotate: 5, 
         scale: 1.1,
-        color: "var(--primary)",
+        color: "var(--error)",
         transition: { duration: 0.15, ease: "easeOut" }
       }}
       whileTap={{ scale: 0.95 }}
-      style={{ background: 'none', border: 'none' }}
     >
       <svg
-        className="social-icon"
+        className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 lg:w-8 lg:h-8"
         fill="none"
         viewBox="0 0 24 24"
         stroke="currentColor"

@@ -2,7 +2,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 
 const Laptop3D = () => {
-  const [isOpen, setIsOpen] = useState(false); // Start closed
+  const [isOpen, setIsOpen] = useState(false);
 
   const handleClick = () => {
     setIsOpen(!isOpen);
@@ -13,14 +13,14 @@ const Laptop3D = () => {
       <div className="laptop-simple" onClick={handleClick}>
         
         {!isOpen ? (
-          /* CLOSED: Show only back of laptop with guitar */
+  
           <div className="laptop-closed">
-            <div className="guitar-logo">🎸</div>
+            <div className="code-logo">&lt;/&gt;</div>
           </div>
         ) : (
-          /* OPEN: Show laptop with screen and keyboard */
+
           <div className="laptop-open">
-            {/* Laptop Base with keyboard */}
+            
             <div className="laptop-base">
               <div className="base-top">
                 <div className="keyboard">
@@ -32,7 +32,7 @@ const Laptop3D = () => {
               </div>
             </div>
 
-            {/* Laptop Screen with code - only when open */}
+            
             <div className="laptop-screen-open">
               <div className="screen">
                 <div className="screen-open">
@@ -63,9 +63,11 @@ const Laptop3D = () => {
         )}
       </div>
 
-      <div className="laptop-label">
-        <span>Click to {isOpen ? 'close' : 'open'} • My Development Setup</span>
-      </div>
+      {!isOpen && (
+        <div className="laptop-label">
+          <span>Click to view • My Development Setup</span>
+        </div>
+      )}
     </div>
   );
 };

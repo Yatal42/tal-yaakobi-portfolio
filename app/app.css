@@ -1,7 +1,2 @@
-/* Import all modular CSS files */
 @import './styles/global.css';
-@import './styles/navigation.css';
-@import './styles/hero.css';
-@import './styles/skills.css';
-@import './styles/contact.css';
 @import './styles/laptop3d.css';

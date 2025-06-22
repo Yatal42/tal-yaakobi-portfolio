@@ -1,76 +1,74 @@
-/* Simple Laptop Component Styles */
+/* Simple Laptop Component Styles - Hero Layout */
 .laptop-container {
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: center; /* Back to center for normal positioning */
+  justify-content: center;
   align-items: center;
-  height: 500px;
-  width: 500px;
+  height: 100%;
+  width: 100%;
   margin: 0 auto;
 }
 
 .laptop-simple {
   position: relative;
-  width: 300px;
-  height: 200px;
+  width: 280px;
+  height: 180px;
   cursor: pointer;
-  transition: transform 0.3s ease;
+  transition: transform 0.2s ease;
 }
 
 .laptop-simple:hover {
-  transform: scale(1.05);
+  transform: scale(1.02);
 }
 
-/* CLOSED STATE: Just guitar logo - normal position */
+/* CLOSED STATE - centered with title middle */
 .laptop-closed {
-  width: 300px;
-  height: 200px;
-  background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%);
-  border-radius: 12px;
+  width: 280px;
+  height: 180px;
+  background: var(--primary);
+  border-radius: 0.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  box-shadow: var(--shadow-medium);
 }
 
-.laptop-closed .guitar-logo {
-  font-size: 45px;
-  filter: brightness(0) saturate(0);
-  transform: rotate(-15deg);
-  transition: transform 0.3s ease;
+.laptop-closed .code-logo {
+  font-size: 36px;
+  color: var(--background);
+  font-weight: bold;
+  font-family: 'Monaco', 'Menlo', monospace;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
 
-.laptop-simple:hover .laptop-closed .guitar-logo {
-  transform: rotate(-15deg) scale(1.1);
-}
-
-/* OPEN STATE: Full laptop - aligned with text box top */
+/* OPEN STATE - top aligned with title top */
 .laptop-open {
   position: relative;
-  width: 300px;
-  height: 200px;
-  margin-top: 80px; /* Move DOWN to align top with text box top */
+  width: 280px;
+  height: 180px;
+  margin-top: 0;
+  transform: translateY(60px);
 }
 
-/* Laptop Base - matching screen size and color */
+/* Laptop Base */
 .laptop-base {
   position: relative;
-  width: 300px;
-  height: 200px;
+  width: 280px;
+  height: 180px;
   z-index: 1;
 }
 
 .base-top {
   position: absolute;
-  width: 300px;
-  height: 200px;
-  background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%);
-  border-radius: 12px;
+  width: 280px;
+  height: 180px;
+  background: var(--primary);
+  border-radius: 0.5rem;
   display: flex;
   flex-direction: column;
-  padding: 25px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  padding: 22px;
+  box-shadow: var(--shadow-medium);
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
@@ -80,63 +78,62 @@
   display: grid;
   grid-template-columns: repeat(15, 1fr);
   grid-template-rows: repeat(4, 1fr);
-  gap: 2px;
+  gap: 1px;
   width: 100%;
-  height: 60px;
-  margin-bottom: 15px;
+  height: 55px;
+  margin-bottom: 14px;
 }
 
 .key {
-  background: linear-gradient(135deg, #ffffff 0%, #f1f3f4 100%);
-  border: 1px solid #dadce0;
-  border-radius: 3px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  background: var(--background);
+  border: 1px solid var(--border-light);
+  border-radius: 2px;
+  box-shadow: var(--shadow-soft);
   transition: all 0.1s ease;
 }
 
 .key:hover {
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-  transform: translateY(1px);
+  background: var(--background-dark);
+  transform: translateY(0.5px);
 }
 
 .trackpad {
-  width: 80px;
-  height: 50px;
-  background: linear-gradient(135deg, #f1f3f4 0%, #e8eaed 100%);
-  border: 1px solid #dadce0;
-  border-radius: 8px;
+  width: 70px;
+  height: 45px;
+  background: var(--background-dark);
+  border: 1px solid var(--border-light);
+  border-radius: 0.3rem;
   margin: 0 auto;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 1px 2px rgba(44, 36, 22, 0.05);
 }
 
-/* Laptop Screen - positioned above base when open */
+/* Laptop Screen - positioned above base */
 .laptop-screen-open {
   position: absolute;
-  top: -210px;
+  top: -190px;
   left: 0;
-  width: 300px;
-  height: 200px;
+  width: 280px;
+  height: 180px;
   z-index: 2;
 }
 
-/* Screen styling */
 .screen {
   position: absolute;
-  width: 300px;
-  height: 200px;
-  border: 2px solid #1a202c;
-  border-radius: 12px;
+  width: 280px;
+  height: 180px;
+  border: 2px solid var(--primary);
+  border-radius: 0.5rem;
   overflow: hidden;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  box-shadow: var(--shadow-medium);
 }
 
-/* Screen when open - showing code */
+/* Screen content */
 .screen-open {
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+  background: var(--primary);
   padding: 12px;
-  color: #e2e8f0;
+  color: var(--background);
   font-family: 'Monaco', 'Menlo', monospace;
   font-size: 8px;
   overflow: hidden;
@@ -145,19 +142,19 @@
 
 .code-editor {
   height: 100%;
-  background: #1a202c;
-  border-radius: 4px;
+  background: var(--primary);
+  border-radius: 0.2rem;
   overflow: hidden;
 }
 
 .editor-header {
-  background: #2d3748;
-  height: 20px;
+  background: var(--primary-light);
+  height: 18px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 8px;
-  border-bottom: 1px solid #4a5568;
+  border-bottom: 1px solid var(--primary-dark);
 }
 
 .window-controls {
@@ -166,49 +163,49 @@
 }
 
 .control {
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
 }
 
-.control.red { background: #f56565; }
-.control.yellow { background: #ed8936; }
-.control.green { background: #48bb78; }
+.control.red { background: var(--secondary); }
+.control.yellow { background: var(--warning); }
+.control.green { background: var(--success); }
 
 .filename {
-  font-size: 8px;
-  color: #a0aec0;
+  font-size: 7px;
+  color: var(--text-light);
   font-weight: 500;
 }
 
 .code-lines {
   padding: 8px;
-  line-height: 1.4;
+  line-height: 1.3;
 }
 
 .line {
-  margin-bottom: 2px;
+  margin-bottom: 1px;
   display: flex;
-  gap: 3px;
+  gap: 2px;
 }
 
-.keyword { color: #9f7aea; }
-.string { color: #68d391; }
-.function { color: #63b3ed; }
-.line .tag { color: #f687b3; }
+.keyword { color: var(--accent); }
+.string { color: var(--primary-light); }
+.function { color: var(--text-light); }
+.line .tag { color: var(--secondary); }
 
 /* Laptop label */
 .laptop-label {
-  margin-top: 2rem;
+  margin-top: 1.5rem;
   text-align: center;
 }
 
 .laptop-label span {
   color: var(--text-secondary);
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   font-weight: 500;
   opacity: 0.7;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.2s ease;
 }
 
 .laptop-container:hover .laptop-label span {
@@ -217,60 +214,244 @@
 }
 
 /* Responsive design */
-@media (max-width: 768px) {
+/* Tablet styles (iPad and similar) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .laptop-simple {
+    width: 280px;
+    height: 180px;
+  }
+  
+  .laptop-closed {
+    width: 280px;
+    height: 180px;
+  }
+  
+  .laptop-closed .code-logo {
+    font-size: 36px;
+  }
+  
+  .laptop-open {
+    width: 280px;
+    height: 180px;
+    transform: translateY(20px);
+  }
+  
+  .laptop-base {
+    width: 280px;
+    height: 180px;
+  }
+  
+  .base-top {
+    width: 280px;
+    height: 180px;
+    padding: 22px;
+  }
+  
+  .keyboard {
+    height: 55px;
+    margin-bottom: 14px;
+  }
+  
+  .trackpad {
+    width: 70px;
+    height: 45px;
+  }
+  
+  .laptop-screen-open {
+    width: 280px;
+    height: 180px;
+    top: -160px;
+  }
+  
+  .screen {
+    width: 280px;
+    height: 180px;
+  }
+  
+  .screen-open {
+    padding: 12px;
+    font-size: 8px;
+  }
+  
+  .editor-header {
+    height: 18px;
+    padding: 0 8px;
+  }
+  
+  .control {
+    width: 7px;
+    height: 7px;
+  }
+  
+  .filename {
+    font-size: 7px;
+  }
+  
+  .code-lines {
+    padding: 8px;
+  }
+}
+
+/* Small tablets and landscape phones */
+@media (min-width: 600px) and (max-width: 768px) {
   .laptop-container {
-    height: 400px;
-    width: 350px;
+    height: 300px;
+    width: 300px;
   }
   
   .laptop-simple {
     width: 220px;
-    height: 150px;
+    height: 142px;
   }
   
   .laptop-closed {
     width: 220px;
-    height: 150px;
+    height: 142px;
   }
   
-  .laptop-closed .guitar-logo {
-    font-size: 30px;
-    filter: brightness(0) saturate(0);
+  .laptop-closed .code-logo {
+    font-size: 28px;
   }
   
   .laptop-open {
-    margin-top: 60px; /* Move down for mobile to align with text */
+    width: 220px;
+    height: 142px;
+    transform: translateY(15px);
   }
   
   .laptop-base {
     width: 220px;
-    height: 150px;
+    height: 142px;
   }
   
   .base-top {
     width: 220px;
-    height: 150px;
-    padding: 18px;
+    height: 142px;
+    padding: 17px;
   }
   
   .keyboard {
-    height: 45px;
+    height: 42px;
     margin-bottom: 10px;
   }
   
   .trackpad {
-    width: 60px;
-    height: 40px;
+    width: 55px;
+    height: 35px;
   }
   
   .laptop-screen-open {
-    top: -160px;
     width: 220px;
-    height: 150px;
+    height: 142px;
+    top: -127px;
   }
   
   .screen {
     width: 220px;
-    height: 150px;
+    height: 142px;
+  }
+  
+  .screen-open {
+    padding: 8px;
+    font-size: 6px;
+  }
+  
+  .editor-header {
+    height: 14px;
+    padding: 0 6px;
+  }
+  
+  .control {
+    width: 5px;
+    height: 5px;
+  }
+  
+  .filename {
+    font-size: 5px;
+  }
+  
+  .code-lines {
+    padding: 6px;
+  }
+}
+
+@media (max-width: 599px) {
+  .laptop-container {
+    height: 320px;
+    width: 320px;
+  }
+  
+  .laptop-simple {
+    width: 200px;
+    height: 130px;
+  }
+  
+  .laptop-closed {
+    width: 200px;
+    height: 130px;
+  }
+  
+  .laptop-closed .code-logo {
+    font-size: 20px;
+  }
+  
+  .laptop-open {
+    margin-top: 0;
+    transform: translateY(30px);
+  }
+  
+  .laptop-base {
+    width: 200px;
+    height: 130px;
+  }
+  
+  .base-top {
+    width: 200px;
+    height: 130px;
+    padding: 15px;
+  }
+  
+  .keyboard {
+    height: 38px;
+    margin-bottom: 8px;
+  }
+  
+  .trackpad {
+    width: 50px;
+    height: 30px;
+  }
+  
+  .laptop-screen-open {
+    width: 200px;
+    height: 130px;
+    top: -135px;
+  }
+  
+  .screen {
+    width: 200px;
+    height: 130px;
+  }
+  
+  .screen-open {
+    padding: 6px;
+    font-size: 5px;
+  }
+  
+  .editor-header {
+    height: 12px;
+    padding: 0 4px;
+  }
+  
+  .control {
+    width: 4px;
+    height: 4px;
+  }
+  
+  .filename {
+    font-size: 4px;
+  }
+  
+  .code-lines {
+    padding: 4px;
   }
 } 
