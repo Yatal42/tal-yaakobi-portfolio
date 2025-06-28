@@ -5,6 +5,7 @@ import Skills from "../components/Skills";
 import ProjectCarousel from "../components/ProjectCarousel";
 import Contact from "../components/Contact";
 import Heading from "../components/Heading";
+import Strengths from "../components/Strengths";
 
 export default function Home() {
   return (
@@ -16,8 +17,9 @@ export default function Home() {
       <section id="about" className="py-10 sm:py-12 md:py-16 lg:py-10 px-4 pt-20 md:pt-24 lg:pt-20 relative flex items-center justify-center bg-[#fdfcf9]">
         <div className="max-w-4xl w-full">
           <Heading>About Me</Heading>
-          <div className="mt-6 sm:mt-8 md:mt-10 lg:mt-8">
+          <div className="mt-6 sm:mt-8 md:mt-10 lg:mt-8 grid grid-cols-1 gap-8">
             <AboutMe />
+            <Strengths />
           </div>
         </div>
       </section>

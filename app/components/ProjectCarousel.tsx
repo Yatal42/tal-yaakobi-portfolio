@@ -4,59 +4,81 @@ import Project from "./Project";
 
 const projects = [
   {
-    title: "E-Commerce Platform",
-    description: "Full-stack e-commerce solution with user authentication, product management, and Stripe integration.",
-    technologies: ["React", "Node.js", "PostgreSQL", "Express", "Stripe API", "JWT"],
-    status: "Completed",
-    statusColor: "#295a7d",
-    featured: true,
-    category: "fullstack",
-    githubUrl: "https://github.com/username/ecommerce",
-    liveUrl: "https://ecommerce-demo.com"
-  },
-  {
-    title: "Task Management App",
-    description: "Collaborative task management with real-time updates and team collaboration features.",
-    technologies: ["React", "TypeScript", "Firebase", "Material-UI", "Real-time DB", "Drag & Drop"],
+    title: "🎵 Chord-I",
+    description: "AI-powered chord detection system that extracts chords from songs using machine learning algorithms and audio processing techniques. Currently in active development with focus on accuracy and real-time processing.",
+    technologies: ["AI", "Machine Learning", "Audio Processing", "Python", "Typescript", "React", "Next.js", "Tailwind CSS", "Vercel", "OpenAI", "Hugging Face", "Web Audio API"],
     status: "In Development",
     statusColor: "#d29135",
     featured: false,
-    category: "frontend",
-    githubUrl: "https://github.com/username/task-manager",
-    liveUrl: "https://task-manager-demo.com"
+    category: "ai",
+    githubUrl: "https://github.com/Yatal42/chord-I",
+    liveUrl: ""
   },
   {
-    title: "Weather Dashboard",
-    description: "Responsive weather dashboard with 7-day forecasts and location-based services.",
-    technologies: ["JavaScript", "Weather API", "Chart.js", "CSS3", "Geolocation", "Local Storage"],
+    title: "🎬 Popcorn Palace",
+    description: "Backend cinema ticket booking system built with NestJS, PostgreSQL, TypeORM, and Docker. Features a robust REST API, scalable architecture, and comprehensive test coverage with unit & E2E tests.",
+    technologies: ["NestJS", "PostgreSQL", "TypeORM", "Docker", "Unit Tests", "E2E Tests"],
     status: "Completed",
     statusColor: "#295a7d",
     featured: false,
-    category: "frontend",
-    githubUrl: "https://github.com/username/weather-dashboard",
-    liveUrl: "https://weather-dashboard-demo.com"
+    category: "backend",
+    githubUrl: "https://github.com/Yatal42/popcorn-palace",
+    liveUrl: ""
   },
   {
-    title: "Social Media Dashboard",
-    description: "Analytics dashboard for social media management with multi-platform integration.",
-    technologies: ["Vue.js", "Python", "Django", "Chart.js", "Twitter API", "Instagram API", "PostgreSQL"],
+    title: "📊 React Task Gantt Chart",
+    description: "Full-stack project for managing tasks and projects with dependency handling, date shifting, and live updates. Built with React + TypeScript on the frontend and Node.js + Express + MySQL on the backend.",
+    technologies: ["React", "TypeScript", "Node.js", "Express", "MySQL", "Gantt Timeline"],
     status: "Completed",
     statusColor: "#295a7d",
     featured: false,
     category: "fullstack",
-    githubUrl: "https://github.com/username/social-dashboard",
-    liveUrl: "https://social-dashboard-demo.com"
+    githubUrl: "https://github.com/Yatal42/React-task-Gantt-Chart",
+    liveUrl: ""
   },
   {
-    title: "AI Chat Application",
-    description: "Modern chat application powered by AI with real-time messaging and smart responses.",
-    technologies: ["React", "Socket.io", "OpenAI API", "MongoDB", "Express", "JWT", "Redis"],
-    status: "In Development",
-    statusColor: "#d29135",
+    title: "🍽️ Calories Tracker - Backend",
+    description: "Backend service for tracking meals and calorie intake, built with Express.js and MongoDB. Features REST API with validation and comprehensive meal tracking capabilities.",
+    technologies: ["Express.js", "MongoDB", "Node.js", "REST API", "Validation"],
+    status: "Completed",
+    statusColor: "#295a7d",
     featured: false,
-    category: "fullstack",
-    githubUrl: "https://github.com/username/ai-chat",
-    liveUrl: "https://ai-chat-demo.com"
+    category: "backend",
+    githubUrl: "https://github.com/Yatal42/Calories_Backend_Project",
+    liveUrl: ""
+  },
+  {
+    title: "🍏 Calories Tracker - Frontend",
+    description: "Frontend interface for the calories tracking application. Provides user-friendly interface for meal logging and calorie monitoring with responsive design.",
+    technologies: ["JavaScript", "HTML5", "CSS3", "Responsive Design", "REST API Integration"],
+    status: "Completed",
+    statusColor: "#295a7d",
+    featured: false,
+    category: "frontend",
+    githubUrl: "https://github.com/Yatal42/Calories_Frontend_Project",
+    liveUrl: "https://yatal42.github.io/Calories_Frontend_Project/"
+  },
+  {
+    title: "🎨 Paint App (.NET)",
+    description: "A drawing application supporting shapes, colors, file operations, and real-time rendering events. Built as a team project using C# and WinForms with comprehensive drawing logic.",
+    technologies: ["C#", "WinForms", ".NET", "GDI+", "File I/O", "Team Project"],
+    status: "Completed",
+    statusColor: "#295a7d",
+    featured: false,
+    category: "desktop",
+    githubUrl: "https://github.com/snuffles5/Paint",
+    liveUrl: ""
+  },
+  {
+    title: "⚫ Othello Game - WinForms",
+    description: "Classic Othello (Reversi) game implemented in C# and WinForms. Features encapsulated game logic, turn-based gameplay, interactive UI, and visual feedback for an engaging gaming experience.",
+    technologies: ["C#", "WinForms", ".NET", "OOP", "Game Logic", "Interactive UI"],
+    status: "Completed",
+    statusColor: "#295a7d",
+    featured: false,
+    category: "desktop",
+    githubUrl: "https://github.com/Yatal42/OthelloGameWinApp",
+    liveUrl: ""
   }
 ];
 
