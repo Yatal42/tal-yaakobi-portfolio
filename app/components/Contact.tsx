@@ -9,7 +9,7 @@ export default function Contact() {
         href="https://www.linkedin.com/in/tal-yaakobi-191059227/"
         target="_blank"
         rel="noopener noreferrer"
-        className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-16 lg:h-16 flex items-center justify-center text-[#05082e] transition-all duration-200 hover:-translate-y-2 hover:rotate-6 hover:scale-110 hover:text-[var(--error)]"
+        className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-16 lg:h-16 flex items-center justify-center text-amber-900 transition-all duration-200 hover:-translate-y-2 hover:rotate-6 hover:scale-110 hover:text-amber-600"
         aria-label="LinkedIn"
       >
         <svg
@@ -25,7 +25,7 @@ export default function Contact() {
         href="https://github.com/Yatal42"
         target="_blank"
         rel="noopener noreferrer"
-        className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-16 lg:h-16 flex items-center justify-center text-[#05082e] transition-all duration-200 hover:-translate-y-2 hover:rotate-6 hover:scale-110 hover:text-[var(--error)]"
+        className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-16 lg:h-16 flex items-center justify-center text-amber-900 transition-all duration-200 hover:-translate-y-2 hover:rotate-6 hover:scale-110 hover:text-amber-600"
         aria-label="GitHub"
       >
         <svg

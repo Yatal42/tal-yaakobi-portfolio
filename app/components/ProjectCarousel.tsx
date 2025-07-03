@@ -8,7 +8,7 @@ const projects = [
     description: "AI-powered chord detection system that extracts chords from songs using machine learning algorithms and audio processing techniques. Currently in active development with focus on accuracy and real-time processing.",
     technologies: ["AI", "Machine Learning", "Audio Processing", "Python", "Typescript", "React", "Next.js", "Tailwind CSS", "Vercel", "OpenAI", "Hugging Face", "Web Audio API"],
     status: "In Development",
-    statusColor: "#d29135",
+    statusColor: "#f59e0b",
     featured: false,
     category: "ai",
     githubUrl: "https://github.com/Yatal42/chord-I",
@@ -19,7 +19,7 @@ const projects = [
     description: "Backend cinema ticket booking system built with NestJS, PostgreSQL, TypeORM, and Docker. Features a robust REST API, scalable architecture, and comprehensive test coverage with unit & E2E tests.",
     technologies: ["NestJS", "PostgreSQL", "TypeORM", "Docker", "Unit Tests", "E2E Tests"],
     status: "Completed",
-    statusColor: "#295a7d",
+    statusColor: "#f59e0b",
     featured: false,
     category: "backend",
     githubUrl: "https://github.com/Yatal42/popcorn-palace",
@@ -30,7 +30,7 @@ const projects = [
     description: "Full-stack project for managing tasks and projects with dependency handling, date shifting, and live updates. Built with React + TypeScript on the frontend and Node.js + Express + MySQL on the backend.",
     technologies: ["React", "TypeScript", "Node.js", "Express", "MySQL", "Gantt Timeline"],
     status: "Completed",
-    statusColor: "#295a7d",
+    statusColor: "#f59e0b",
     featured: false,
     category: "fullstack",
     githubUrl: "https://github.com/Yatal42/React-task-Gantt-Chart",
@@ -41,7 +41,7 @@ const projects = [
     description: "Backend service for tracking meals and calorie intake, built with Express.js and MongoDB. Features REST API with validation and comprehensive meal tracking capabilities.",
     technologies: ["Express.js", "MongoDB", "Node.js", "REST API", "Validation"],
     status: "Completed",
-    statusColor: "#295a7d",
+    statusColor: "#f59e0b",
     featured: false,
     category: "backend",
     githubUrl: "https://github.com/Yatal42/Calories_Backend_Project",
@@ -52,7 +52,7 @@ const projects = [
     description: "Frontend interface for the calories tracking application. Provides user-friendly interface for meal logging and calorie monitoring with responsive design.",
     technologies: ["JavaScript", "HTML5", "CSS3", "Responsive Design", "REST API Integration"],
     status: "Completed",
-    statusColor: "#295a7d",
+    statusColor: "#f59e0b",
     featured: false,
     category: "frontend",
     githubUrl: "https://github.com/Yatal42/Calories_Frontend_Project",
@@ -63,7 +63,7 @@ const projects = [
     description: "A drawing application supporting shapes, colors, file operations, and real-time rendering events. Built as a team project using C# and WinForms with comprehensive drawing logic.",
     technologies: ["C#", "WinForms", ".NET", "GDI+", "File I/O", "Team Project"],
     status: "Completed",
-    statusColor: "#295a7d",
+    statusColor: "#f59e0b",
     featured: false,
     category: "desktop",
     githubUrl: "https://github.com/snuffles5/Paint",
@@ -74,7 +74,7 @@ const projects = [
     description: "Classic Othello (Reversi) game implemented in C# and WinForms. Features encapsulated game logic, turn-based gameplay, interactive UI, and visual feedback for an engaging gaming experience.",
     technologies: ["C#", "WinForms", ".NET", "OOP", "Game Logic", "Interactive UI"],
     status: "Completed",
-    statusColor: "#295a7d",
+    statusColor: "#f59e0b",
     featured: false,
     category: "desktop",
     githubUrl: "https://github.com/Yatal42/OthelloGameWinApp",
@@ -140,8 +140,8 @@ export default function ProjectCarousel() {
         disabled={currentIndex === 0}
         className={`absolute left-2 sm:left-0 md:left-4 lg:left-0 top-1/2 transform -translate-y-1/2 z-20 rounded-full p-2 sm:p-2.5 md:p-3 lg:p-2.5 shadow-md transition-all duration-200 ${
           currentIndex === 0 
-            ? "bg-gray-100 border border-gray-200 text-gray-400 cursor-not-allowed" 
-            : "bg-white border border-[#e8e3d8] text-[var(--error)] hover:shadow-lg hover:bg-[var(--error)] hover:text-white hover:border-[var(--error)] hover:scale-110 active:scale-95 active:translate-x-1"
+            ? "bg-amber-100 border border-amber-200 text-amber-400 cursor-not-allowed" 
+            : "bg-amber-50 border border-amber-200 text-amber-700 hover:shadow-lg hover:bg-amber-600 hover:text-white hover:border-amber-600 hover:scale-110 active:scale-95 active:translate-x-1"
         }`}
         aria-label="Previous project"
       >
@@ -153,8 +153,8 @@ export default function ProjectCarousel() {
         disabled={currentIndex === filteredProjects.length - 1}
         className={`absolute right-2 sm:right-0 md:right-4 lg:right-0 top-1/2 transform -translate-y-1/2 z-20 rounded-full p-2 sm:p-2.5 md:p-3 lg:p-2.5 shadow-md transition-all duration-200 ${
           currentIndex === filteredProjects.length - 1
-            ? "bg-gray-100 border border-gray-200 text-gray-400 cursor-not-allowed"
-            : "bg-white border border-[#e8e3d8] text-[var(--error)] hover:shadow-lg hover:bg-[var(--error)] hover:text-white hover:border-[var(--error)] hover:scale-110 active:scale-95 active:-translate-x-1"
+            ? "bg-amber-100 border border-amber-200 text-amber-400 cursor-not-allowed"
+            : "bg-amber-50 border border-amber-200 text-amber-700 hover:shadow-lg hover:bg-amber-600 hover:text-white hover:border-amber-600 hover:scale-110 active:scale-95 active:-translate-x-1"
         }`}
         aria-label="Next project"
       >
@@ -204,8 +204,8 @@ export default function ProjectCarousel() {
             onClick={() => setCurrentIndex(index)}
             className={`h-1.5 md:h-2 lg:h-1.5 rounded-full transition-all duration-200 hover:scale-125 active:scale-75 ${
               index === currentIndex
-                ? "bg-[var(--error)] w-6 md:w-8 lg:w-6 scale-110"
-                : "bg-[#e8e3d8] w-1.5 md:w-2 lg:w-1.5 hover:bg-[var(--error)] hover:h-2 md:hover:h-2.5 lg:hover:h-2"
+                ? "bg-amber-600 w-6 md:w-8 lg:w-6 scale-110"
+                : "bg-amber-200 w-1.5 md:w-2 lg:w-1.5 hover:bg-amber-600 hover:h-2 md:hover:h-2.5 lg:hover:h-2"
             }`}
             aria-label={`Go to project ${index + 1}`}
           />
@@ -214,7 +214,7 @@ export default function ProjectCarousel() {
 
 
       <div className="text-center mt-3">
-        <span className="text-xs md:text-sm lg:text-xs text-[#295a7d]">
+        <span className="text-xs md:text-sm lg:text-xs text-amber-800">
           {currentIndex + 1} of {filteredProjects.length}
         </span>
       </div>

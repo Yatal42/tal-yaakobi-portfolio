@@ -8,7 +8,6 @@ import type { LinksFunction } from "react-router";
 
 import "./app.css";
 import "./styles/global.css";
-import "./styles/laptop3d.css";
 
 export const links: LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -19,7 +18,7 @@ export const links: LinksFunction = () => [
   },
   {
     rel: "stylesheet",
-    href: "https://fonts.googleapis.com/css2?family=Cardo:wght@400;700&display=swap",
+    href: "https://fonts.googleapis.com/css2?family=Cardo:wght@400;700&family=Playfair+Display:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600;700&family=Crimson+Text:wght@400;600;700&display=swap",
   },
 ];
 

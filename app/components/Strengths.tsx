@@ -8,8 +8,8 @@ const strengths = [
 
 export default function Strengths() {
   return (
-    <div className="bg-[#fdfcf9] p-4 sm:p-6 md:p-8 lg:p-6 rounded-lg shadow-sm transition-all duration-200 border border-[#e8e3d8] relative overflow-hidden hover:-translate-y-0.5 hover:shadow-md hover:border-[rgba(41,82,125,0.1)] h-full">
-      <h4 className="text-lg sm:text-xl md:text-2xl lg:text-xl font-bold mb-4 tracking-tight text-[#05082e]">
+    <div className="bg-amber-50/80 p-4 sm:p-6 md:p-8 lg:p-6 rounded-lg shadow-sm transition-all duration-200 border border-amber-200/60 relative overflow-hidden hover:-translate-y-0.5 hover:shadow-md hover:border-amber-300/60 h-full">
+      <h4 className="text-lg sm:text-xl md:text-2xl lg:text-xl font-bold mb-4 tracking-tight text-amber-900">
         My Strengths
       </h4>
       
@@ -17,12 +17,12 @@ export default function Strengths() {
         {strengths.map((strength, index) => (
           <li 
             key={index} 
-            className="flex items-start gap-3 mb-4 p-3 rounded-lg bg-[#f8f6f1]"
+            className="flex items-start gap-3 mb-4 p-3 rounded-lg bg-amber-100/50"
           >
-            <span className="w-2 h-2 bg-[var(--error)] rounded-full mt-1.5 flex-shrink-0"></span>
-            <div className="text-sm sm:text-base text-[#295a7d]">
-              <span className="font-bold text-[#05082e]">{strength.split(' - ')[0]}</span>
-              <span className="text-[#295a7d] block mt-1">{strength.split(' - ')[1]}</span>
+            <span className="w-2 h-2 bg-amber-600 rounded-full mt-1.5 flex-shrink-0"></span>
+            <div className="text-sm sm:text-base text-amber-800">
+              <span className="font-bold text-amber-900">{strength.split(' - ')[0]}</span>
+              <span className="text-amber-800 block mt-1">{strength.split(' - ')[1]}</span>
             </div>
           </li>
         ))}

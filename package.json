@@ -13,6 +13,8 @@
     "@lobehub/icons": "^2.2.0",
     "@react-router/node": "^7.5.3",
     "@react-router/serve": "^7.5.3",
+    "@splinetool/react-spline": "^4.0.0",
+    "@splinetool/runtime": "^1.10.20",
     "isbot": "^5.1.27",
     "lucide-react": "^0.522.0",
     "react": "^19.1.0",

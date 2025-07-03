@@ -18,6 +18,22 @@
   .content-start {
     align-content: flex-start;
   }
+  
+  /* Custom Font Classes */
+  .font-display {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    font-feature-settings: "liga" 1, "kern" 1;
+    text-rendering: optimizeLegibility;
+  }
+  
+  .font-buttons {
+    font-family: 'Crimson Text', serif;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    font-feature-settings: "liga" 1;
+  }
 }
 
 /* Gradient animation for hero title */
