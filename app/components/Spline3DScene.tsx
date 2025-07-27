@@ -1,14 +1,14 @@
 import { lazy, Suspense } from "react";
 
 /*
- * SplineKeyboard embeds the Spline scene via the official React component.
+ * Spline3DScene embeds the Spline scene via the official React component.
  * We lazily import the component to ensure it only runs on the client.
  */
 
 // Lazy load Spline component client side
 const Spline = lazy(() => import("@splinetool/react-spline").then((m) => ({ default: m.default })));
 
-export default function SplineKeyboard({
+export default function Spline3DScene({
   scene,
   className,
 }: {

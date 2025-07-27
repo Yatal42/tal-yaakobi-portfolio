@@ -1,5 +1,5 @@
-import { useState } from "react";
-import SplineKeyboard from "./SplineKeyboard";
+import { useState, useMemo } from "react";
+import Spline3DScene from "./Spline3DScene";
 import Dialog from "./Dialog";
 import AboutMe from "./AboutMe";
 import Strengths from "./Strengths";
@@ -9,6 +9,12 @@ import Contact from "./Contact";
 
 export default function MainHeadline() {
   const [activeDialog, setActiveDialog] = useState<string | null>(null);
+  
+  // Create a stable scene URL that only refreshes on page load to get latest updates
+  const splineSceneUrl = useMemo(() => 
+    `https://prod.spline.design/QmGNYY-JqkPLqtDR/scene.splinecode?v=${new Date().getTime()}`, 
+    [] // Empty dependency array means this only runs once on mount
+  );
 
   const openDialog = (dialogId: string) => {
     setActiveDialog(dialogId);
@@ -62,10 +68,10 @@ export default function MainHeadline() {
         </div>
       </nav>
 
-      {/* 3D keyboard - full screen seamless integration */}
+      {/* 3D laptop - full screen seamless integration */}
       <div className="fixed inset-0 pt-32 md:pt-36 lg:pt-40">
-        <SplineKeyboard
-          scene="https://prod.spline.design/9X9aFHcOFisAnPJS/scene.splinecode"
+        <Spline3DScene
+          scene={splineSceneUrl}
           className="w-full h-full"
         />
       </div>
