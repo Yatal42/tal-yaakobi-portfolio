@@ -26,29 +26,38 @@ export default function MainHeadline() {
 
   return (
     <>
-    <div className="min-h-screen relative bg-gradient-to-br from-amber-50 via-amber-100 to-amber-200">
-      {/* Subtle background elements */}
+    <div className="min-h-screen relative bg-gradient-to-br from-slate-900 from-10% via-blue-900/90 via-30% via-slate-800 via-70% to-slate-900 to-90%">
+      {/* Modern subtle background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-10 w-32 h-32 bg-white/20 rounded-full blur-xl animate-pulse"></div>
-        <div className="absolute top-40 right-20 w-24 h-24 bg-amber-200/30 rounded-full blur-xl animate-pulse delay-1000"></div>
-        <div className="absolute bottom-40 left-20 w-40 h-40 bg-white/15 rounded-full blur-xl animate-pulse delay-500"></div>
-        <div className="absolute bottom-20 right-10 w-28 h-28 bg-amber-300/20 rounded-full blur-xl animate-pulse delay-700"></div>
+        {/* Top left glow */}
+        <div className="absolute -top-20 -left-20 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
+        {/* Top right accent */}
+        <div className="absolute top-40 right-20 w-64 h-64 bg-indigo-400/5 rounded-full blur-2xl animate-pulse delay-1000"></div>
+        {/* Center ambient light */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-400/5 rounded-full blur-3xl animate-pulse delay-500"></div>
+        {/* Bottom accent */}
+        <div className="absolute -bottom-32 -left-32 w-96 h-96 bg-blue-600/5 rounded-full blur-3xl animate-pulse delay-700"></div>
+        {/* Additional subtle accents */}
+        <div className="absolute top-1/3 right-1/4 w-72 h-72 bg-indigo-500/5 rounded-full blur-2xl animate-pulse delay-300"></div>
+        <div className="absolute bottom-1/4 right-1/3 w-60 h-60 bg-blue-500/5 rounded-full blur-2xl animate-pulse delay-1000"></div>
       </div>
 
-      {/* Navigation bar - top with glassmorphism */}
-      <nav className="fixed top-6 left-6 right-6 z-50">
-        <div className="max-w-6xl mx-auto bg-white/30 backdrop-blur-md rounded-2xl border border-white/40 shadow-2xl">
-                      <div className="px-6 sm:px-8 flex justify-between items-center h-20 md:h-24 lg:h-28">
-            <div className="flex items-center gap-4">
-              <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display text-amber-900 drop-shadow-lg">
+      {/* Navigation bar - with modern glassmorphism */}
+      <nav className="fixed top-4 left-0 right-0 z-50">
+        <div className="w-[90%] ml-0 bg-white/5 backdrop-blur-xl shadow-2xl after:absolute after:inset-x-0 after:bottom-0 after:h-px after:bg-gradient-to-r after:from-transparent after:via-white/10 after:to-transparent">
+          <div className="px-0 flex items-center justify-between h-16 sm:h-20">
+            {/* Header Content - aligned to the left */}
+            <div className="flex items-center gap-3 sm:gap-4 pl-6">
+              <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-display font-light tracking-tight text-white drop-shadow-lg whitespace-nowrap">
                 Tal Yaakobi
-              </div>
-              <div className="text-base sm:text-lg md:text-xl lg:text-2xl text-amber-700 font-medium">
+              </h1>
+              <div className="text-sm sm:text-base md:text-lg lg:text-xl font-display font-light tracking-tight text-blue-200/80 whitespace-nowrap">
                 Full Stack Developer
               </div>
             </div>
             
-            <div className="flex gap-3 sm:gap-4">
+            {/* Navigation - aligned to the right with more space */}
+            <div className="flex gap-2 sm:gap-4 pr-8">
               {[
                 { id: 'about', label: 'About' },
                 { id: 'skills', label: 'Skills' },
@@ -58,9 +67,20 @@ export default function MainHeadline() {
                 <button
                   key={item.id}
                   onClick={() => openDialog(item.id)}
-                  className="text-xs sm:text-sm font-buttons text-amber-900 px-4 sm:px-6 py-2.5 sm:py-3 bg-white/50 rounded-xl shadow-lg hover:shadow-xl hover:bg-white/70 transform hover:scale-105 transition-all duration-300 hover:-translate-y-1 backdrop-blur-sm border border-white/30"
+                  className="relative group text-xs sm:text-sm md:text-base font-sans font-light tracking-wide text-white/70 px-3 sm:px-4 md:px-5 py-2 sm:py-2.5 hover:text-white transition-all duration-300 whitespace-nowrap"
                 >
-                  {item.label}
+                  {/* Hover line effect */}
+                  <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-blue-500 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+                  
+                  {/* Background hover effect */}
+                  <div className="absolute inset-0 bg-white/0 group-hover:bg-white/5 -skew-x-12 scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></div>
+                  
+                  {/* Text with tech accent */}
+                  <span className="relative z-10 inline-flex items-center">
+                    <span className="font-mono text-blue-400/40 mr-1 text-[9px] sm:text-[10px] opacity-0 group-hover:opacity-100 transition-opacity duration-300">&lt;</span>
+                    {item.label}
+                    <span className="font-mono text-blue-400/40 ml-1 text-[9px] sm:text-[10px] opacity-0 group-hover:opacity-100 transition-opacity duration-300">/&gt;</span>
+                  </span>
                 </button>
               ))}
             </div>
@@ -68,8 +88,15 @@ export default function MainHeadline() {
         </div>
       </nav>
 
-      {/* 3D laptop - full screen seamless integration */}
-      <div className="fixed inset-0 pt-32 md:pt-36 lg:pt-40">
+      {/* 3D MacBook - centered with ambient space */}
+      <div className="fixed inset-0 pt-16 sm:pt-20">
+        {/* Interaction hint above the MacBook */}
+        <div className="absolute top-8 left-1/2 transform -translate-x-1/2 text-center">
+          <p className="text-white/50 text-xs font-light tracking-wider uppercase">
+            Interactive 3D Model
+          </p>
+        </div>
+
         <Spline3DScene
           scene={splineSceneUrl}
           className="w-full h-full"
