@@ -1,32 +1,75 @@
+import { Code, Target, Brain, Users, Sparkles } from "lucide-react";
+
 const strengths = [
-  "Curious & Always Learning - I'm a naturally curious person, passionate about learning and growing as a developer. I'm actively expanding my technical skills and currently focused on deepening my knowledge of modern web frameworks and AI integration.",
-  "Building for People - Technology is for people. I approach coding with empathy, always keeping the end-user in mind. I'm motivated to contribute to projects that solve real problems and create a positive user experience.",
-  "A Creative Approach to Code - I enjoy the creative side of development and like breaking down complex problems to write clean, thoughtful code. My fresh perspective helps me contribute new ideas to the development process.",
-  "Stronger Together - I believe the best ideas come from collaboration. I'm an active team player who thrives on shared knowledge and open communication, contributing to a positive environment where we can build great things together.",
-  "Focused & Driven - I'm a focused developer who enjoys taking ownership of my tasks. Through my academic and personal projects, I've learned to see features through from start to finish, and I'm eager to apply this drive to deliver reliable code in a team environment."
+  {
+    title: "Vision",
+    icon: Target,
+    description: "As a former TV producer, I'm naturally wired to see the whole board. I approach software development with a passion for understanding the 'why' behind every feature, ensuring that even the smallest details serve the big-picture vision.",
+    keywords: ["Big-Picture Thinking", "Purpose-Driven Code", "Full Ownership"]
+  },
+  {
+    title: "Curiosity",
+    icon: Brain,
+    description: "My curiosity is my engine. I love diving into new subjects, and I find that sharing my journey—whether with my students or on LinkedIn—is the best way to deepen my own understanding. For me, learning isn't just a task; it's a core passion.",
+    keywords: ["Continuous Learning", "Knowledge Sharing", "Community Engagement"]
+  },
+  {
+    title: "Community",
+    icon: Users,
+    description: "Whether leading a team, collaborating in a tech meetup, or mentoring students with disabilities, my core approach is the same: to build a sense of community. I believe the best products are created when people feel connected, heard, and empowered, and I thrive on fostering that environment through empathy, clear communication, and positive energy.",
+    keywords: ["Team Builder", "Empathetic Leadership", "Positive Culture"]
+  },
+  {
+    title: "Perspective",
+    icon: Code,
+    description: "My approach to problem-solving is deeply shaped by my passion for diverse fields like art, history, music, and philosophy. It's not about knowing facts, but about having a rich toolkit of mental models that allows me to ask better questions and connect strategic goals to the human needs behind them.",
+    keywords: ["Creative Problem-Solving", "Critical Thinking", "Connecting Dots"]
+  }
 ];
 
 export default function Strengths() {
   return (
-    <div className="bg-[#fdfcf9]/95 p-4 sm:p-6 md:p-8 lg:p-6 rounded-lg shadow-[0_2px_8px_rgba(5,8,46,0.12)] transition-all duration-200 border border-[#e8e3d8] relative overflow-hidden hover:-translate-y-0.5 hover:shadow-[0_4px_16px_rgba(5,8,46,0.16)] h-full">
-      <h4 className="text-lg sm:text-xl md:text-2xl lg:text-xl font-bold mb-4 tracking-tight text-[#05082e] font-display">
-        My Strengths
-      </h4>
-      
-      <ul className="m-0 p-0 list-none">
+    <div className="bg-[#fdfcf9]/95 p-6 sm:p-8 rounded-lg shadow-[0_2px_8px_rgba(5,8,46,0.12)] transition-all duration-200 border border-[#e8e3d8]">
+      <div className="flex items-center gap-2 mb-8">
+        <Sparkles className="w-5 h-5 text-[#295a7d]" />
+        <h4 className="text-lg sm:text-xl font-bold tracking-tight text-[#05082e] font-display">
+          Core Strengths
+        </h4>
+      </div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {strengths.map((strength, index) => (
-          <li 
-            key={index} 
-            className="flex items-start gap-3 mb-4 p-3 rounded-lg bg-[#f8f6f1]"
+          <div 
+            key={index}
+            className="bg-[#f8f6f1] rounded-lg transition-all duration-200 hover:shadow-lg"
           >
-            <span className="w-2 h-2 bg-[#295a7d] rounded-full mt-1.5 flex-shrink-0"></span>
-            <div className="text-sm sm:text-base text-[#295a7d]">
-              <span className="saira-condensed-bold text-[#05082e]">{strength.split(' - ')[0]}</span>
-              <span className="saira-condensed-regular text-[#295a7d] block mt-1">{strength.split(' - ')[1]}</span>
+            <div className="p-4 border-b border-[#e8e3d8]">
+              <div className="flex items-center gap-2">
+                <strength.icon className="w-5 h-5 text-[#295a7d]" />
+                <h5 className="saira-condensed-bold text-[#05082e] text-lg">
+                  {strength.title}
+                </h5>
+              </div>
             </div>
-          </li>
+            
+            <div className="p-4">
+              <p className="saira-condensed-regular text-[#295a7d] text-base leading-relaxed mb-4">
+                {strength.description}
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {strength.keywords.map((keyword, idx) => (
+                  <span 
+                    key={idx}
+                    className="text-xs px-2 py-1 bg-white text-[#295a7d] rounded-full"
+                  >
+                    {keyword}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
-} 
+}
