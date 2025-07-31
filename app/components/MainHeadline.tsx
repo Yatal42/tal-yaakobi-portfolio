@@ -106,7 +106,7 @@ export default function MainHeadline() {
       isOpen={activeDialog === 'about'} 
       onClose={closeDialog} 
       title="About Me"
-      size="lg"
+      size="xl"
     >
       <div className="space-y-8">
         <AboutMe />

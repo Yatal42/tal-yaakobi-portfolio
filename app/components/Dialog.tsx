@@ -33,22 +33,30 @@ export default function Dialog({ isOpen, onClose, title, children, size = "md" }
     sm: "max-w-md",
     md: "max-w-lg",
     lg: "max-w-2xl",
-    xl: "max-w-4xl",
+    xl: "max-w-5xl",
     full: "max-w-7xl",
   };
 
   return (
     <div className="fixed inset-0 z-[100] overflow-y-auto">
       {/* Backdrop with modern blur effect */}
-      <div
-        className="fixed inset-0 bg-[#05082e]/30 backdrop-blur-md transition-opacity"
+      <div 
+        className="fixed inset-0 bg-[#05082e]/30 backdrop-blur-md transition-all duration-300 ease-out"
+        style={{
+          opacity: isOpen ? 1 : 0,
+          backdropFilter: isOpen ? 'blur(8px)' : 'blur(0px)'
+        }}
         onClick={onClose}
       />
 
       {/* Dialog */}
       <div className="flex min-h-full items-center justify-center p-4">
         <div
-          className={`relative w-full ${sizeClasses[size]} transform bg-[#fdfcf9]/95 backdrop-blur-md transition-all rounded-none border-t border-l border-r border-b-2 border-[#e8e3d8] overflow-hidden`}
+          className={`relative w-full ${sizeClasses[size]} transform bg-[#fdfcf9]/95 backdrop-blur-md transition-all duration-500 ease-out rounded-none border-t border-l border-r border-b-2 border-[#e8e3d8] overflow-hidden`}
+          style={{
+            opacity: isOpen ? 1 : 0,
+            transform: isOpen ? 'scale(1) translateY(0)' : 'scale(0.95) translateY(-20px)'
+          }}
         >
           {/* Geometric accent line */}
           <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#295a7d]/30 to-transparent"></div>
@@ -87,7 +95,7 @@ export default function Dialog({ isOpen, onClose, title, children, size = "md" }
           <div className="h-[1px] w-full bg-gradient-to-r from-[#e8e3d8] via-[#295a7d]/10 to-[#e8e3d8]"></div>
 
           {/* Content with subtle background */}
-          <div className="p-6 text-[#295a7d] max-h-[70vh] overflow-y-auto bg-gradient-to-b from-[#fdfcf9]/50 to-[#fdfcf9]/95">
+          <div className="p-6 text-[#295a7d] max-h-[75vh] overflow-y-auto bg-gradient-to-b from-[#fdfcf9]/50 to-[#fdfcf9]/95">
             {children}
           </div>
           
@@ -97,4 +105,4 @@ export default function Dialog({ isOpen, onClose, title, children, size = "md" }
       </div>
     </div>
   );
-} 
+}

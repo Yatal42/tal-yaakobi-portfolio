@@ -29,7 +29,7 @@ const strengths = [
 
 export default function Strengths() {
   return (
-    <div className="bg-[#fdfcf9]/95 p-6 sm:p-8 rounded-lg shadow-[0_2px_8px_rgba(5,8,46,0.12)] transition-all duration-200 border border-[#e8e3d8]">
+    <div className="bg-[#fdfcf9]/95 p-6 sm:p-8 rounded-lg shadow-[0_2px_8px_rgba(5,8,46,0.12)] border border-[#e8e3d8]">
       <div className="flex items-center gap-2 mb-8">
         <Sparkles className="w-5 h-5 text-[#295a7d]" />
         <h4 className="text-lg sm:text-xl font-bold tracking-tight text-[#05082e] font-display">
@@ -37,30 +37,32 @@ export default function Strengths() {
         </h4>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {strengths.map((strength, index) => (
           <div 
             key={index}
-            className="bg-[#f8f6f1] rounded-lg transition-all duration-200 hover:shadow-lg"
+            className="bg-[#f8f6f1] rounded-xl shadow-sm"
           >
-            <div className="p-4 border-b border-[#e8e3d8]">
-              <div className="flex items-center gap-2">
-                <strength.icon className="w-5 h-5 text-[#295a7d]" />
-                <h5 className="saira-condensed-bold text-[#05082e] text-lg">
+            <div className="p-5 border-b border-[#e8e3d8]">
+              <div className="flex items-center gap-3">
+                <div className="p-2 bg-white rounded-lg shadow-sm">
+                  <strength.icon className="w-5 h-5 text-[#295a7d]" />
+                </div>
+                <h5 className="saira-condensed-bold text-[#05082e] text-xl">
                   {strength.title}
                 </h5>
               </div>
             </div>
             
-            <div className="p-4">
-              <p className="saira-condensed-regular text-[#295a7d] text-base leading-relaxed mb-4">
+            <div className="p-5">
+              <p className="saira-condensed-regular text-[#295a7d] text-base leading-relaxed mb-5">
                 {strength.description}
               </p>
               <div className="flex flex-wrap gap-2">
                 {strength.keywords.map((keyword, idx) => (
                   <span 
                     key={idx}
-                    className="text-xs px-2 py-1 bg-white text-[#295a7d] rounded-full"
+                    className="text-xs px-3 py-1.5 bg-white text-[#295a7d] rounded-full shadow-sm"
                   >
                     {keyword}
                   </span>

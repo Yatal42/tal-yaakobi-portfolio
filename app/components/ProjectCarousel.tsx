@@ -2,6 +2,8 @@ import { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Project from "./Project";
 
+import VideoDialog from "./VideoDialog";
+
 const projects = [
   {
     title: "🎵 Chord-I",
@@ -34,7 +36,8 @@ const projects = [
     featured: false,
     category: "fullstack",
     githubUrl: "https://github.com/Yatal42/React-task-Gantt-Chart",
-    liveUrl: ""
+    liveUrl: "",
+    videoId: "mx6-K3wZFmE"
   },
   {
     title: "🍽️ Calories Tracker - Backend",
@@ -56,7 +59,8 @@ const projects = [
     featured: false,
     category: "frontend",
     githubUrl: "https://github.com/Yatal42/Calories_Frontend_Project",
-    liveUrl: "https://yatal42.github.io/Calories_Frontend_Project/"
+    liveUrl: "https://yatal42.github.io/Calories_Frontend_Project/",
+    videoId: "KPf_iX9jZ7U"
   },
   {
     title: "🎨 Paint App (.NET)",
@@ -67,7 +71,8 @@ const projects = [
     featured: false,
     category: "desktop",
     githubUrl: "https://github.com/snuffles5/Paint",
-    liveUrl: ""
+    liveUrl: "",
+    videoId: "EjdscaC1MF0"
   },
   {
     title: "⚫ Othello Game - WinForms",
@@ -188,6 +193,7 @@ export default function ProjectCarousel() {
                 featured={project.featured}
                 githubUrl={project.githubUrl}
                 liveUrl={project.liveUrl}
+                videoId={project.videoId}
               />
             </div>
           ))}
