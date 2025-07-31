@@ -179,8 +179,8 @@ export default function ProjectCarousel() {
                 position === 'next' ? 'transform translate-x-2' : ''
               }`}
               style={{
-                width: position === 'current' ? '100%' : '250px',
-                maxWidth: position === 'current' ? '320px' : '250px',
+                width: position === 'current' ? '100%' : '300px',
+                maxWidth: position === 'current' ? '400px' : '300px',
                 flexShrink: 0
               }}
             >

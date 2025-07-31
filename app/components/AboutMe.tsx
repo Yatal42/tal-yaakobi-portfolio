@@ -9,12 +9,12 @@ export default function AboutMe() {
         </h3>
         <div className="flex items-center gap-2 mb-4">
           <Sparkles className="w-4 h-4 text-[#295a7d]" />
-          <p className="saira-condensed-bold text-lg text-[#295a7d]">
+          <p className="saira-condensed-bold text-xl text-[#295a7d]">
             Software Engineer with a Producer's Vision
           </p>
         </div>
         <div className="max-w-2xl">
-          <p className="saira-condensed-regular text-base text-[#295a7d] leading-relaxed">
+          <p className="saira-condensed-regular text-lg text-[#295a7d] leading-relaxed">
             A Dean's List Computer Science graduate bringing a unique blend of technical precision and creative problem-solving. My background in TV production has taught me to see beyond the code – to envision and deliver solutions that make a real impact.
           </p>
         </div>
