@@ -1,5 +1,6 @@
 import {
   Meta,
+  Links,
   Outlet,
   Scripts,
   ScrollRestoration,
@@ -18,8 +19,8 @@ export const links: LinksFunction = () => [
   },
   {
     rel: "stylesheet",
-    href: "https://fonts.googleapis.com/css2?family=Cardo:wght@400;700&family=Playfair+Display:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600;700&family=Crimson+Text:wght@400;600;700&display=swap",
-  },
+    href: "https://fonts.googleapis.com/css2?family=Goldman:wght@400;700&family=Saira+Condensed:wght@100;200;300;400;500;600;700;800;900&display=swap"
+  }
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {
@@ -30,6 +31,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>Tal Yaakobi - Full Stack Developer</title>
         <meta name="description" content="Creative developer focused on accessibility solutions and innovative experiences" />
+        <Links />
       </head>
       <body>
         {children}

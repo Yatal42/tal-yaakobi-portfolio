@@ -1,6 +1,109 @@
+@layer base {
+  /* Default font settings */
+  :root {
+    font-family: "Goldman", sans-serif;
+  }
+
+  /* Regular weight by default */
+  * {
+    font-family: inherit;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  /* Bold weight for headings */
+  h1, h2, h3, h4, h5, h6, 
+  .font-bold, 
+  [class*="font-bold"] {
+    font-weight: 700;
+  }
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Utility classes with !important to ensure they take precedence */
+.goldman-regular {
+  font-family: "Goldman", sans-serif !important;
+  font-weight: 400 !important;
+  font-style: normal !important;
+}
+
+.goldman-bold {
+  font-family: "Goldman", sans-serif !important;
+  font-weight: 700 !important;
+  font-style: normal !important;
+}
+
+/* Saira Condensed Font Classes */
+@layer utilities {
+  .saira-condensed-thin {
+    font-family: "Saira Condensed", sans-serif !important;
+    font-weight: 100 !important;
+    font-style: normal !important;
+  }
+
+  .saira-condensed-extralight {
+    font-family: "Saira Condensed", sans-serif !important;
+    font-weight: 200 !important;
+    font-style: normal !important;
+  }
+
+  .saira-condensed-light {
+    font-family: "Saira Condensed", sans-serif !important;
+    font-weight: 300 !important;
+    font-style: normal !important;
+  }
+
+  .saira-condensed-regular {
+    font-family: "Saira Condensed", sans-serif !important;
+    font-weight: 400 !important;
+    font-style: normal !important;
+  }
+
+  .saira-condensed-medium {
+    font-family: "Saira Condensed", sans-serif !important;
+    font-weight: 500 !important;
+    font-style: normal !important;
+  }
+
+  .saira-condensed-semibold {
+    font-family: "Saira Condensed", sans-serif !important;
+    font-weight: 600 !important;
+    font-style: normal !important;
+  }
+
+  .saira-condensed-bold {
+    font-family: "Saira Condensed", sans-serif !important;
+    font-weight: 700 !important;
+    font-style: normal !important;
+  }
+
+  .saira-condensed-extrabold {
+    font-family: "Saira Condensed", sans-serif !important;
+    font-weight: 800 !important;
+    font-style: normal !important;
+  }
+
+  .saira-condensed-black {
+    font-family: "Saira Condensed", sans-serif !important;
+    font-weight: 900 !important;
+    font-style: normal !important;
+  }
+}
+
+/* Override Goldman font for About section text */
+div > p.text-[#295a7d] {
+  font-family: "Saira Condensed", sans-serif !important;
+  font-weight: 400 !important;
+  font-style: normal !important;
+}
+
+/* Make sure the heading stays Goldman */
+h3.font-display {
+  font-family: "Goldman", sans-serif !important;
+}
 
 /* Add line-clamp utilities */
 @layer utilities {
@@ -21,18 +124,38 @@
   
   /* Custom Font Classes */
   .font-display {
-    font-family: 'Cormorant Garamond', serif;
-    font-weight: 600;
-    letter-spacing: -0.03em;
+    font-family: 'Goldman', sans-serif;
     font-feature-settings: "liga" 1, "kern" 1;
     text-rendering: optimizeLegibility;
+    font-weight: 700;
   }
   
-  .font-buttons {
-    font-family: 'Crimson Text', serif;
-    font-weight: 600;
-    letter-spacing: 0.02em;
-    font-feature-settings: "liga" 1;
+  .font-body {
+    font-family: 'Goldman', sans-serif;
+    font-feature-settings: "liga" 1, "kern" 1;
+    text-rendering: optimizeLegibility;
+    font-weight: 400;
+  }
+
+  .font-mono {
+    font-family: 'Goldman', sans-serif;
+    font-feature-settings: "liga" 1, "kern" 1;
+    text-rendering: optimizeLegibility;
+    font-weight: 400;
+  }
+
+  .font-tech {
+    font-family: 'Goldman', sans-serif;
+    font-feature-settings: "liga" 1, "kern" 1;
+    text-rendering: optimizeLegibility;
+    font-weight: 700;
+  }
+
+  .font-serif {
+    font-family: 'Goldman', sans-serif;
+    font-feature-settings: "liga" 1, "kern" 1;
+    text-rendering: optimizeLegibility;
+    font-weight: 400;
   }
 }
 
@@ -115,7 +238,7 @@ html {
 }
 
 body {
-  font-family: 'Cardo', serif;
+  font-family: 'Goldman', sans-serif;
   font-size: 15px;
   line-height: 1.5;
   color: var(--text);

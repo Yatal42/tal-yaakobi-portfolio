@@ -4,9 +4,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        display: ['Space Grotesk', 'sans-serif'],
-        sans: ['Outfit', 'sans-serif'],
-        mono: ['JetBrains Mono', 'monospace'],
+        'sans': ['"Goldman"', 'system-ui', 'sans-serif'],
+        'goldman': ['"Goldman"', 'system-ui', 'sans-serif'],
       },
     },
   },
