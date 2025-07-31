@@ -19,13 +19,13 @@ export default function ContactForm() {
   return (
     <motion.button
       onClick={handleEmailClick}
-      className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-16 lg:h-16 flex items-center justify-center text-amber-900 transition-all duration-200"
+      className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-16 lg:h-16 flex items-center justify-center text-[#05082e] transition-all duration-200"
       aria-label="Copy Email Address"
       whileHover={{ 
         y: -8, 
         rotate: 5, 
         scale: 1.1,
-        color: "#d97706",
+        color: "#295a7d",
         transition: { duration: 0.15, ease: "easeOut" }
       }}
       whileTap={{ scale: 0.95 }}
