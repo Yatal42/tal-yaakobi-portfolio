@@ -1,4 +1,4 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useState } from "react";
 
 /*
  * Spline3DScene embeds the Spline scene via the official React component.
@@ -15,9 +15,17 @@ export default function Spline3DScene({
   scene: string;
   className?: string;
 }) {
+  const [isLoading, setIsLoading] = useState(true);
   return (
     <div className={className} style={{ pointerEvents: "auto", position: "relative" }}>
-      <Suspense fallback={<div className="w-full h-full bg-gray-100 animate-pulse" />}>
+      <Suspense fallback={
+        <div className="w-full h-full flex items-center justify-center">
+          <div className="relative">
+            <div className="w-12 h-12 border-4 border-[#295a7d] border-t-transparent rounded-full animate-spin"></div>
+            <p className="mt-4 text-sm text-[#295a7d]">Loading...</p>
+          </div>
+        </div>
+      }>
         {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
         {/* @ts-ignore - dynamic import default typing */}
         <Spline 
@@ -28,7 +36,16 @@ export default function Spline3DScene({
             pointerEvents: "auto",
             touchAction: "auto"
           }}
+          onLoad={() => setIsLoading(false)}
         />
+        {isLoading && (
+          <div className="absolute inset-0 flex items-center justify-center bg-[#05082e]/80">
+            <div className="relative">
+              <div className="w-12 h-12 border-4 border-[#295a7d] border-t-transparent rounded-full animate-spin"></div>
+              <p className="mt-4 text-sm text-[#295a7d]">Loading...</p>
+            </div>
+          </div>
+        )}
       </Suspense>
     </div>
   );

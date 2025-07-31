@@ -20,11 +20,11 @@ export default function SkillCard({ skill }: SkillCardProps) {
         <div className="p-2 bg-[#f8f6f1] rounded-md mr-3">
           <IconComponent className="w-5 h-5" color="#295a7d" />
         </div>
-        <h3 className="font-display font-semibold text-base text-[#05082e]">{skill.name}</h3>
+        <h3 className="font-display font-semibold text-lg text-[#05082e]">{skill.name}</h3>
       </div>
       <ul className="space-y-2 pl-1">
         {skill.items.map((item) => (
-          <li key={item} className="flex items-center text-sm text-[#295a7d]">
+          <li key={item} className="flex items-center text-base text-[#295a7d]">
             <span className="w-1.5 h-1.5 rounded-full mr-2.5 bg-[#295a7d]"></span>
             {item}
           </li>
