@@ -6,22 +6,22 @@ const skills = [
   {
     name: "Frontend",
     icon: Code,
-    items: ["React", "Vue.js", "TypeScript", "Next.js"],
+    items: ["React", "TypeScript", "Next.js", "Tailwind CSS", "HTML", "CSS"],
   },
   {
     name: "Backend",
     icon: Server,
-    items: ["Node.js", "Python", "Express", "API Design"],
+    items: ["Node.js", "nest.js", "C#", "Python", "Express", "API Design","REST API"],
+  },
+  {
+    name: "AI",
+    icon: Smartphone,
+    items: ["Cursor", "github copilot", "OpenAI", "vibe-coding", "prompt engineering"],
   },
   {
     name: "Database",
     icon: Database,
-    items: ["PostgreSQL", "MongoDB", "Redis", "SQL"],
-  },
-  {
-    name: "Mobile",
-    icon: Smartphone,
-    items: ["React Native", "Flutter", "iOS", "Android"],
+    items: ["PostgreSQL", "MongoDB", "MySQL", "mySQL Workbench"],
   },
 ];
 
