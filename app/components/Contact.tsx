@@ -40,6 +40,21 @@ export default function Contact() {
           />
         </svg>
       </a>
+      
+      <a
+        href="/CV.pdf"
+        download="Tal_Yaakobi_Resume.pdf"
+        className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-16 lg:h-16 flex items-center justify-center text-[#05082e] transition-all duration-200 hover:-translate-y-2 hover:rotate-6 hover:scale-110 hover:text-[#295a7d]"
+        aria-label="Download Resume"
+      >
+        <svg
+          className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 lg:w-8 lg:h-8"
+          fill="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20M12,15.5L8.5,12H11V8H13V12H15.5L12,15.5Z" />
+        </svg>
+      </a>
     </div>
   );
 } 

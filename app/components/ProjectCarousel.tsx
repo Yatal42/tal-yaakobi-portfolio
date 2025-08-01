@@ -16,6 +16,7 @@ const projects = [
     githubUrl: "https://github.com/Yatal42/tal-yaakobi-portfolio",
     liveUrl: ""
   },
+
   {
     title: "Chord-I",
     description: "AI-powered chord detection system that extracts chords from songs using machine learning algorithms and audio processing techniques. Currently in active development with focus on accuracy and real-time processing.",
@@ -24,7 +25,7 @@ const projects = [
     statusColor: "#295a7d",
     featured: false,
     category: "ai",
-    githubUrl: "https://github.com/Yatal42/chord-I",
+    githubUrl: "",
     liveUrl: ""
   },
   {
