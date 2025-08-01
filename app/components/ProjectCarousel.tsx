@@ -6,7 +6,18 @@ import VideoDialog from "./VideoDialog";
 
 const projects = [
   {
-    title: "🎵 Chord-I",
+    title: "My Portfolio",
+    description: "My personal portfolio website, the one you are currently viewing. Built with React, TypeScript, and Tailwind CSS, and includes a 3D scene made with Spline. It was developed with the help of Cursor AI.",
+    technologies: ["React", "TypeScript", "Tailwind CSS", "Vite", "Spline", "Framer Motion", "Cursor AI"],
+    status: "Completed",
+    statusColor: "#295a7d",
+    featured: true,
+    category: "frontend",
+    githubUrl: "https://github.com/Yatal42/tal-yaakobi-portfolio",
+    liveUrl: ""
+  },
+  {
+    title: "Chord-I",
     description: "AI-powered chord detection system that extracts chords from songs using machine learning algorithms and audio processing techniques. Currently in active development with focus on accuracy and real-time processing.",
     technologies: ["AI", "Machine Learning", "Audio Processing", "Python", "Typescript", "React", "Next.js", "Tailwind CSS", "Vercel", "OpenAI", "Hugging Face", "Web Audio API"],
     status: "In Development",
@@ -17,7 +28,7 @@ const projects = [
     liveUrl: ""
   },
   {
-    title: "🎬 Popcorn Palace",
+    title: "Popcorn Palace",
     description: "Backend cinema ticket booking system built with NestJS, PostgreSQL, TypeORM, and Docker. Features a robust REST API, scalable architecture, and comprehensive test coverage with unit & E2E tests.",
     technologies: ["NestJS", "PostgreSQL", "TypeORM", "Docker", "Unit Tests", "E2E Tests"],
     status: "Completed",
@@ -28,9 +39,9 @@ const projects = [
     liveUrl: ""
   },
   {
-    title: "📊 React Task Gantt Chart",
+    title: "Task & projects Gantt Chart",
     description: "Full-stack project for managing tasks and projects with dependency handling, date shifting, and live updates. Built with React + TypeScript on the frontend and Node.js + Express + MySQL on the backend.",
-    technologies: ["React", "TypeScript", "Node.js", "Express", "MySQL", "Gantt Timeline"],
+    technologies: ["React", "TypeScript", "Node.js", "Express", "MySQL"],
     status: "Completed",
     statusColor: "#295a7d",
     featured: false,
@@ -40,7 +51,7 @@ const projects = [
     videoId: "mx6-K3wZFmE"
   },
   {
-    title: "🍽️ Calories Tracker - Backend",
+    title: "Calories Tracker - Backend",
     description: "Backend service for tracking meals and calorie intake, built with Express.js and MongoDB. Features REST API with validation and comprehensive meal tracking capabilities.",
     technologies: ["Express.js", "MongoDB", "Node.js", "REST API", "Validation"],
     status: "Completed",
@@ -51,9 +62,9 @@ const projects = [
     liveUrl: ""
   },
   {
-    title: "🍏 Calories Tracker - Frontend",
+    title: "Calories Tracker - Frontend",
     description: "Frontend interface for the calories tracking application. Provides user-friendly interface for meal logging and calorie monitoring with responsive design.",
-    technologies: ["JavaScript", "HTML5", "CSS3", "Responsive Design", "REST API Integration"],
+    technologies: ["React", "JavaScript", "HTML", "CSS", "indexDB"],
     status: "Completed",
     statusColor: "#295a7d",
     featured: false,
@@ -63,7 +74,7 @@ const projects = [
     videoId: "KPf_iX9jZ7U"
   },
   {
-    title: "🎨 Paint App (.NET)",
+    title: "Paint App (.NET)",
     description: "A drawing application supporting shapes, colors, file operations, and real-time rendering events. Built as a team project using C# and WinForms with comprehensive drawing logic.",
     technologies: ["C#", "WinForms", ".NET", "GDI+", "File I/O", "Team Project"],
     status: "Completed",
@@ -75,7 +86,7 @@ const projects = [
     videoId: "EjdscaC1MF0"
   },
   {
-    title: "⚫ Othello Game - WinForms",
+    title: "Othello Game (.NET)",
     description: "Classic Othello (Reversi) game implemented in C# and WinForms. Features encapsulated game logic, turn-based gameplay, interactive UI, and visual feedback for an engaging gaming experience.",
     technologies: ["C#", "WinForms", ".NET", "OOP", "Game Logic", "Interactive UI"],
     status: "Completed",
