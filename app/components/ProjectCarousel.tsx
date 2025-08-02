@@ -145,12 +145,12 @@ export default function ProjectCarousel() {
   };
 
   return (
-    <div className="relative w-full max-w-4xl mx-auto px-4">
+    <div className="relative w-full max-w-4xl mx-auto px-2 sm:px-4">
       
       <button
         onClick={prevProject}
         disabled={currentIndex === 0}
-        className={`absolute left-2 sm:left-0 md:left-4 lg:left-0 top-1/2 transform -translate-y-1/2 z-20 rounded-none p-3 sm:p-3.5 md:p-4 lg:p-3.5 transition-all duration-300 group ${
+        className={`absolute left-0 sm:left-0 md:left-4 lg:left-0 top-1/2 transform -translate-y-1/2 z-20 rounded-none p-2 sm:p-3 md:p-4 lg:p-3.5 transition-all duration-300 group ${
           currentIndex === 0 
             ? "bg-[#f8f6f1] border border-[#e8e3d8] text-[#e8e3d8] cursor-not-allowed" 
             : "bg-[#fdfcf9] border border-[#e8e3d8] text-[#295a7d] hover:bg-[#05082e] hover:border-[#05082e] hover:text-white hover:scale-125 active:scale-110 active:translate-x-1"
@@ -165,7 +165,7 @@ export default function ProjectCarousel() {
       <button
         onClick={nextProject}
         disabled={currentIndex === filteredProjects.length - 1}
-        className={`absolute right-2 sm:right-0 md:right-4 lg:right-0 top-1/2 transform -translate-y-1/2 z-20 rounded-none p-3 sm:p-3.5 md:p-4 lg:p-3.5 transition-all duration-300 group ${
+        className={`absolute right-0 sm:right-0 md:right-4 lg:right-0 top-1/2 transform -translate-y-1/2 z-20 rounded-none p-2 sm:p-3 md:p-4 lg:p-3.5 transition-all duration-300 group ${
           currentIndex === filteredProjects.length - 1
             ? "bg-[#f8f6f1] border border-[#e8e3d8] text-[#e8e3d8] cursor-not-allowed"
             : "bg-[#fdfcf9] border border-[#e8e3d8] text-[#295a7d] hover:bg-[#05082e] hover:border-[#05082e] hover:text-white hover:scale-125 active:scale-110 active:-translate-x-1"
@@ -177,7 +177,7 @@ export default function ProjectCarousel() {
         <div className="absolute inset-0 border-2 border-transparent group-focus:border-[#05082e]"></div>
       </button>
 
-      <div className="px-8 sm:px-12 md:px-16 lg:px-12">
+      <div className="px-6 sm:px-8 md:px-12 lg:px-12">
         <div className="flex justify-center items-center gap-2 sm:gap-4 md:gap-6 lg:gap-4 overflow-hidden">
           {getVisibleProjects().map(({ project, position }, index) => (
             <div
@@ -185,7 +185,7 @@ export default function ProjectCarousel() {
               className={`transition-all duration-500 ease-in-out ${
                 position === 'current' 
                   ? 'scale-100 opacity-100 z-10' 
-                  : 'scale-85 opacity-30 blur-sm z-0 hidden sm:block'
+                  : 'scale-85 opacity-30 blur-sm z-0 hidden md:block'
               } ${
                 position === 'prev' ? 'transform -translate-x-2' : 
                 position === 'next' ? 'transform translate-x-2' : ''
@@ -213,15 +213,15 @@ export default function ProjectCarousel() {
       </div>
 
       
-      <div className="flex justify-center mt-6 space-x-3">
+      <div className="flex justify-center mt-4 sm:mt-6 space-x-2 sm:space-x-3">
         {filteredProjects.map((_, index) => (
           <button
             key={index}
             onClick={() => setCurrentIndex(index)}
             className={`group relative transition-all duration-300 ${
               index === currentIndex
-                ? "w-8 md:w-10 lg:w-8 h-2 md:h-2.5 lg:h-2 bg-[#05082e]"
-                : "w-2 md:w-2.5 lg:w-2 h-2 md:h-2.5 lg:h-2 bg-[#e8e3d8] hover:bg-[#295a7d]"
+                ? "w-6 sm:w-8 md:w-10 lg:w-8 h-1.5 sm:h-2 md:h-2.5 lg:h-2 bg-[#05082e]"
+                : "w-1.5 sm:w-2 md:w-2.5 lg:w-2 h-1.5 sm:h-2 md:h-2.5 lg:h-2 bg-[#e8e3d8] hover:bg-[#295a7d]"
             }`}
             aria-label={`Go to project ${index + 1}`}
           >
@@ -232,8 +232,8 @@ export default function ProjectCarousel() {
         ))}
       </div>
 
-      <div className="text-center mt-3">
-        <span className="text-xs md:text-sm lg:text-xs text-[#295a7d]">
+      <div className="text-center mt-2 sm:mt-3">
+        <span className="text-xs sm:text-sm md:text-sm lg:text-xs text-[#295a7d]">
           {currentIndex + 1} of {filteredProjects.length}
         </span>
       </div>

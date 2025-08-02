@@ -42,7 +42,7 @@ export default function Project({
 
   return (
     <>
-      <div className="bg-[#fdfcf9]/95 border border-[#e8e3d8] rounded-lg p-4 shadow-[0_2px_8px_rgba(5,8,46,0.12)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_4px_16px_rgba(5,8,46,0.16)] group flex flex-col h-[400px]">
+      <div className="bg-[#fdfcf9]/95 border border-[#e8e3d8] rounded-lg p-3 sm:p-4 shadow-[0_2px_8px_rgba(5,8,46,0.12)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_4px_16px_rgba(5,8,46,0.16)] group flex flex-col min-h-[350px] sm:min-h-[400px] h-auto">
         <div className="flex flex-col flex-grow min-h-0">
           <div className="mb-2">
             {featured && (
@@ -50,13 +50,13 @@ export default function Project({
                 Featured
               </div>
             )}
-            <h3 className="text-xl font-bold text-[#05082e] tracking-tight leading-tight font-display">
+            <h3 className="text-lg sm:text-xl font-bold text-[#05082e] tracking-tight leading-tight font-display">
               {title}
             </h3>
           </div>
 
           <div className="flex-grow min-h-0 overflow-y-auto">
-            <p className="text-[#295a7d] leading-normal text-base mb-3">
+            <p className="text-[#295a7d] leading-normal text-sm sm:text-base mb-3">
               {description}
             </p>
             
@@ -64,7 +64,7 @@ export default function Project({
               {technologies.map((tech, index) => (
                 <span 
                   key={index} 
-                  className="inline-block bg-[#f8f6f1] text-[#05082e] px-2 py-1 rounded text-sm font-medium border border-[#e8e3d8]"
+                  className="inline-block bg-[#f8f6f1] text-[#05082e] px-1.5 sm:px-2 py-0.5 sm:py-1 rounded text-xs sm:text-sm font-medium border border-[#e8e3d8]"
                 >
                   {tech}
                 </span>
@@ -87,7 +87,7 @@ export default function Project({
                 href={githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-1 px-3 py-1.5 bg-transparent border border-[#05082e] text-[#05082e] rounded text-sm font-medium transition-all duration-200 hover:bg-[#05082e] hover:text-white hover:scale-105"
+                className="flex items-center gap-0.5 sm:gap-1 px-2 sm:px-3 py-1 sm:py-1.5 bg-transparent border border-[#05082e] text-[#05082e] rounded text-xs sm:text-sm font-medium transition-all duration-200 hover:bg-[#05082e] hover:text-white hover:scale-105"
               >
                 <GithubIcon />
                 Code
@@ -98,7 +98,7 @@ export default function Project({
                 href={liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-1 px-3 py-1.5 bg-[#295a7d] text-white rounded text-sm font-medium transition-all duration-200 hover:bg-[#05082e] hover:scale-105"
+                className="flex items-center gap-0.5 sm:gap-1 px-2 sm:px-3 py-1 sm:py-1.5 bg-[#295a7d] text-white rounded text-xs sm:text-sm font-medium transition-all duration-200 hover:bg-[#05082e] hover:scale-105"
               >
                 <ExternalLinkIcon />
                 Demo
@@ -107,7 +107,7 @@ export default function Project({
             {videoId && (
               <button
                 onClick={() => setIsVideoOpen(true)}
-                className="flex items-center gap-1 px-3 py-1.5 bg-[#05082e] text-white rounded text-sm font-medium transition-all duration-200 hover:bg-[#295a7d] hover:scale-105"
+                className="flex items-center gap-0.5 sm:gap-1 px-2 sm:px-3 py-1 sm:py-1.5 bg-[#05082e] text-white rounded text-xs sm:text-sm font-medium transition-all duration-200 hover:bg-[#295a7d] hover:scale-105"
               >
                 <Play className="w-3 h-3" />
                 Video
