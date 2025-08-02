@@ -11,7 +11,7 @@ const projects = [
     technologies: ["React", "TypeScript", "Tailwind CSS", "Vite", "Spline", "Framer Motion", "Cursor AI"],
     status: "Completed",
     statusColor: "#295a7d",
-    featured: true,
+    featured: false,
     category: "frontend",
     githubUrl: "https://github.com/Yatal42/tal-yaakobi-portfolio",
     liveUrl: ""
