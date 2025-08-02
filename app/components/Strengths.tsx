@@ -80,7 +80,6 @@ export default function Strengths() {
   return (
     <div className="bg-[#fdfcf9]/95 p-4 sm:p-6 rounded-lg shadow-[0_2px_8px_rgba(5,8,46,0.12)] border border-[#e8e3d8]">
       <div className="flex items-center gap-2 mb-3">
-        <Sparkles className="w-5 h-5 text-[#295a7d]" />
         <h4 className="text-lg sm:text-xl font-bold tracking-tight text-[#05082e] font-display">
           Core Strengths
         </h4>

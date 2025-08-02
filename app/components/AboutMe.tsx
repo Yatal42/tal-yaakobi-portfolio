@@ -8,14 +8,13 @@ export default function AboutMe() {
           Hi, I'm Tal Yaakobi
         </h3>
         <div className="flex items-center gap-2 mb-4">
-          <Sparkles className="w-4 h-4 text-[#295a7d]" />
           <p className="saira-condensed-bold text-xl text-[#295a7d]">
-            Software Engineer with a Producer's Vision
+            I'm a Software Engineer
           </p>
         </div>
         <div className="max-w-2xl">
           <p className="saira-condensed-regular text-lg text-[#295a7d] leading-relaxed">
-            A Dean's List Computer Science graduate bringing a unique blend of technical precision and creative problem-solving. My background in TV production has taught me to see beyond the code – to envision and deliver solutions that make a real impact.
+            A passionate Computer Science graduate combining strong technical skills with creative vision. My unique background in both software engineering and TV production allows me to approach technical challenges with both analytical precision and creative thinking.
           </p>
         </div>
       </div>
