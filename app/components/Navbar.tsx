@@ -12,12 +12,11 @@ const Navbar = ({ onOpenDialog }: NavbarProps) => {
             <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-display font-light tracking-tight text-white drop-shadow-lg whitespace-nowrap leading-none pb-1">
               Tal Yaakobi
             </h1>
-            <div className="text-sm sm:text-base md:text-lg lg:text-xl font-display font-light tracking-tight text-[#295a7d] whitespace-nowrap leading-none pb-1">
+            <div className="text-sm sm:text-base md:text-lg lg:text-xl font-display font-light tracking-tight text-[#ffffff] whitespace-nowrap leading-none pb-1">
               Full Stack Developer
             </div>
           </div>
           
-          {/* Navigation - aligned to the right with more space */}
           <div className="flex gap-2 sm:gap-4 pr-8">
             {[
               { id: 'about', label: 'About' },

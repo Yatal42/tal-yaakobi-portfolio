@@ -180,50 +180,27 @@ h3.font-display {
 
 
 :root {
-  
-  --primary: #05082e;          
-  --primary-light: #295a7d;    
-  --primary-dark: #030620;     
-  --secondary: #d18831;        
-  --secondary-light: #d29135;  
-  --secondary-dark: #a42116;   
-  --accent: #cece99;           
-  --accent-light: #d6d6a8;     
-  --accent-dark: #b8b885;      
-  
-  
-  --success: #295a7d;          
-  --warning: #d29135;          
-  --error: #a42116;            
-  
-  
-  --gradient-primary: var(--primary);
-  --gradient-secondary: var(--secondary);
-  --gradient-accent: var(--accent);
-  --gradient-warm: var(--warning);
-  --gradient-cool: var(--success);
-  
-  
+  /* Colors that are actually used */
+  --primary: #05082e;
+  --primary-dark: #030620;
+  --secondary: #d18831;
+  --error: #a42116;
+
+  /* Backgrounds */
   --background: #fdfcf9;
-  --background-light: #ffffff;
   --background-dark: #f8f6f1;
   --surface: #fdfcf9;
-  --surface-glass: #fdfcf9;
-  
-  
-  --border-light: #e8e3d8;        
-  
-  
-  --text: #05082e;             
-  --text-secondary: #295a7d;   
-  --text-muted: #a42116;       
-  --text-light: #d18831;       
-  
-  
+
+  /* Borders */
+  --border-light: #e8e3d8;
+
+  /* Text colors */
+  --text: #05082e;
+  --text-secondary: #295a7d;
+
+  /* Shadows */
   --shadow-soft: 0 1px 3px rgba(5, 8, 46, 0.08);
   --shadow-medium: 0 2px 8px rgba(5, 8, 46, 0.12);
-  --shadow-strong: 0 4px 16px rgba(5, 8, 46, 0.16);
-  --shadow-colored: 0 2px 8px rgba(41, 82, 125, 0.15);
 }
 
 
