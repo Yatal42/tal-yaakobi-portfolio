@@ -1,17 +1,17 @@
 @layer base {
-  /* Default font settings */
+  
   :root {
     font-family: "Goldman", sans-serif;
   }
 
-  /* Regular weight by default */
+  
   * {
     font-family: inherit;
     font-weight: 400;
     font-style: normal;
   }
 
-  /* Bold weight for headings */
+  
   h1, h2, h3, h4, h5, h6, 
   .font-bold, 
   [class*="font-bold"] {
@@ -23,7 +23,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Utility classes with !important to ensure they take precedence */
+
 .goldman-regular {
   font-family: "Goldman", sans-serif !important;
   font-weight: 400 !important;
@@ -36,7 +36,7 @@
   font-style: normal !important;
 }
 
-/* Saira Condensed Font Classes */
+
 @layer utilities {
   .saira-condensed-thin {
     font-family: "Saira Condensed", sans-serif !important;
@@ -93,19 +93,19 @@
   }
 }
 
-/* Override Goldman font for About section text */
+
 p.text-\[\#295a7d\] {
   font-family: "Saira Condensed", sans-serif !important;
   font-weight: 400 !important;
   font-style: normal !important;
 }
 
-/* Make sure the heading stays Goldman */
+
 h3.font-display {
   font-family: "Goldman", sans-serif !important;
 }
 
-/* Add line-clamp utilities */
+
 @layer utilities {
   .line-clamp-3 {
     display: -webkit-box;
@@ -122,7 +122,7 @@ h3.font-display {
     align-content: flex-start;
   }
   
-  /* Custom Font Classes */
+  
   .font-display {
     font-family: 'Goldman', sans-serif;
     font-feature-settings: "liga" 1, "kern" 1;
@@ -159,7 +159,7 @@ h3.font-display {
   }
 }
 
-/* Gradient animation for hero title */
+
 @keyframes gradient-shift {
   0%, 100% {
     background-position: 0% 50%;
@@ -178,55 +178,55 @@ h3.font-display {
   animation: gradient-shift 3s ease-in-out infinite;
 }
 
-/* Global CSS Variables - Updated Color Palette */
+
 :root {
-  /* Primary Colors - New Palette */
-  --primary: #05082e;          /* Dark blue-black */
-  --primary-light: #295a7d;    /* Lighter blue (41, 82, 125) */
-  --primary-dark: #030620;     /* Darker version of primary */
-  --secondary: #d18831;        /* Orange (209, 136, 49) */
-  --secondary-light: #d29135;  /* Lighter orange (210, 145, 53) */
-  --secondary-dark: #a42116;   /* Dark red (164, 33, 22) */
-  --accent: #cece99;           /* Light green-yellow (206, 206, 153) */
-  --accent-light: #d6d6a8;     /* Lighter accent */
-  --accent-dark: #b8b885;      /* Darker accent */
   
-  /* Supporting Colors */
-  --success: #295a7d;          /* Blue (41, 82, 125) */
-  --warning: #d29135;          /* Orange (210, 145, 53) */
-  --error: #a42116;            /* Red (164, 33, 22) */
+  --primary: #05082e;          
+  --primary-light: #295a7d;    
+  --primary-dark: #030620;     
+  --secondary: #d18831;        
+  --secondary-light: #d29135;  
+  --secondary-dark: #a42116;   
+  --accent: #cece99;           
+  --accent-light: #d6d6a8;     
+  --accent-dark: #b8b885;      
   
-  /* Minimal Gradients - Updated */
+  
+  --success: #295a7d;          
+  --warning: #d29135;          
+  --error: #a42116;            
+  
+  
   --gradient-primary: var(--primary);
   --gradient-secondary: var(--secondary);
   --gradient-accent: var(--accent);
   --gradient-warm: var(--warning);
   --gradient-cool: var(--success);
   
-  /* Background Colors - Clean and Minimal */
+  
   --background: #fdfcf9;
   --background-light: #ffffff;
   --background-dark: #f8f6f1;
   --surface: #fdfcf9;
   --surface-glass: #fdfcf9;
   
-  /* Border Colors */
-  --border-light: #e8e3d8;        /* Light border color matching new palette */
   
-  /* Text Colors - Updated for new palette */
-  --text: #05082e;             /* Primary dark blue */
-  --text-secondary: #295a7d;   /* Blue for secondary text */
-  --text-muted: #a42116;       /* Red for muted text */
-  --text-light: #d18831;       /* Orange for light text */
+  --border-light: #e8e3d8;        
   
-  /* Minimal Shadows - Updated with new colors */
+  
+  --text: #05082e;             
+  --text-secondary: #295a7d;   
+  --text-muted: #a42116;       
+  --text-light: #d18831;       
+  
+  
   --shadow-soft: 0 1px 3px rgba(5, 8, 46, 0.08);
   --shadow-medium: 0 2px 8px rgba(5, 8, 46, 0.12);
   --shadow-strong: 0 4px 16px rgba(5, 8, 46, 0.16);
   --shadow-colored: 0 2px 8px rgba(41, 82, 125, 0.15);
 }
 
-/* Reset and global styles */
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -248,7 +248,7 @@ body {
   min-height: 100vh;
 }
 
-/* Minimal sections */
+
 .section {
   padding: 2.5rem 1rem;
   position: relative;
@@ -266,12 +266,12 @@ body {
   background: var(--background);
 }
 
-/* Remove patterns */
+
 .section::before {
   display: none;
 }
 
-/* Content sections */
+
 .content-section {
   padding: 2.5rem 0;
   min-height: auto;
@@ -309,7 +309,7 @@ body {
   color: var(--text-secondary);
 }
 
-/* Minimal Cards */
+
 .card {
   background: var(--surface);
   padding: 1.5rem;
@@ -339,7 +339,7 @@ body {
   letter-spacing: -0.01em;
 }
 
-/* Minimal Grid */
+
 .grid {
   display: grid;
   gap: 1.5rem;
@@ -354,7 +354,7 @@ body {
   }
 }
 
-/* Minimal List Items */
+
 .list-item {
   display: flex;
   align-items: flex-start;
@@ -383,7 +383,7 @@ body {
   flex-shrink: 0;
 }
 
-/* Minimal Tags */
+
 .tag {
   display: inline-block;
   padding: 0.3rem 0.8rem;
@@ -407,7 +407,7 @@ body {
   border-color: var(--primary);
 }
 
-/* Tags Container */
+
 .tags {
   display: flex;
   flex-wrap: wrap;
@@ -415,7 +415,7 @@ body {
   margin-top: 1rem;
 }
 
-/* Remove all complex styling */
+
 .services-grid,
 .service-item,
 .about-container,

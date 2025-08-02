@@ -21,7 +21,7 @@ export default function MainHeadline() {
   return (
     <>
       <div className="min-h-screen relative bg-gradient-to-br from-[#05082e] from-10% via-[#295a7d]/90 via-30% via-[#05082e] via-70% to-[#05082e] to-90%">
-        {/* Modern subtle background elements */}
+        
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute -top-20 -left-20 w-96 h-96 bg-[#295a7d]/10 rounded-full blur-3xl animate-pulse"></div>
           <div className="absolute top-40 right-20 w-64 h-64 bg-[#295a7d]/5 rounded-full blur-2xl animate-pulse delay-1000"></div>
