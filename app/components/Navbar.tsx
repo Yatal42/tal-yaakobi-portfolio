@@ -5,7 +5,7 @@ interface NavbarProps {
 const Navbar = ({ onOpenDialog }: NavbarProps) => {
   return (
     <nav className="fixed top-4 left-0 right-0 z-50">
-      <div className="w-[90%] ml-0 bg-[#05082e]/5 backdrop-blur-xl shadow-[0_4px_16px_rgba(5,8,46,0.16)] after:absolute after:inset-x-0 after:bottom-0 after:h-px after:bg-gradient-to-r after:from-transparent after:via-[#295a7d]/10 after:to-transparent">
+      <div className="w-full bg-[#05082e]/5 backdrop-blur-xl shadow-[0_4px_16px_rgba(5,8,46,0.16)] after:absolute after:inset-x-0 after:bottom-0 after:h-px after:bg-gradient-to-r after:from-transparent after:via-[#295a7d]/10 after:to-transparent">
         <div className="px-0 flex items-center justify-between h-16 sm:h-20">
           {/* Header Content - aligned to the left */}
           <div className="flex items-end gap-3 sm:gap-4 pl-6">

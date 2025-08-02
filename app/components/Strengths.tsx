@@ -30,25 +30,13 @@ const strengths = [
 
 export default function Strengths() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
-
-  useEffect(() => {
-    if (!isAutoPlaying) return;
-
-    const interval = setInterval(() => {
-      setCurrentIndex((current) => (current + 1) % strengths.length);
-    }, 5000); // Change slide every 5 seconds
-
-    return () => clearInterval(interval);
-  }, [isAutoPlaying]);
+  // No auto-playing - user controls only
 
   const nextStrength = () => {
-    setIsAutoPlaying(false);
     setCurrentIndex((current) => (current + 1) % strengths.length);
   };
 
   const prevStrength = () => {
-    setIsAutoPlaying(false);
     setCurrentIndex((current) => (current - 1 + strengths.length) % strengths.length);
   };
 
@@ -160,10 +148,7 @@ export default function Strengths() {
           {strengths.map((_, index) => (
             <button
               key={index}
-              onClick={() => {
-                setIsAutoPlaying(false);
-                setCurrentIndex(index);
-              }}
+              onClick={() => setCurrentIndex(index)}
               className={`transition-all duration-300 ${
                 index === currentIndex
                   ? "w-8 h-2 bg-[#05082e]"

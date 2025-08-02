@@ -9,7 +9,7 @@ export default function AboutMe() {
         </h3>
         <div className="flex items-center gap-2 mb-4">
           <p className="saira-condensed-bold text-xl text-[#295a7d]">
-            I'm a Software Engineer
+            Software Engineer
           </p>
         </div>
         <div className="max-w-2xl">
