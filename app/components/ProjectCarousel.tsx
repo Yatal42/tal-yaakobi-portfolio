@@ -146,7 +146,7 @@ export default function ProjectCarousel() {
 
   return (
     <div className="relative w-full max-w-4xl mx-auto px-4">
-      {/* Enhanced navigation buttons */}
+      
       <button
         onClick={prevProject}
         disabled={currentIndex === 0}
@@ -158,7 +158,7 @@ export default function ProjectCarousel() {
         aria-label="Previous project"
       >
         <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 lg:w-6 lg:h-6 transition-transform duration-300 group-hover:scale-110" />
-        {/* Focus ring for accessibility */}
+        
         <div className="absolute inset-0 border-2 border-transparent group-focus:border-[#05082e]"></div>
       </button>
 
@@ -173,7 +173,7 @@ export default function ProjectCarousel() {
         aria-label="Next project"
       >
         <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 lg:w-6 lg:h-6 transition-transform duration-300 group-hover:scale-110" />
-        {/* Focus ring for accessibility */}
+        
         <div className="absolute inset-0 border-2 border-transparent group-focus:border-[#05082e]"></div>
       </button>
 
@@ -212,7 +212,7 @@ export default function ProjectCarousel() {
         </div>
       </div>
 
-      {/* Enhanced navigation dots */}
+      
       <div className="flex justify-center mt-6 space-x-3">
         {filteredProjects.map((_, index) => (
           <button
@@ -226,7 +226,7 @@ export default function ProjectCarousel() {
             aria-label={`Go to project ${index + 1}`}
           >
             <div className="absolute inset-0 bg-[#05082e] scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></div>
-            {/* Focus ring for accessibility */}
+            
             <div className="absolute -inset-1 border-2 border-transparent group-focus:border-[#05082e]"></div>
           </button>
         ))}

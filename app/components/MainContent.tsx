@@ -15,8 +15,8 @@ interface MainContentProps {
 const MainContent = ({ splineSceneUrl, activeDialog, onCloseDialog }: MainContentProps) => {
   return (
     <>
-      {/* 3D MacBook - centered with ambient space */}
-      <div className="fixed inset-0 pt-16 sm:pt-20">
+      
+      <div className="fixed inset-0 pt-16 sm:pt-20 z-10">
         <div className="absolute top-8 left-1/2 transform -translate-x-1/2 text-center">
           <p className="text-[#295a7d] text-xs font-light tracking-wider uppercase">
             Interactive 3D Model
@@ -29,7 +29,7 @@ const MainContent = ({ splineSceneUrl, activeDialog, onCloseDialog }: MainConten
         />
       </div>
 
-      {/* Dialogs */}
+      
       <Dialog 
         isOpen={activeDialog === 'about'} 
         onClose={onCloseDialog} 

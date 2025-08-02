@@ -30,7 +30,7 @@ const strengths = [
 
 export default function Strengths() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  // No auto-playing - user controls only
+  
 
   const nextStrength = () => {
     setCurrentIndex((current) => (current + 1) % strengths.length);
@@ -74,7 +74,7 @@ export default function Strengths() {
       </div>
 
       <div className="relative h-[280px] overflow-hidden">
-        {/* Navigation Buttons */}
+        
         <button
           onClick={prevStrength}
           className="absolute left-0 top-1/2 -translate-y-1/2 z-20 p-2 bg-[#fdfcf9] border border-[#e8e3d8] text-[#295a7d] transition-all duration-300 hover:bg-[#05082e] hover:border-[#05082e] hover:text-white hover:scale-110 rounded-full"
@@ -91,7 +91,7 @@ export default function Strengths() {
           <ChevronRight className="w-5 h-5" />
         </button>
 
-        {/* Strengths Carousel */}
+        
         <div className="px-12 h-full">
           <div className="flex justify-center items-center h-full relative">
             {getVisibleStrengths().map(({ strength, position }, index) => (
@@ -143,7 +143,7 @@ export default function Strengths() {
           </div>
         </div>
 
-        {/* Navigation Dots */}
+        
         <div className="flex justify-center mt-6 space-x-3">
           {strengths.map((_, index) => (
             <button
