@@ -24,11 +24,8 @@ export default function MainHeadline() {
         
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute -top-20 -left-20 w-96 h-96 bg-[#295a7d]/10 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute top-40 right-20 w-64 h-64 bg-[#295a7d]/5 rounded-full blur-2xl animate-pulse delay-1000"></div>
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#295a7d]/5 rounded-full blur-3xl animate-pulse delay-500"></div>
-          <div className="absolute -bottom-32 -left-32 w-96 h-96 bg-[#295a7d]/5 rounded-full blur-3xl animate-pulse delay-700"></div>
-          <div className="absolute top-1/3 right-1/4 w-72 h-72 bg-[#295a7d]/5 rounded-full blur-2xl animate-pulse delay-300"></div>
-          <div className="absolute bottom-1/4 right-1/3 w-60 h-60 bg-[#295a7d]/5 rounded-full blur-2xl animate-pulse delay-1000"></div>
+          <div className="absolute bottom-1/4 right-1/3 w-72 h-72 bg-[#295a7d]/5 rounded-full blur-2xl animate-pulse delay-300"></div>
         </div>
 
         <Navbar onOpenDialog={openDialog} />
