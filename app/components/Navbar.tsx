@@ -1,23 +1,57 @@
+import { useState, useEffect, useRef } from "react";
+
 interface NavbarProps {
   onOpenDialog: (dialogId: string) => void;
 }
 
 const Navbar = ({ onOpenDialog }: NavbarProps) => {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const navRef = useRef<HTMLElement>(null);
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  // Close mobile menu when clicking outside or pressing ESC
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (navRef.current && !navRef.current.contains(event.target as Node)) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+
+    const handleEscapeKey = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setIsMobileMenuOpen(false);
+      }
+    };
+
+    if (isMobileMenuOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+      document.addEventListener('keydown', handleEscapeKey);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('keydown', handleEscapeKey);
+    };
+  }, [isMobileMenuOpen]);
   return (
-    <nav className="fixed top-4 left-0 right-0 z-50">
+    <nav ref={navRef} className="fixed top-4 left-0 right-0 z-50">
       <div className="w-full bg-[#05082e]/5 backdrop-blur-xl shadow-[0_4px_16px_rgba(5,8,46,0.16)] after:absolute after:inset-x-0 after:bottom-0 after:h-px after:bg-gradient-to-r after:from-transparent after:via-[#295a7d]/10 after:to-transparent">
         <div className="px-0 flex items-center justify-between h-16 sm:h-20">
           {/* Header Content - aligned to the left */}
-          <div className="flex items-end gap-3 sm:gap-4 pl-6">
-            <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-display font-light tracking-tight text-white drop-shadow-lg whitespace-nowrap leading-none pb-1">
+          <div className="flex flex-col sm:flex-row sm:items-end gap-1 sm:gap-3 md:gap-4 pl-3 sm:pl-6">
+            <h1 className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-display font-light tracking-tight text-white drop-shadow-lg leading-none pb-0 sm:pb-1">
               Tal Yaakobi
             </h1>
-            <div className="text-sm sm:text-base md:text-lg lg:text-xl font-display font-light tracking-tight text-[#ffffff] whitespace-nowrap leading-none pb-1">
+            <div className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl font-display font-light tracking-tight text-[#ffffff] leading-none pb-0 sm:pb-1">
               Full Stack Developer
             </div>
           </div>
           
-          <div className="flex gap-2 sm:gap-4 pr-8">
+          {/* Desktop Menu */}
+          <div className="hidden sm:flex gap-2 md:gap-4 pr-4 md:pr-8">
             {[
               { id: 'about', label: 'About' },
               { id: 'skills', label: 'Skills' },
@@ -27,17 +61,17 @@ const Navbar = ({ onOpenDialog }: NavbarProps) => {
               <button
                 key={item.id}
                 onClick={() => onOpenDialog(item.id)}
-                className="relative group px-4 sm:px-5 md:px-6 py-2.5 sm:py-3 md:py-3.5 transition-all duration-300"
+                className="relative group px-3 md:px-4 lg:px-5 xl:px-6 py-2 md:py-2.5 lg:py-3 xl:py-3.5 transition-all duration-300"
                 aria-label={`Open ${item.label} dialog`}
               >
                 {/* Enhanced hover background effect */}
                 <div className="absolute inset-0 bg-[#05082e] -skew-x-12 scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></div>
                 
                 {/* Enhanced text with tech accent */}
-                <span className="relative z-10 inline-flex items-center text-sm sm:text-base md:text-lg font-sans font-light tracking-wide text-white/70 group-hover:text-white transition-colors duration-300 transform group-hover:scale-110">
-                  <span className="font-mono text-[#295a7d] group-hover:text-white mr-2 text-[10px] sm:text-[11px] md:text-[12px] opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:scale-110">&lt;</span>
+                <span className="relative z-10 inline-flex items-center text-sm md:text-base lg:text-lg font-sans font-light tracking-wide text-white/70 group-hover:text-white transition-colors duration-300 transform group-hover:scale-110">
+                  <span className="font-mono text-[#295a7d] group-hover:text-white mr-2 text-[10px] md:text-[11px] lg:text-[12px] opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:scale-110">&lt;</span>
                   {item.label}
-                  <span className="font-mono text-[#295a7d] group-hover:text-white ml-2 text-[10px] sm:text-[11px] md:text-[12px] opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:scale-110">/&gt;</span>
+                  <span className="font-mono text-[#295a7d] group-hover:text-white ml-2 text-[10px] md:text-[11px] lg:text-[12px] opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:scale-110">/&gt;</span>
                 </span>
 
                 {/* Enhanced hover line effect */}
@@ -48,7 +82,53 @@ const Navbar = ({ onOpenDialog }: NavbarProps) => {
               </button>
             ))}
           </div>
+
+          {/* Mobile Hamburger Menu */}
+          <div className="sm:hidden pr-3">
+            <button
+              onClick={toggleMobileMenu}
+              className="relative group p-2 text-white transition-all duration-300"
+              aria-label="Toggle mobile menu"
+              aria-expanded={isMobileMenuOpen}
+            >
+              <div className="w-6 h-6 flex flex-col justify-center items-center relative">
+                <span className={`block w-5 h-0.5 bg-white transition-all duration-300 absolute ${isMobileMenuOpen ? 'rotate-45' : '-translate-y-1.5'}`}></span>
+                <span className={`block w-5 h-0.5 bg-white transition-all duration-300 ${isMobileMenuOpen ? 'opacity-0' : ''}`}></span>
+                <span className={`block w-5 h-0.5 bg-white transition-all duration-300 absolute ${isMobileMenuOpen ? '-rotate-45' : 'translate-y-1.5'}`}></span>
+              </div>
+            </button>
+          </div>
         </div>
+
+        {/* Mobile Menu Dropdown */}
+        {isMobileMenuOpen && (
+          <div className="sm:hidden absolute top-full left-0 right-0 bg-[#05082e]/95 backdrop-blur-xl shadow-[0_4px_16px_rgba(5,8,46,0.16)] border-t border-[#295a7d]/20">
+            <div className="px-4 py-3 space-y-2">
+              {[
+                { id: 'about', label: 'About' },
+                { id: 'skills', label: 'Skills' },
+                { id: 'projects', label: 'Projects' },
+                { id: 'contact', label: 'Contact' },
+              ].map((item) => (
+                <button
+                  key={item.id}
+                  onClick={() => {
+                    onOpenDialog(item.id);
+                    setIsMobileMenuOpen(false);
+                  }}
+                  className="w-full text-left px-3 py-3 text-white/80 hover:text-white hover:bg-[#295a7d]/20 rounded transition-all duration-200 font-sans font-light tracking-wide"
+                  aria-label={`Open ${item.label} dialog`}
+                >
+                  <span className="inline-flex items-center">
+                    <span className="font-mono text-[#295a7d] mr-2 text-xs">&lt;</span>
+                    {item.label}
+                    <span className="font-mono text-[#295a7d] ml-2 text-xs">/&gt;</span>
+                  </span>
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </nav>
   );

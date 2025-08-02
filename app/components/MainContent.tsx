@@ -16,17 +16,21 @@ const MainContent = ({ splineSceneUrl, activeDialog, onCloseDialog }: MainConten
   return (
     <>
       
-      <div className="fixed inset-0 pt-16 sm:pt-20 z-10">
-        <div className="absolute top-8 left-1/2 transform -translate-x-1/2 text-center">
-          <p className="text-[#295a7d] text-xs font-light tracking-wider uppercase">
-            Interactive 3D Model
+      <div className="fixed inset-0 pt-14 sm:pt-16 md:pt-20 z-10">
+        {/* Interaction hint - positioned at bottom center */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-center z-20">
+          <p className="text-white/80 text-sm font-light px-4 py-2 bg-[#05082e]/60 backdrop-blur-sm rounded-full animate-pulse">
+            Scroll & Drag to explore
           </p>
         </div>
 
-        <Spline3DScene
-          scene={splineSceneUrl}
-          className="w-full h-full"
-        />
+        {/* 3D Scene Container - smaller on mobile */}
+        <div className="w-full h-full px-4 py-8 sm:px-0 sm:py-0">
+          <Spline3DScene
+            scene={splineSceneUrl}
+            className="w-full h-full"
+          />
+        </div>
       </div>
 
       

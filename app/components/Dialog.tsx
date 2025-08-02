@@ -30,11 +30,11 @@ export default function Dialog({ isOpen, onClose, title, children, size = "md" }
   if (!isOpen) return null;
 
   const sizeClasses = {
-    sm: "max-w-md",
-    md: "max-w-lg",
-    lg: "max-w-2xl",
-    xl: "max-w-5xl",
-    full: "max-w-7xl",
+    sm: "max-w-md w-[95%] sm:w-auto",
+    md: "max-w-lg w-[95%] sm:w-auto", 
+    lg: "max-w-2xl w-[95%] sm:w-auto",
+    xl: "max-w-5xl w-[95%] sm:w-auto",
+    full: "max-w-7xl w-[95%] sm:w-auto",
   };
 
   return (
@@ -50,7 +50,7 @@ export default function Dialog({ isOpen, onClose, title, children, size = "md" }
       />
 
       {/* Dialog */}
-      <div className="flex min-h-full items-center justify-center p-4">
+      <div className="flex min-h-full items-center justify-center p-2 sm:p-4">
         <div
           className={`relative w-full ${sizeClasses[size]} transform bg-[#fdfcf9]/95 backdrop-blur-md transition-all duration-500 ease-out rounded-none border-t border-l border-r border-b-2 border-[#e8e3d8] overflow-hidden`}
           style={{
@@ -62,9 +62,9 @@ export default function Dialog({ isOpen, onClose, title, children, size = "md" }
           <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#295a7d]/30 to-transparent"></div>
           
           {/* Header with geometric styling */}
-          <div className="flex items-center justify-between p-6 relative">
+          <div className="flex items-center justify-between p-3 sm:p-6 relative">
             {/* Title with modern font */}
-            <h2 className="text-xl font-bold text-[#05082e] font-display tracking-tight">{title}</h2>
+            <h2 className="text-lg sm:text-xl font-bold text-[#05082e] font-display tracking-tight">{title}</h2>
             
             {/* Close button with enhanced geometric hover effect */}
             <button
@@ -95,7 +95,7 @@ export default function Dialog({ isOpen, onClose, title, children, size = "md" }
           <div className="h-[1px] w-full bg-gradient-to-r from-[#e8e3d8] via-[#295a7d]/10 to-[#e8e3d8]"></div>
 
           {/* Content with subtle background */}
-          <div className="p-6 text-[#295a7d] max-h-[75vh] overflow-y-auto bg-gradient-to-b from-[#fdfcf9]/50 to-[#fdfcf9]/95">
+          <div className="p-3 sm:p-6 text-[#295a7d] max-h-[75vh] overflow-y-auto bg-gradient-to-b from-[#fdfcf9]/50 to-[#fdfcf9]/95">
             {children}
           </div>
           
