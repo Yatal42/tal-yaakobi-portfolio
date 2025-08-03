@@ -69,14 +69,14 @@ export default function Strengths() {
   };
 
   return (
-    <div className="relative w-full max-w-4xl mx-auto px-2 sm:px-4">
+    <div className="relative w-full max-w-4xl mx-auto px-6 sm:px-8 md:px-12 lg:px-12">
       <button
         onClick={prevStrength}
         disabled={currentIndex === 0}
-        className={`absolute left-0 sm:left-0 md:left-4 lg:left-0 top-1/2 transform -translate-y-1/2 z-20 rounded-none p-2 sm:p-3 md:p-4 lg:p-3.5 transition-all duration-300 group ${
+        className={`absolute -left-2 sm:-left-4 md:-left-8 lg:-left-8 top-1/2 transform -translate-y-1/2 z-20 rounded-none p-2 sm:p-3 md:p-4 lg:p-3.5 transition-all duration-300 group ${
           currentIndex === 0 
-            ? "bg-[#05082e] border border-[#05082e] text-white/50 cursor-not-allowed" 
-            : "bg-[#05082e] border border-[#05082e] text-white hover:bg-[#fdfcf9] hover:text-[#05082e] hover:border-[#05082e] hover:scale-125 active:scale-110 active:translate-x-1"
+            ? "bg-[#05082e] border border-[#05082e] text-white/50 cursor-not-allowed !important" 
+            : "bg-[#05082e] border border-[#05082e] text-white hover:bg-[#fdfcf9] hover:text-[#05082e] hover:border-[#05082e] hover:scale-125 active:scale-110 active:translate-x-1 !important"
         }`}
         aria-label="Previous strength"
       >
@@ -86,7 +86,7 @@ export default function Strengths() {
       <button
         onClick={nextStrength}
         disabled={currentIndex === strengths.length - 1}
-        className={`absolute right-0 sm:right-0 md:right-4 lg:right-0 top-1/2 transform -translate-y-1/2 z-20 rounded-none p-2 sm:p-3 md:p-4 lg:p-3.5 transition-all duration-300 group ${
+        className={`absolute -right-2 sm:-right-4 md:-right-8 lg:-right-8 top-1/2 transform -translate-y-1/2 z-20 rounded-none p-2 sm:p-3 md:p-4 lg:p-3.5 transition-all duration-300 group ${
           currentIndex === strengths.length - 1
             ? "bg-[#05082e] border border-[#05082e] text-white/50 cursor-not-allowed"
             : "bg-[#05082e] border border-[#05082e] text-white hover:bg-[#fdfcf9] hover:text-[#05082e] hover:border-[#05082e] hover:scale-125 active:scale-110 active:-translate-x-1"
@@ -115,8 +115,8 @@ export default function Strengths() {
                 flexShrink: 0
               }}
             >
-              <div className="bg-[#f8f6f1] rounded-2xl shadow-sm h-[420px] sm:h-[380px] flex flex-col overflow-hidden">
-                <div className="p-4 border-b border-[#e8e3d8] bg-[#f8f6f1] rounded-t-2xl">
+              <div className="bg-[#f8f6f1] rounded-2xl shadow-sm h-[340px] sm:h-[360px] flex flex-col overflow-hidden">
+                <div className="p-2 sm:p-3 border-b border-[#e8e3d8] bg-[#f8f6f1] rounded-t-2xl">
                   <div className="flex items-center gap-3">
                     <div className="p-2 bg-white rounded-lg shadow-sm">
                       <strength.icon className="w-6 h-6 text-[#295a7d]" />
@@ -127,11 +127,11 @@ export default function Strengths() {
                   </div>
                 </div>
                 
-                <div className="flex-1 p-4 sm:p-6 flex flex-col">
+                <div className="flex-1 p-2 sm:p-3 md:p-4 flex flex-col">
                   <p className="saira-condensed-regular text-[#295a7d] text-sm sm:text-base leading-relaxed flex-1">
                     {strength.description}
                   </p>
-                  <div className="flex flex-wrap gap-2 mt-4">
+                  <div className="flex flex-wrap gap-1 sm:gap-2 mt-2 sm:mt-3">
                     {strength.keywords.map((keyword, idx) => (
                       <span 
                         key={idx}

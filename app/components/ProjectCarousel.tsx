@@ -143,15 +143,15 @@ export default function ProjectCarousel() {
   };
 
   return (
-    <div className="relative w-full max-w-4xl mx-auto px-2 sm:px-4">
+    <div className="relative w-full max-w-4xl mx-auto">
       
       <button
         onClick={prevProject}
         disabled={currentIndex === 0}
-        className={`absolute left-0 sm:left-0 md:left-4 lg:left-0 top-1/2 transform -translate-y-1/2 z-20 rounded-none p-2 sm:p-3 md:p-4 lg:p-3.5 transition-all duration-300 group ${
+        className={`absolute left-0 top-1/2 transform -translate-y-1/2 z-20 rounded-none p-1.5 sm:p-2 md:p-3 transition-all duration-300 group ${
           currentIndex === 0 
-            ? "bg-[#05082e] border border-[#05082e] text-white/50 cursor-not-allowed" 
-            : "bg-[#05082e] border border-[#05082e] text-white hover:bg-[#fdfcf9] hover:text-[#05082e] hover:border-[#05082e] hover:scale-125 active:scale-110 active:translate-x-1"
+            ? "bg-[#05082e] border border-[#05082e] text-white/50 cursor-not-allowed !important" 
+            : "bg-[#05082e] border border-[#05082e] text-white hover:bg-[#fdfcf9] hover:text-[#05082e] hover:border-[#05082e] hover:scale-125 active:scale-110 active:translate-x-1 !important"
         }`}
         aria-label="Previous project"
       >
@@ -161,7 +161,7 @@ export default function ProjectCarousel() {
       <button
         onClick={nextProject}
         disabled={currentIndex === filteredProjects.length - 1}
-        className={`absolute right-0 sm:right-0 md:right-4 lg:right-0 top-1/2 transform -translate-y-1/2 z-20 rounded-none p-2 sm:p-3 md:p-4 lg:p-3.5 transition-all duration-300 group ${
+        className={`absolute right-0 top-1/2 transform -translate-y-1/2 z-20 rounded-none p-1.5 sm:p-2 md:p-3 transition-all duration-300 group ${
           currentIndex === filteredProjects.length - 1
             ? "bg-[#05082e] border border-[#05082e] text-white/50 cursor-not-allowed"
             : "bg-[#05082e] border border-[#05082e] text-white hover:bg-[#fdfcf9] hover:text-[#05082e] hover:border-[#05082e] hover:scale-125 active:scale-110 active:-translate-x-1"
@@ -171,8 +171,8 @@ export default function ProjectCarousel() {
         <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 lg:w-6 lg:h-6 transition-transform duration-300 group-hover:scale-110" />
       </button>
 
-      <div className="px-6 sm:px-8 md:px-12 lg:px-12">
-        <div className="flex justify-center items-center gap-2 sm:gap-4 md:gap-6 lg:gap-4 overflow-hidden">
+      <div className="px-8 sm:px-10 md:px-12">
+        <div className="flex justify-center items-center overflow-hidden">
           {getVisibleProjects().map(({ project, position }, index) => (
             <div
               key={`${currentIndex}-${position}`}
@@ -185,9 +185,11 @@ export default function ProjectCarousel() {
                 position === 'next' ? 'transform translate-x-2' : ''
               }`}
               style={{
-                width: position === 'current' ? '100%' : '300px',
-                maxWidth: position === 'current' ? '400px' : '300px',
-                flexShrink: 0
+                width: position === 'current' ? '100%' : '0px',
+                maxWidth: position === 'current' ? '100%' : '0px',
+                opacity: position === 'current' ? 1 : 0,
+                flexShrink: 0,
+                pointerEvents: position === 'current' ? 'auto' : 'none'
               }}
             >
               <Project
