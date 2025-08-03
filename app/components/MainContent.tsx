@@ -42,7 +42,10 @@ const MainContent = ({ splineSceneUrl }: MainContentProps) => {
           <div className="max-w-6xl mx-auto w-full">
             <div className="space-y-6">
               <AboutMe />
-              <Strengths />
+              <div>
+                <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6 text-center font-display">Core Strengths</h2>
+                <Strengths />
+              </div>
             </div>
           </div>
         </section>
@@ -50,6 +53,7 @@ const MainContent = ({ splineSceneUrl }: MainContentProps) => {
         {/* Skills Section - Full height with content centered */}
         <section id="skills" className="min-h-screen flex items-center py-24 px-4 sm:px-6 md:px-8 bg-gradient-to-br from-[#05082e] from-10% via-[#295a7d]/90 via-30% via-[#05082e] via-70% to-[#05082e] to-90%">
           <div className="max-w-6xl mx-auto w-full">
+            <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6 text-center font-display">Skills</h2>
             <Skills />
           </div>
         </section>
@@ -57,6 +61,7 @@ const MainContent = ({ splineSceneUrl }: MainContentProps) => {
         {/* Projects Section - Full height with content centered */}
         <section id="projects" className="min-h-screen flex items-center py-24 px-4 sm:px-6 md:px-8 bg-gradient-to-br from-[#05082e] from-10% via-[#295a7d]/90 via-30% via-[#05082e] via-70% to-[#05082e] to-90% scroll-mt-24">
           <div className="max-w-6xl mx-auto w-full">
+            <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6 text-center font-display">Projects</h2>
             <ProjectCarousel />
           </div>
         </section>
@@ -64,8 +69,11 @@ const MainContent = ({ splineSceneUrl }: MainContentProps) => {
         {/* Contact Section - Full height with content centered */}
         <section id="contact" className="min-h-screen flex items-center justify-center py-24 px-4 sm:px-6 md:px-8 bg-gradient-to-br from-[#05082e] from-10% via-[#295a7d]/90 via-30% via-[#05082e] via-70% to-[#05082e] to-90%">
           <div className="max-w-6xl mx-auto w-full">
-            <div className="bg-[#fdfcf9]/95 border border-[#e8e3d8] rounded-lg p-8 shadow-[0_2px_8px_rgba(5,8,46,0.12)]">
-              <Contact />
+            <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6 text-center font-display">Contact</h2>
+            <div className="flex justify-center">
+              <div className="bg-[#fdfcf9]/95 border border-[#e8e3d8] rounded-lg p-8 shadow-[0_2px_8px_rgba(5,8,46,0.12)] w-full max-w-2xl">
+                <Contact />
+              </div>
             </div>
           </div>
         </section>

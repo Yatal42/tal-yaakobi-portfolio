@@ -1,5 +1,5 @@
 import { Code, Target, Brain, Users, Sparkles, ChevronLeft, ChevronRight } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 const strengths = [
   {
@@ -31,13 +31,16 @@ const strengths = [
 export default function Strengths() {
   const [currentIndex, setCurrentIndex] = useState(0);
   
-
   const nextStrength = () => {
-    setCurrentIndex((current) => (current + 1) % strengths.length);
+    if (currentIndex < strengths.length - 1) {
+      setCurrentIndex(currentIndex + 1);
+    }
   };
 
   const prevStrength = () => {
-    setCurrentIndex((current) => (current - 1 + strengths.length) % strengths.length);
+    if (currentIndex > 0) {
+      setCurrentIndex(currentIndex - 1);
+    }
   };
 
   const getVisibleStrengths = () => {
@@ -66,98 +69,106 @@ export default function Strengths() {
   };
 
   return (
-    <div className="bg-[#fdfcf9]/95 p-4 sm:p-6 rounded-lg shadow-[0_2px_8px_rgba(5,8,46,0.12)] border border-[#e8e3d8]">
-      <div className="flex items-center gap-2 mb-3">
-        <h4 className="text-lg sm:text-xl font-bold tracking-tight text-[#05082e] font-display">
-          Core Strengths
-        </h4>
-      </div>
+    <div className="relative w-full max-w-4xl mx-auto px-2 sm:px-4">
+      <button
+        onClick={prevStrength}
+        disabled={currentIndex === 0}
+        className={`absolute left-0 sm:left-0 md:left-4 lg:left-0 top-1/2 transform -translate-y-1/2 z-20 rounded-none p-2 sm:p-3 md:p-4 lg:p-3.5 transition-all duration-300 group ${
+          currentIndex === 0 
+            ? "bg-[#05082e] border border-[#05082e] text-white/50 cursor-not-allowed" 
+            : "bg-[#05082e] border border-[#05082e] text-white hover:bg-[#fdfcf9] hover:text-[#05082e] hover:border-[#05082e] hover:scale-125 active:scale-110 active:translate-x-1"
+        }`}
+        aria-label="Previous strength"
+      >
+        <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 lg:w-6 lg:h-6 transition-transform duration-300 group-hover:scale-110" />
+      </button>
 
-      <div className="relative h-[280px] overflow-hidden">
-        
-        <button
-          onClick={prevStrength}
-          className="absolute left-0 top-1/2 -translate-y-1/2 z-20 p-2 bg-[#fdfcf9] border border-[#e8e3d8] text-[#295a7d] transition-all duration-300 hover:bg-[#05082e] hover:border-[#05082e] hover:text-white hover:scale-110 rounded-full"
-          aria-label="Previous strength"
-        >
-          <ChevronLeft className="w-5 h-5" />
-        </button>
+      <button
+        onClick={nextStrength}
+        disabled={currentIndex === strengths.length - 1}
+        className={`absolute right-0 sm:right-0 md:right-4 lg:right-0 top-1/2 transform -translate-y-1/2 z-20 rounded-none p-2 sm:p-3 md:p-4 lg:p-3.5 transition-all duration-300 group ${
+          currentIndex === strengths.length - 1
+            ? "bg-[#05082e] border border-[#05082e] text-white/50 cursor-not-allowed"
+            : "bg-[#05082e] border border-[#05082e] text-white hover:bg-[#fdfcf9] hover:text-[#05082e] hover:border-[#05082e] hover:scale-125 active:scale-110 active:-translate-x-1"
+        }`}
+        aria-label="Next strength"
+      >
+        <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 lg:w-6 lg:h-6 transition-transform duration-300 group-hover:scale-110" />
+      </button>
 
-        <button
-          onClick={nextStrength}
-          className="absolute right-0 top-1/2 -translate-y-1/2 z-20 p-2 bg-[#fdfcf9] border border-[#e8e3d8] text-[#295a7d] transition-all duration-300 hover:bg-[#05082e] hover:border-[#05082e] hover:text-white hover:scale-110 rounded-full"
-          aria-label="Next strength"
-        >
-          <ChevronRight className="w-5 h-5" />
-        </button>
-
-        
-        <div className="px-12 h-full">
-          <div className="flex justify-center items-center h-full relative">
-            {getVisibleStrengths().map(({ strength, position }, index) => (
-              <div
-                key={`${currentIndex}-${position}`}
-                className={`absolute top-0 left-0 right-0 transition-all duration-700 ease-out ${
-                  position === 'current'
-                    ? 'translate-x-0 scale-100 opacity-100 z-10'
-                    : position === 'prev'
-                    ? '-translate-x-[120%] scale-95 opacity-50 z-0'
-                    : 'translate-x-[120%] scale-95 opacity-50 z-0'
-                }`}
-                style={{
-                  width: '100%',
-                  maxWidth: '500px',
-                  margin: '0 auto'
-                }}
-              >
-                <div className="bg-[#f8f6f1] rounded-xl shadow-sm h-[250px]">
-                  <div className="p-3 border-b border-[#e8e3d8] bg-[#f8f6f1]">
-                    <div className="flex items-center gap-2">
-                      <div className="p-1.5 bg-white rounded-lg shadow-sm">
-                        <strength.icon className="w-5 h-5 text-[#295a7d]" />
-                      </div>
-                      <h5 className="saira-condensed-bold text-[#05082e] text-xl">
-                        {strength.title}
-                      </h5>
+      <div className="px-6 sm:px-8 md:px-12 lg:px-12">
+        <div className="flex justify-center items-center gap-2 sm:gap-4 md:gap-6 lg:gap-4">
+          {getVisibleStrengths().map(({ strength, position }, index) => (
+            <div
+              key={`${currentIndex}-${position}`}
+              className={`transition-all duration-500 ease-in-out p-2 ${
+                position === 'current' 
+                  ? 'scale-100 opacity-100 z-10' 
+                  : 'scale-85 opacity-30 blur-sm z-0 hidden md:block'
+              } ${
+                position === 'prev' ? 'transform -translate-x-2' : 
+                position === 'next' ? 'transform translate-x-2' : ''
+              }`}
+              style={{
+                width: position === 'current' ? '100%' : '300px',
+                maxWidth: position === 'current' ? '400px' : '300px',
+                flexShrink: 0
+              }}
+            >
+              <div className="bg-[#f8f6f1] rounded-2xl shadow-sm h-[420px] sm:h-[380px] flex flex-col overflow-hidden">
+                <div className="p-4 border-b border-[#e8e3d8] bg-[#f8f6f1] rounded-t-2xl">
+                  <div className="flex items-center gap-3">
+                    <div className="p-2 bg-white rounded-lg shadow-sm">
+                      <strength.icon className="w-6 h-6 text-[#295a7d]" />
                     </div>
+                    <h5 className="saira-condensed-bold text-[#05082e] text-xl sm:text-2xl">
+                      {strength.title}
+                    </h5>
                   </div>
-                  
-                  <div className="p-3">
-                    <p className="saira-condensed-regular text-[#295a7d] text-base leading-relaxed mb-3">
-                      {strength.description}
-                    </p>
-                    <div className="flex flex-wrap gap-1.5">
-                      {strength.keywords.map((keyword, idx) => (
-                        <span 
-                          key={idx}
-                          className="text-sm px-2.5 py-1 bg-white text-[#295a7d] rounded-full shadow-sm"
-                        >
-                          {keyword}
-                        </span>
-                      ))}
-                    </div>
+                </div>
+                
+                <div className="flex-1 p-4 sm:p-6 flex flex-col">
+                  <p className="saira-condensed-regular text-[#295a7d] text-sm sm:text-base leading-relaxed flex-1">
+                    {strength.description}
+                  </p>
+                  <div className="flex flex-wrap gap-2 mt-4">
+                    {strength.keywords.map((keyword, idx) => (
+                      <span 
+                        key={idx}
+                        className="text-xs sm:text-sm px-2.5 py-1 sm:px-3 sm:py-1.5 bg-white text-[#295a7d] rounded-full shadow-sm"
+                      >
+                        {keyword}
+                      </span>
+                    ))}
                   </div>
                 </div>
               </div>
-            ))}
-          </div>
-        </div>
-
-        
-        <div className="flex justify-center mt-6 space-x-3">
-          {strengths.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrentIndex(index)}
-              className={`transition-all duration-300 ${
-                index === currentIndex
-                  ? "w-8 h-2 bg-[#05082e]"
-                  : "w-2 h-2 bg-[#e8e3d8] hover:bg-[#295a7d]"
-              }`}
-              aria-label={`Go to strength ${index + 1}`}
-            />
+            </div>
           ))}
         </div>
+      </div>
+
+      <div className="flex justify-center mt-4 sm:mt-6 space-x-2 sm:space-x-3">
+        {strengths.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => setCurrentIndex(index)}
+            className={`group relative transition-all duration-300 ${
+              index === currentIndex
+                ? "w-6 sm:w-8 md:w-10 lg:w-8 h-1.5 sm:h-2 md:h-2.5 lg:h-2 bg-[#05082e]"
+                : "w-1.5 sm:w-2 md:w-2.5 lg:w-2 h-1.5 sm:h-2 md:h-2.5 lg:h-2 bg-[#e8e3d8] hover:bg-[#295a7d]"
+            }`}
+            aria-label={`Go to strength ${index + 1}`}
+          >
+            <div className="absolute inset-0 bg-[#05082e] scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></div>
+          </button>
+        ))}
+      </div>
+
+      <div className="text-center mt-2 sm:mt-3">
+        <span className="text-xs sm:text-sm md:text-sm lg:text-xs text-[#295a7d]">
+          {currentIndex + 1} of {strengths.length}
+        </span>
       </div>
     </div>
   );
