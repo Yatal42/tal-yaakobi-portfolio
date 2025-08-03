@@ -33,6 +33,7 @@ export default function MainHeadline() {
           splineSceneUrl={splineSceneUrl}
           activeDialog={activeDialog}
           onCloseDialog={closeDialog}
+          onOpenDialog={openDialog}
         />
       </div>
     </>

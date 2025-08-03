@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import SocialLinks from "./SocialLinks";
 
 interface NavbarProps {
   onOpenDialog: (dialogId: string) => void;
@@ -40,18 +41,23 @@ const Navbar = ({ onOpenDialog }: NavbarProps) => {
     <nav ref={navRef} className="fixed top-4 left-0 right-0 z-50">
       <div className="w-full bg-[#05082e]/5 backdrop-blur-xl shadow-[0_4px_16px_rgba(5,8,46,0.16)] after:absolute after:inset-x-0 after:bottom-0 after:h-px after:bg-gradient-to-r after:from-transparent after:via-[#295a7d]/10 after:to-transparent">
         <div className="px-0 flex items-center justify-between h-16 sm:h-20">
-          {/* Header Content - aligned to the left */}
-          <div className="flex flex-col sm:flex-row sm:items-end gap-1 sm:gap-3 md:gap-4 pl-3 sm:pl-6">
-            <h1 className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-display font-light tracking-tight text-white drop-shadow-lg leading-none pb-0 sm:pb-1">
-              Tal Yaakobi
-            </h1>
-            <div className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl font-display font-light tracking-tight text-[#ffffff] leading-none pb-0 sm:pb-1">
-              Full Stack Developer
+          {/* Left Side: Title and Role */}
+          <div className="flex items-center gap-4 pl-3 sm:pl-6">
+            <div className="flex flex-col items-start gap-1">
+              <h1 className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-display font-light tracking-tight text-white drop-shadow-lg leading-none">
+                Tal Yaakobi
+              </h1>
+              <div className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl font-display font-light tracking-tight text-[#ffffff]/80 leading-none">
+                Full Stack Developer
+              </div>
             </div>
+
+            {/* Social Links - Always Visible */}
+            <SocialLinks />
           </div>
           
-          {/* Desktop Menu */}
-          <div className="hidden sm:flex gap-2 md:gap-4 pr-4 md:pr-8">
+          {/* Desktop Menu - Right Aligned */}
+          <div className="hidden sm:flex gap-2 md:gap-4 pr-4 md:pr-8 ml-auto">
             {[
               { id: 'about', label: 'About' },
               { id: 'skills', label: 'Skills' },
@@ -104,6 +110,7 @@ const Navbar = ({ onOpenDialog }: NavbarProps) => {
         {isMobileMenuOpen && (
           <div className="sm:hidden absolute top-full left-0 right-0 bg-[#05082e]/95 backdrop-blur-xl shadow-[0_4px_16px_rgba(5,8,46,0.16)] border-t border-[#295a7d]/20">
             <div className="px-4 py-3 space-y-2">
+              {/* Navigation Items */}
               {[
                 { id: 'about', label: 'About' },
                 { id: 'skills', label: 'Skills' },
@@ -126,6 +133,8 @@ const Navbar = ({ onOpenDialog }: NavbarProps) => {
                   </span>
                 </button>
               ))}
+
+
             </div>
           </div>
         )}
