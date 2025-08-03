@@ -2,8 +2,6 @@ import { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Project from "./Project";
 
-import VideoDialog from "./VideoDialog";
-
 const projects = [
   {
     title: "My Portfolio",
@@ -152,14 +150,12 @@ export default function ProjectCarousel() {
         disabled={currentIndex === 0}
         className={`absolute left-0 sm:left-0 md:left-4 lg:left-0 top-1/2 transform -translate-y-1/2 z-20 rounded-none p-2 sm:p-3 md:p-4 lg:p-3.5 transition-all duration-300 group ${
           currentIndex === 0 
-            ? "bg-[#f8f6f1] border border-[#e8e3d8] text-[#e8e3d8] cursor-not-allowed" 
-            : "bg-[#fdfcf9] border border-[#e8e3d8] text-[#295a7d] hover:bg-[#05082e] hover:border-[#05082e] hover:text-white hover:scale-125 active:scale-110 active:translate-x-1"
+            ? "bg-[#05082e] border border-[#05082e] text-white/50 cursor-not-allowed" 
+            : "bg-[#05082e] border border-[#05082e] text-white hover:bg-[#fdfcf9] hover:text-[#05082e] hover:border-[#05082e] hover:scale-125 active:scale-110 active:translate-x-1"
         }`}
         aria-label="Previous project"
       >
         <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 lg:w-6 lg:h-6 transition-transform duration-300 group-hover:scale-110" />
-        
-        <div className="absolute inset-0 border-2 border-transparent group-focus:border-[#05082e]"></div>
       </button>
 
       <button
@@ -167,14 +163,12 @@ export default function ProjectCarousel() {
         disabled={currentIndex === filteredProjects.length - 1}
         className={`absolute right-0 sm:right-0 md:right-4 lg:right-0 top-1/2 transform -translate-y-1/2 z-20 rounded-none p-2 sm:p-3 md:p-4 lg:p-3.5 transition-all duration-300 group ${
           currentIndex === filteredProjects.length - 1
-            ? "bg-[#f8f6f1] border border-[#e8e3d8] text-[#e8e3d8] cursor-not-allowed"
-            : "bg-[#fdfcf9] border border-[#e8e3d8] text-[#295a7d] hover:bg-[#05082e] hover:border-[#05082e] hover:text-white hover:scale-125 active:scale-110 active:-translate-x-1"
+            ? "bg-[#05082e] border border-[#05082e] text-white/50 cursor-not-allowed"
+            : "bg-[#05082e] border border-[#05082e] text-white hover:bg-[#fdfcf9] hover:text-[#05082e] hover:border-[#05082e] hover:scale-125 active:scale-110 active:-translate-x-1"
         }`}
         aria-label="Next project"
       >
         <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 lg:w-6 lg:h-6 transition-transform duration-300 group-hover:scale-110" />
-        
-        <div className="absolute inset-0 border-2 border-transparent group-focus:border-[#05082e]"></div>
       </button>
 
       <div className="px-6 sm:px-8 md:px-12 lg:px-12">
@@ -212,7 +206,6 @@ export default function ProjectCarousel() {
         </div>
       </div>
 
-      
       <div className="flex justify-center mt-4 sm:mt-6 space-x-2 sm:space-x-3">
         {filteredProjects.map((_, index) => (
           <button
@@ -226,8 +219,6 @@ export default function ProjectCarousel() {
             aria-label={`Go to project ${index + 1}`}
           >
             <div className="absolute inset-0 bg-[#05082e] scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></div>
-            
-            <div className="absolute -inset-1 border-2 border-transparent group-focus:border-[#05082e]"></div>
           </button>
         ))}
       </div>
@@ -239,4 +230,4 @@ export default function ProjectCarousel() {
       </div>
     </div>
   );
-} 
+}
