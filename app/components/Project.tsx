@@ -1,7 +1,6 @@
 import { useState } from "react";
-import { motion } from "framer-motion";
 import { Play } from "lucide-react";
-import VideoDialog from "./VideoDialog";
+import VideoOverlay from "./VideoOverlay";
 
 const GithubIcon = () => (
   <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 24 24">
@@ -42,7 +41,7 @@ export default function Project({
 
   return (
     <>
-      <div className="bg-[#fdfcf9]/95 border border-[#e8e3d8] rounded-lg p-3 sm:p-4 shadow-[0_2px_8px_rgba(5,8,46,0.12)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_4px_16px_rgba(5,8,46,0.16)] group flex flex-col min-h-[350px] sm:min-h-[400px] h-auto">
+      <div className="bg-[#fdfcf9]/95 border border-[#e8e3d8] rounded-lg p-3 sm:p-4 shadow-[0_2px_8px_rgba(5,8,46,0.12)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_4px_16px_rgba(5,8,46,0.16)] group h-[400px] flex flex-col">
         <div className="flex flex-col flex-grow min-h-0">
           <div className="mb-2">
             {featured && (
@@ -55,7 +54,7 @@ export default function Project({
             </h3>
           </div>
 
-          <div className="flex-grow min-h-0 overflow-y-auto">
+          <div className="flex-grow overflow-y-auto scrollbar-thin scrollbar-thumb-[#e8e3d8] scrollbar-track-transparent">
             <p className="text-[#295a7d] leading-normal text-sm sm:text-base mb-3">
               {description}
             </p>
@@ -118,7 +117,7 @@ export default function Project({
       </div>
 
       {videoId && (
-        <VideoDialog
+        <VideoOverlay
           isOpen={isVideoOpen}
           onClose={() => setIsVideoOpen(false)}
           videoId={videoId}
