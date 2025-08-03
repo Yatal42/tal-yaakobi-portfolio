@@ -6,21 +6,28 @@ import Skills from "./Skills";
 import ProjectCarousel from "./ProjectCarousel";
 import Contact from "./Contact";
 
+
 interface MainContentProps {
   splineSceneUrl: string;
   activeDialog: string | null;
   onCloseDialog: () => void;
+  onOpenDialog: (dialogId: string) => void;
 }
 
-const MainContent = ({ splineSceneUrl, activeDialog, onCloseDialog }: MainContentProps) => {
+const MainContent = ({ splineSceneUrl, activeDialog, onCloseDialog, onOpenDialog }: MainContentProps) => {
   return (
     <>
       
       <div className="fixed inset-0 pt-14 sm:pt-16 md:pt-20 z-10">
         {/* Interaction hint - positioned at bottom center */}
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-center z-20">
-          <p className="text-white/80 text-sm font-light px-4 py-2 bg-[#05082e]/60 backdrop-blur-sm rounded-full animate-pulse">
-            Scroll & Drag to explore
+          {/* Mobile Text: Visible on small screens, hidden on medium and larger */}
+          <p className="block md:hidden text-white/80 text-sm font-light px-4 py-2 bg-[#05082e]/60 backdrop-blur-sm rounded-full animate-pulse">
+            Pinch & Drag to explore
+          </p>
+          {/* Desktop Text: Hidden on small screens, visible on medium and larger */}
+          <p className="hidden md:block text-white/80 text-sm font-light px-4 py-2 bg-[#05082e]/60 backdrop-blur-sm rounded-full animate-pulse">
+            Click & Drag to explore
           </p>
         </div>
 
@@ -72,6 +79,8 @@ const MainContent = ({ splineSceneUrl, activeDialog, onCloseDialog }: MainConten
       >
         <Contact />
       </Dialog>
+
+
     </>
   );
 };
