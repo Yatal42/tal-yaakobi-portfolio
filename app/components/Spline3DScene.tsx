@@ -17,7 +17,7 @@ export default function Spline3DScene({
 }) {
   const [isLoading, setIsLoading] = useState(true);
   return (
-    <div className={className} style={{ pointerEvents: "auto", position: "relative" }}>
+    <div className={className} style={{ pointerEvents: "auto", position: "relative", minHeight: "300px" }}>
       <Suspense fallback={
         <div className="w-full h-full flex items-center justify-center">
           <div className="relative">

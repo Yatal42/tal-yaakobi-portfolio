@@ -41,29 +41,29 @@ export default function Project({
 
   return (
     <>
-      <div className="bg-[#fdfcf9]/95 border border-[#e8e3d8] rounded-lg p-3 sm:p-4 shadow-[0_2px_8px_rgba(5,8,46,0.12)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_4px_16px_rgba(5,8,46,0.16)] group h-[400px] flex flex-col">
+      <div className="bg-[#fdfcf9]/95 border border-[#e8e3d8] rounded-lg p-1.5 sm:p-2 md:p-3 shadow-[0_2px_8px_rgba(5,8,46,0.12)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_4px_16px_rgba(5,8,46,0.16)] group h-[200px] sm:h-[220px] md:h-[240px] flex flex-col">
         <div className="flex flex-col flex-grow min-h-0">
-          <div className="mb-2">
+          <div className="mb-0.5 sm:mb-1">
             {featured && (
               <div className="inline-block bg-[#295a7d] text-white px-2 py-0.5 rounded-full text-xs font-semibold mb-1">
                 Featured
               </div>
             )}
-            <h3 className="text-lg sm:text-xl font-bold text-[#05082e] tracking-tight leading-tight font-display">
+            <h3 className="text-sm sm:text-base md:text-lg font-bold text-[#05082e] tracking-tight leading-tight font-display">
               {title}
             </h3>
           </div>
 
           <div className="flex-grow overflow-y-auto scrollbar-thin scrollbar-thumb-[#e8e3d8] scrollbar-track-transparent">
-            <p className="text-[#295a7d] leading-normal text-sm sm:text-base mb-3">
+            <p className="text-[#295a7d] leading-tight text-xs sm:text-sm md:text-base mb-1.5 sm:mb-2">
               {description}
             </p>
             
-            <div className="flex flex-wrap gap-1 mb-3">
+            <div className="flex flex-wrap gap-0.5 sm:gap-1 mb-1.5 sm:mb-2">
               {technologies.map((tech, index) => (
                 <span 
                   key={index} 
-                  className="inline-block bg-[#f8f6f1] text-[#05082e] px-1.5 sm:px-2 py-0.5 sm:py-1 rounded text-xs sm:text-sm font-medium border border-[#e8e3d8]"
+                  className="inline-block bg-[#f8f6f1] text-[#05082e] px-1 sm:px-1.5 md:px-2 py-0.5 rounded text-[10px] sm:text-xs md:text-sm font-medium border border-[#e8e3d8]"
                 >
                   {tech}
                 </span>
@@ -79,14 +79,14 @@ export default function Project({
           </div>
         </div>
         
-        <div className="flex items-center justify-end pt-3 mt-auto border-t border-[#e8e3d8]">
-          <div className="flex gap-1.5">
+        <div className="flex items-center justify-end pt-1.5 mt-auto border-t border-[#e8e3d8]">
+          <div className="flex gap-1">
             {githubUrl && (
               <a 
                 href={githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-0.5 sm:gap-1 px-2 sm:px-3 py-1 sm:py-1.5 bg-transparent border border-[#05082e] text-[#05082e] rounded text-xs sm:text-sm font-medium transition-all duration-200 hover:bg-[#05082e] hover:text-white hover:scale-105"
+                className="flex items-center gap-0.5 px-1 sm:px-1.5 md:px-2 py-0.5 bg-transparent border border-[#05082e] text-[#05082e] rounded text-[10px] sm:text-xs md:text-sm font-medium transition-all duration-200 hover:bg-[#05082e] hover:text-white hover:scale-105"
               >
                 <GithubIcon />
                 Code
@@ -97,7 +97,7 @@ export default function Project({
                 href={liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-0.5 sm:gap-1 px-2 sm:px-3 py-1 sm:py-1.5 bg-[#295a7d] text-white rounded text-xs sm:text-sm font-medium transition-all duration-200 hover:bg-[#05082e] hover:scale-105"
+                className="flex items-center gap-0.5 px-1 sm:px-1.5 md:px-2 py-0.5 bg-[#295a7d] text-white rounded text-[10px] sm:text-xs md:text-sm font-medium transition-all duration-200 hover:bg-[#05082e] hover:scale-105"
               >
                 <ExternalLinkIcon />
                 Demo
@@ -106,7 +106,7 @@ export default function Project({
             {videoId && (
               <button
                 onClick={() => setIsVideoOpen(true)}
-                className="flex items-center gap-0.5 sm:gap-1 px-2 sm:px-3 py-1 sm:py-1.5 bg-[#05082e] text-white rounded text-xs sm:text-sm font-medium transition-all duration-200 hover:bg-[#295a7d] hover:scale-105"
+                className="flex items-center gap-0.5 px-1 sm:px-1.5 md:px-2 py-0.5 bg-[#05082e] text-white rounded text-[10px] sm:text-xs md:text-sm font-medium transition-all duration-200 hover:bg-[#295a7d] hover:scale-105"
               >
                 <Play className="w-3 h-3" />
                 Video
