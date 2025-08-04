@@ -17,7 +17,7 @@ const strengths = [
   {
     title: "Community",
     icon: Users,
-    description: "Whether leading a team, collaborating in a tech meetup, or mentoring students with disabilities, my core approach is the same: to build a sense of community. I believe the best products are created when people feel connected, heard, and empowered, and I thrive on fostering that environment through empathy, clear communication, and positive energy.",
+    description: "Whether leading a team, collaborating in meetups, or mentoring students, my approach is fostering an environment where people feel connected, heard, and empowered through empathy and clear communication.",
     keywords: ["Team Builder", "Empathetic Leadership", "Positive Culture"]
   },
   {
