@@ -16,7 +16,7 @@ const MainContent = ({ splineSceneUrl }: MainContentProps) => {
       <section className="relative h-screen">
         <div className="absolute inset-0">
           {/* Interaction hint */}
-          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-center z-20">
+          <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-center z-30">
             <p className="block md:hidden text-white/80 text-sm font-light px-4 py-2 bg-[#05082e]/60 backdrop-blur-sm rounded-full animate-pulse">
               Pinch & Drag to explore
             </p>

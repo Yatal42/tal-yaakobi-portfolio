@@ -29,7 +29,6 @@ export default function Contact() {
 
   return (
     <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-8 md:gap-10 lg:gap-8 p-4 sm:p-8">
-      {/* Copy Email Button */}
       <motion.button
         onClick={() => handleCopy(email, 'email')}
         className={buttonClasses}
