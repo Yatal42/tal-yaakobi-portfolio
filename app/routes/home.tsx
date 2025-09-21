@@ -1,7 +1,7 @@
-import MainHeadline from "../components/MainHeadline";
+import RetroHomePage from "../components/RetroHomePage";
 
 export default function Home() {
   return (
-    <MainHeadline />
+    <RetroHomePage />
   );
 } 

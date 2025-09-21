@@ -9,6 +9,7 @@ import type { LinksFunction } from "react-router";
 
 import "./app.css";
 import "./styles/global.css";
+import "./styles/retro.css";
 
 export const links: LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -17,6 +18,8 @@ export const links: LinksFunction = () => [
     href: "https://fonts.gstatic.com",
     crossOrigin: "anonymous",
   },
+  { rel: "dns-prefetch", href: "https://prod.spline.design" },
+  { rel: "preconnect", href: "https://prod.spline.design" },
   {
     rel: "stylesheet",
     href: "https://fonts.googleapis.com/css2?family=Goldman:wght@400;700&family=Saira+Condensed:wght@100;200;300;400;500;600;700;800;900&display=swap"
