@@ -6,6 +6,9 @@ import {
   ScrollRestoration,
 } from "react-router";
 import type { LinksFunction } from "react-router";
+import RetroNavbar from "./components/RetroNavbar";
+import SocialLinks from "./components/SocialLinks";
+import StarfieldBackground from "./components/StarfieldBackground";
 
 import "./app.css";
 import "./styles/global.css";
@@ -42,7 +45,14 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        {children}
+        <div className="retro-theme min-h-screen">
+          <StarfieldBackground />
+          <RetroNavbar />
+          <div className="fixed right-4 top-1/2 transform -translate-y-1/2 z-40">
+            <SocialLinks className="flex-col gap-4" />
+          </div>
+          {children}
+        </div>
         <ScrollRestoration />
         <Scripts />
       </body>
