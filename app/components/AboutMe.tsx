@@ -1,22 +1,116 @@
-import { Sparkles } from "lucide-react";
+import { useMemo, useState } from "react";
+import RetroAudioPlayer from "./RetroAudioPlayer";
 
 export default function AboutMe() {
+  const aboutLines = useMemo(
+    () => [
+      "A passionate Computer Science BSc graduate",
+      "Combining strong technical skills with creative vision",
+      "Unique background in both software engineering and TV production",
+      "Approaching technical challenges with analytical precision and creative thinking",
+      "M.A. student in Science and Technology Education, focused on Wellbeing Education at Bar-Ilan University.",
+      "Accessibility-aware educator with hands-on work alongside deaf students.",
+      "Deeply connected to algorithmic thinking and currently writing a Hebrew book about algorithms."
+    ],
+    []
+  );
+
+  const strengths = useMemo(
+    () => [
+      {
+        title: "Vision",
+        text: "As a former TV producer, I'm naturally wired to see the whole board. I approach software development with a passion for understanding the 'why' behind every feature, ensuring that even the smallest details serve the big-picture vision."
+      },
+      {
+        title: "Curiosity",
+        text: "My curiosity is my engine. I love diving into new subjects, and I find that sharing my journey-whether with my students or on LinkedIn-is the best way to deepen my own understanding. For me, learning isn't just a task; it's a core passion."
+      },
+      {
+        title: "Community",
+        text: "Whether leading a team, collaborating in meetups, or mentoring students, my approach is fostering an environment where people feel connected, heard, and empowered through empathy and clear communication."
+      },
+      {
+        title: "Perspective",
+        text: "My approach to problem-solving is deeply shaped by my passion for diverse fields like art, history, music, and philosophy. It's not about knowing facts, but about having a rich toolkit of mental models that allows me to ask better questions and connect strategic goals to the human needs behind them."
+      }
+    ],
+    []
+  );
+
+  const [strengthIndex, setStrengthIndex] = useState(0);
+
+  const goPrevStrength = () => {
+    setStrengthIndex((prev) => (prev - 1 + strengths.length) % strengths.length);
+  };
+
+  const goNextStrength = () => {
+    setStrengthIndex((prev) => (prev + 1) % strengths.length);
+  };
+
   return (
-    <div className="bg-[#fdfcf9]/95 p-4 sm:p-6 md:p-8 rounded-lg shadow-[0_2px_8px_rgba(5,8,46,0.12)] border border-[#e8e3d8]">
-      <div className="flex flex-col items-center text-center">
-        <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#05082e] mb-3 tracking-tight font-display">
-          Hi, I'm Tal Yaakobi
-        </h3>
-        <div className="flex items-center gap-2 mb-4">
-          <p className="saira-condensed-bold text-lg sm:text-xl text-[#295a7d]">
-            Software Engineer
-          </p>
+    <div className="about-flow-layout">
+      <div className="about-main-box">
+        <div className="about-top-layout">
+          <section className="about-subsection about-subsection--intro">
+            <h3 className="about-subsection-title">About Me</h3>
+            <ul className="about-lines-list" role="list">
+              {aboutLines.map((line) => (
+                <li key={line} className="about-line-item">
+                  <span className="about-line-bullet" aria-hidden="true">
+                    ▸
+                  </span>
+                  <span>{line}</span>
+                </li>
+              ))}
+            </ul>
+          </section>
+
+          <div className="about-player-wrap about-player-wrap--side">
+            <RetroAudioPlayer />
+          </div>
         </div>
-        <div className="max-w-2xl">
-          <p className="saira-condensed-regular text-base sm:text-lg text-[#295a7d] leading-relaxed">
-            A passionate Computer Science graduate combining strong technical skills with creative vision. My unique background in both software engineering and TV production allows me to approach technical challenges with both analytical precision and creative thinking.
-          </p>
-        </div>
+
+        <section className="about-subsection about-subsection--strengths">
+          <h3 className="about-subsection-title">My Strengths</h3>
+          <div className="about-strengths-carousel">
+            <button
+              type="button"
+              className="about-strengths-nav"
+              onClick={goPrevStrength}
+              aria-label="Previous strength"
+            >
+              ◀
+            </button>
+
+            <article className="about-strength-card" aria-live="polite">
+              <h4 className="about-strength-card-title">{strengths[strengthIndex].title}</h4>
+              <p className="about-strength-card-text">{strengths[strengthIndex].text}</p>
+            </article>
+
+            <button
+              type="button"
+              className="about-strengths-nav"
+              onClick={goNextStrength}
+              aria-label="Next strength"
+            >
+              ▶
+            </button>
+          </div>
+
+          <div className="about-strengths-dots" role="tablist" aria-label="Strength slides">
+            {strengths.map((strength, index) => (
+              <button
+                key={strength.title}
+                type="button"
+                className={`about-strength-dot ${index === strengthIndex ? "is-active" : ""}`}
+                onClick={() => setStrengthIndex(index)}
+                aria-label={`Show ${strength.title}`}
+                aria-selected={index === strengthIndex}
+              />
+            ))}
+          </div>
+        </section>
+
       </div>
     </div>
   );
