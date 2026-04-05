@@ -48,7 +48,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <div className="retro-theme min-h-screen">
           <StarfieldBackground />
           <RetroNavbar />
-          <div className="fixed right-4 top-1/2 transform -translate-y-1/2 z-40">
+          <div className="social-links-wrapper fixed right-4 top-1/2 transform -translate-y-1/2 z-40">
             <SocialLinks className="flex-col gap-4" />
           </div>
           {children}

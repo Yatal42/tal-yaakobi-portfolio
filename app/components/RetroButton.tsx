@@ -19,7 +19,7 @@ export default function RetroButton({ onClick, children, href, type = 'button' }
     background: '#FC4198',
     border: '3px solid #000000',
     padding: '20px',
-    width: 'min(120px, 100%)',
+    width: 'min(108px, 100%)',
     aspectRatio: '1 / 1',
     height: 'auto',
     minWidth: '0',

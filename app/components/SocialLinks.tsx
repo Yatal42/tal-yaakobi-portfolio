@@ -21,53 +21,57 @@ const SocialLinks = ({ className = "" }: SocialLinksProps) => {
     window.open('https://github.com/Yatal42', '_blank');
   };
 
+  const containerStyle = { width: '56px', height: '420px' };
+
   return (
-    <div className={`relative ${className}`} style={{ width: '52px', height: '400px' }} id="social-links-container">
-      {/* Original SVG as background */}
+    <div className={`relative ${className}`} style={containerStyle} id="social-links-container">
       <img 
         src="/assets/side-icons.svg" 
         alt="Social Links" 
         className="w-full h-full opacity-90 pointer-events-none"
-        style={{ width: '52px', height: '400px', objectFit: 'contain' }}
+        style={{ width: '56px', height: '420px', objectFit: 'contain' }}
       />
-      
-      {/* CV - Invisible clickable area on CV text (top section) */}
-      <div
+
+      <button
+        type="button"
         onClick={handleCVClick}
-        className="absolute cursor-pointer"
+        className="social-link-hit-area"
         style={{ 
-          top: '140px',
-          left: '8px',
-          width: '36px',
-          height: '25px'
+          top: '31%',
+          left: '8%',
+          width: '84%',
+          height: '14%'
         }}
         title="Download CV"
+        aria-label="Download CV"
       />
-      
-      {/* GitHub - Invisible clickable area on GitHub icon (middle section) */}
-      <div
+
+      <button
+        type="button"
         onClick={handleGitHubClick}
-        className="absolute cursor-pointer"
+        className="social-link-hit-area"
         style={{ 
-          top: '185px',
-          left: '5px',
-          width: '42px',
-          height: '35px'
+          top: '43.5%',
+          left: '8%',
+          width: '84%',
+          height: '14%'
         }}
         title="Visit GitHub Profile"
+        aria-label="Visit GitHub Profile"
       />
-      
-      {/* LinkedIn - Invisible clickable area on LinkedIn icon (bottom section) */}
-      <div
+
+      <button
+        type="button"
         onClick={handleLinkedInClick}
-        className="absolute cursor-pointer"
+        className="social-link-hit-area"
         style={{ 
-          top: '230px',
-          left: '5px',
-          width: '42px',
-          height: '45px'
+          top: '56%',
+          left: '8%',
+          width: '84%',
+          height: '16%'
         }}
         title="Visit LinkedIn Profile"
+        aria-label="Visit LinkedIn Profile"
       />
     </div>
   );
