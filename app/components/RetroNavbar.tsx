@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 const RetroNavbar = () => {
   const [activeSection, setActiveSection] = useState('');
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -21,11 +22,13 @@ const RetroNavbar = () => {
 
   const handleNavClick = (sectionId: string) => {
     setActiveSection(sectionId);
+    setIsMobileMenuOpen(false);
     scrollToSection(sectionId);
   };
 
   const handleLogoClick = () => {
     setActiveSection('');
+    setIsMobileMenuOpen(false);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -39,6 +42,16 @@ const RetroNavbar = () => {
   return (
     <nav className="retro-nav">
       <button
+        className={`retro-mobile-menu-button ${isMobileMenuOpen ? 'active' : ''}`}
+        onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+        type="button"
+        aria-label={isMobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+        aria-expanded={isMobileMenuOpen}
+        aria-controls="retro-mobile-menu"
+      >
+        ☰
+      </button>
+      <button
         className={`retro-nav-item logo ${activeSection === '' ? 'active' : ''}`}
         onClick={handleLogoClick}
         type="button"
@@ -48,13 +61,28 @@ const RetroNavbar = () => {
       {navItems.map((item) => (
         <button
           key={item.id}
-          className={`retro-nav-item ${activeSection === item.id ? 'active' : ''}`}
+          className={`retro-nav-item retro-nav-item-desktop ${activeSection === item.id ? 'active' : ''}`}
           onClick={() => handleNavClick(item.id)}
           type="button"
         >
           {item.label}
         </button>
       ))}
+      <div
+        id="retro-mobile-menu"
+        className={`retro-mobile-menu ${isMobileMenuOpen ? 'open' : ''}`}
+      >
+        {navItems.map((item) => (
+          <button
+            key={`mobile-${item.id}`}
+            className={`retro-mobile-menu-item ${activeSection === item.id ? 'active' : ''}`}
+            onClick={() => handleNavClick(item.id)}
+            type="button"
+          >
+            {item.label}
+          </button>
+        ))}
+      </div>
     </nav>
   );
 };
