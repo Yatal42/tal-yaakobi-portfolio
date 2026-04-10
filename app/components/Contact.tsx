@@ -71,7 +71,7 @@ export default function Contact() {
   };
 
   return (
-    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 120px)', justifyContent: 'center', justifyItems: 'center', gap: '24px', padding: '16px', maxWidth: '460px', margin: '0 auto' }}>
+    <div className="contact-grid">
       <RetroButton onClick={handleEmail}>
         <span style={iconStyle}>📧</span>
         <span style={textStyle}>Email</span>

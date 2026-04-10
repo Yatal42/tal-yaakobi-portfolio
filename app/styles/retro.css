@@ -1092,14 +1092,18 @@ button.project-link {
 
 .contact-grid {
   display: grid;
-  grid-template-columns: repeat(3, 120px);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   justify-content: center;
   justify-items: stretch;
-  gap: 24px;
-  padding: 16px;
-  max-width: 460px;
+  gap: 16px;
+  padding: 12px 0;
+  max-width: 420px;
   margin: 0 auto;
-  width: min(100%, 460px);
+  width: min(100%, 420px);
+}
+
+.contact-grid > * {
+  width: 100%;
 }
 
 /* Utility Classes */
@@ -2051,7 +2055,7 @@ button.project-link {
 
 @media (max-width: 420px) {
   .contact-grid {
-    width: min(100%, 236px);
+    width: min(100%, 232px);
     gap: 8px;
   }
 }
