@@ -1870,6 +1870,189 @@ button.project-link {
   padding-bottom: 28px;
 }
 
+.reviews-section {
+  min-height: auto;
+  justify-content: flex-start;
+  padding-top: 34px;
+  padding-bottom: 28px;
+}
+
+.reviews-subtitle {
+  color: #c0c0c0;
+  font-family: 'Orbitron', monospace;
+  font-size: clamp(14px, 1.7vw, 19px);
+  line-height: 1.4;
+  text-align: center;
+  max-width: 760px;
+  margin: 0 0 18px 0;
+}
+
+.reviews-layout {
+  width: 100%;
+  max-width: 1120px;
+  display: grid;
+  grid-template-columns: minmax(300px, 380px) minmax(0, 1fr);
+  gap: 16px;
+  align-items: start;
+}
+
+.reviews-form,
+.reviews-grid {
+  background: #050505;
+  border: 2px solid #ffffff;
+  box-shadow: 2px 2px 0 #fc4198, 4px 4px 0 #000000;
+}
+
+.reviews-form {
+  padding: 16px;
+  display: grid;
+  gap: 10px;
+}
+
+.reviews-form-row {
+  display: grid;
+  gap: 6px;
+}
+
+.reviews-label {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px;
+  color: #fc4198;
+  letter-spacing: 0.5px;
+}
+
+.reviews-input,
+.reviews-textarea {
+  width: 100%;
+  background: #000000;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+  padding: 10px 12px;
+  font-family: 'Source Code Pro', monospace;
+  font-size: 14px;
+}
+
+.reviews-textarea {
+  min-height: 124px;
+  resize: vertical;
+}
+
+.reviews-submit {
+  justify-self: start;
+  background: #fc4198;
+  color: #000000;
+  border: 2px solid #000000;
+  padding: 10px 14px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 9px;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  box-shadow: 2px 2px 0 #ffffff;
+}
+
+.reviews-submit:hover:not(:disabled) {
+  background: #00ff41;
+}
+
+.reviews-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.reviews-feedback {
+  border: 2px solid;
+  padding: 8px 10px;
+  font-family: 'Orbitron', monospace;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.reviews-feedback.success {
+  color: #dcffcb;
+  border-color: #00ff41;
+  background: rgba(0, 255, 65, 0.1);
+}
+
+.reviews-feedback.error {
+  color: #ffd9ec;
+  border-color: #fc4198;
+  background: rgba(252, 65, 152, 0.12);
+}
+
+.reviews-grid {
+  padding: 14px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.review-card {
+  border: 2px solid #ffffff;
+  background: #000000;
+  padding: 12px;
+  display: grid;
+  gap: 8px;
+}
+
+.review-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.review-header h3 {
+  margin: 0;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px;
+  line-height: 1.3;
+  color: #ffffff;
+}
+
+.review-rating {
+  color: #00ff41;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.review-role {
+  margin: 0;
+  font-family: 'Source Code Pro', monospace;
+  font-size: 12px;
+  color: #fc4198;
+}
+
+.review-message {
+  margin: 0;
+  font-family: 'Orbitron', monospace;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #ffffff;
+}
+
+.review-date {
+  margin: 0;
+  font-family: 'Source Code Pro', monospace;
+  font-size: 11px;
+  color: #c0c0c0;
+}
+
+.reviews-empty {
+  width: 100%;
+  min-height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: 'Orbitron', monospace;
+  color: #c0c0c0;
+  border: 2px solid #ffffff;
+  background: #050505;
+  box-shadow: 2px 2px 0 #fc4198, 4px 4px 0 #000000;
+  padding: 14px;
+}
+
 .contact-section {
   min-height: auto;
   justify-content: flex-start;
@@ -2045,6 +2228,19 @@ button.project-link {
   .about-section {
     padding-top: 40px;
     padding-bottom: 16px;
+  }
+
+  .reviews-section {
+    padding-top: 24px;
+    padding-bottom: 14px;
+  }
+
+  .reviews-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .reviews-grid {
+    grid-template-columns: 1fr;
   }
 
   .contact-section {
