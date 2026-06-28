@@ -1,8 +1,16 @@
 import { useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router';
+
+type NavItem =
+  | { id: string; label: string; kind: 'section' }
+  | { id: string; label: string; kind: 'route'; to: string };
 
 const RetroNavbar = () => {
   const [activeSection, setActiveSection] = useState('');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const onHome = location.pathname === '/';
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -20,24 +28,65 @@ const RetroNavbar = () => {
     });
   };
 
-  const handleNavClick = (sectionId: string) => {
+  const handleSectionClick = (sectionId: string) => {
     setActiveSection(sectionId);
     setIsMobileMenuOpen(false);
-    scrollToSection(sectionId);
+    if (onHome) {
+      scrollToSection(sectionId);
+    } else {
+      navigate(`/#${sectionId}`);
+      setTimeout(() => scrollToSection(sectionId), 60);
+    }
   };
 
   const handleLogoClick = () => {
     setActiveSection('');
     setIsMobileMenuOpen(false);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (onHome) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      navigate('/');
+    }
   };
 
-  const navItems = [
-    { id: 'projects', label: '</PROJECTS>' },
-    { id: 'skills', label: '</SKILLS>' },
-    { id: 'about', label: '</ABOUT>' },
-    { id: 'contact', label: '</CONTACT>' }
+  const navItems: NavItem[] = [
+    { id: 'transcript', label: '</TRANSCRIPT>', kind: 'route', to: '/transcript' },
+    { id: 'projects', label: '</PROJECTS>', kind: 'section' }, 
+    { id: 'skills', label: '</SKILLS>', kind: 'section' },
+    { id: 'about', label: '</ABOUT>', kind: 'section' },
+    { id: 'contact', label: '</CONTACT>', kind: 'section' }
   ];
+
+  const renderNavButton = (item: NavItem, baseClass: string) => {
+    const isActive =
+      item.kind === 'route'
+        ? location.pathname === item.to
+        : activeSection === item.id && onHome;
+    const className = `${baseClass} ${isActive ? 'active' : ''}`.trim();
+
+    if (item.kind === 'route') {
+      return (
+        <Link
+          key={item.id}
+          to={item.to}
+          className={className}
+          onClick={() => setIsMobileMenuOpen(false)}
+        >
+          {item.label}
+        </Link>
+      );
+    }
+    return (
+      <button
+        key={item.id}
+        className={className}
+        onClick={() => handleSectionClick(item.id)}
+        type="button"
+      >
+        {item.label}
+      </button>
+    );
+  };
 
   return (
     <nav className="retro-nav">
@@ -52,36 +101,23 @@ const RetroNavbar = () => {
         ☰
       </button>
       <button
-        className={`retro-nav-item logo ${activeSection === '' ? 'active' : ''}`}
+        className={`retro-nav-item logo ${activeSection === '' && onHome ? 'active' : ''}`}
         onClick={handleLogoClick}
         type="button"
       >
         TAL YAAKOBI
       </button>
-      {navItems.map((item) => (
-        <button
-          key={item.id}
-          className={`retro-nav-item retro-nav-item-desktop ${activeSection === item.id ? 'active' : ''}`}
-          onClick={() => handleNavClick(item.id)}
-          type="button"
-        >
-          {item.label}
-        </button>
-      ))}
+      {navItems.map((item) => renderNavButton(item, 'retro-nav-item retro-nav-item-desktop'))}
       <div
         id="retro-mobile-menu"
         className={`retro-mobile-menu ${isMobileMenuOpen ? 'open' : ''}`}
       >
-        {navItems.map((item) => (
-          <button
-            key={`mobile-${item.id}`}
-            className={`retro-mobile-menu-item ${activeSection === item.id ? 'active' : ''}`}
-            onClick={() => handleNavClick(item.id)}
-            type="button"
-          >
-            {item.label}
-          </button>
-        ))}
+        {navItems.map((item) =>
+          renderNavButton(
+            { ...item, id: `mobile-${item.id}` } as NavItem,
+            'retro-mobile-menu-item'
+          )
+        )}
       </div>
     </nav>
   );
