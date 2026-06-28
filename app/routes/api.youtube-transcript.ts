@@ -73,6 +73,21 @@ export async function loader({ request }: LoaderFunctionArgs) {
       : [...languagePriority];
 
     let lastError = "";
+    let lastErrorCode: "no_transcript_found" | "transcripts_disabled" | "video_unavailable" | "too_many_requests" =
+      "no_transcript_found";
+    const setErrorState = (message: string) => {
+      lastError = message;
+      if (/transcript is disabled/i.test(message)) {
+        lastErrorCode = "transcripts_disabled";
+      } else if (/video is no longer available|video unavailable/i.test(message)) {
+        lastErrorCode = "video_unavailable";
+      } else if (/too many requests|captcha/i.test(message)) {
+        lastErrorCode = "too_many_requests";
+      } else {
+        lastErrorCode = "no_transcript_found";
+      }
+    };
+
     for (const lang of effectiveLanguages) {
       try {
         const transcript = await fetchTranscript(videoId, { lang });
@@ -85,13 +100,28 @@ export async function loader({ request }: LoaderFunctionArgs) {
           });
         }
       } catch (error) {
-        lastError = (error as Error).message || "unknown";
+        setErrorState((error as Error).message || "unknown");
       }
     }
 
+    try {
+      const transcript = await fetchTranscript(videoId);
+      const segments = mapSegments(transcript);
+      if (segments.length > 0) {
+        return Response.json({
+          video_id: videoId,
+          segments,
+          count: segments.length,
+        });
+      }
+    } catch (error) {
+      setErrorState((error as Error).message || "unknown");
+    }
+
+    const status = lastErrorCode === "too_many_requests" ? 429 : 404;
     return Response.json(
-      { error: "no_transcript_found", video_id: videoId, message: lastError || "No transcript found." },
-      { status: 404 }
+      { error: lastErrorCode, video_id: videoId, message: lastError || "No transcript found." },
+      { status }
     );
   } catch (error) {
     const message = (error as Error).message || "server_error";
