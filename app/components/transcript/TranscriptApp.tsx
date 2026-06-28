@@ -15,8 +15,8 @@ interface StatusMessage {
 
 const TABS: { key: TabKey; label: string }[] = [
   { key: "youtube", label: "YOUTUBE" },
-  { key: "moodle", label: "אוניברסיטה" },
-  { key: "upload", label: "העלאת קובץ" },
+  { key: "moodle", label: "Univsersity" },
+  { key: "upload", label: "Upload File(VTT/SRT)" },
 ];
 
 export default function TranscriptApp() {
@@ -36,12 +36,7 @@ export default function TranscriptApp() {
   return (
     <main className="transcript-page">
       <header className="transcript-hero" dir="rtl">
-        <h1>תמלול נגיש לכל סטודנט/ית</h1>
-        <p>
-          יוטיוב <span className="pill">YouTube</span>
-          ולמידע <span className="pill">Lemida / Moodle</span>
-          וקבצי <span className="pill">VTT / SRT</span> — בגריד כרטיסים קריא עם חותמות זמן וכיווניות RTL.
-        </p>
+        <h1>Trancriptor - Accessible Transcript Extractor</h1>
       </header>
 
       <div className="transcript-tabs" role="tablist" aria-label="Transcript sources">

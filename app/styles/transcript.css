@@ -231,6 +231,15 @@
   box-shadow: 3px 3px 0 var(--neon-pink), 6px 6px 0 #000000;
   padding: 18px 22px;
   margin: 28px 0 16px 0;
+  text-align: center;
+}
+
+.transcript-result-header[dir="ltr"] {
+  text-align: left;
+}
+
+.transcript-result-header[dir="rtl"] {
+  text-align: right;
 }
 
 .transcript-result-title {
@@ -240,6 +249,8 @@
   margin: 0 0 6px 0;
   letter-spacing: 1px;
   line-height: 1.4;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .transcript-speaker {
@@ -248,6 +259,8 @@
   color: var(--neon-green);
   margin-top: 4px;
   letter-spacing: 0.5px;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .transcript-download {
@@ -290,6 +303,8 @@
   font-size: 16px;
   line-height: 1.65;
   transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .transcript-card:hover,
@@ -326,6 +341,9 @@
 
 .transcript-card .line {
   margin: 0 0 8px 0;
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .transcript-card .line:last-child {
@@ -359,27 +377,49 @@
 }
 
 .transcript-file-input {
-  background: #000000;
-  color: #ffffff;
-  border: 2px dashed var(--neon-pink);
-  padding: 18px;
-  font-family: 'Source Code Pro', monospace;
-  cursor: pointer;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  clip: rect(0 0 0 0);
+  overflow: hidden;
 }
 
-.transcript-file-input::file-selector-button {
+.transcript-file-picker {
+  display: inline-block;
   background: var(--neon-pink);
   color: #000000;
   border: 2px solid #000000;
-  padding: 8px 14px;
+  padding: 10px 16px;
   font-family: 'Press Start 2P', monospace;
   font-size: 9px;
-  margin-right: 12px;
+  letter-spacing: 1px;
   cursor: pointer;
+  text-transform: uppercase;
+  box-shadow: 2px 2px 0 #ffffff, 4px 4px 0 #000000;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
 }
 
-.transcript-file-input::file-selector-button:hover {
+.transcript-file-picker:hover {
   background: var(--neon-green);
+  transform: translate(-1px, -1px);
+  box-shadow: 3px 3px 0 #ffffff, 6px 6px 0 #000000;
+}
+
+.transcript-bookmarklet-steps {
+  margin: 0;
+  padding-left: 18px;
+  display: grid;
+  gap: 6px;
+}
+
+.transcript-bookmarklet-steps li {
+  font-family: 'Orbitron', monospace;
+  font-size: 13px;
+  color: #c0c0c0;
+  line-height: 1.5;
 }
 
 .transcript-back-link {

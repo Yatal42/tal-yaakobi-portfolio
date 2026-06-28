@@ -15,14 +15,14 @@ export default function UploadTab({ onResult, setStatus }: Props) {
   const handleFile = async (file: File | null) => {
     if (!file) return;
     setFileName(file.name);
-    setStatus({ kind: "info", message: `מנתח את הקובץ ${file.name}...` });
+    setStatus({ kind: "info", message: `Analyzing ${file.name}...` });
     setLoading(true);
     try {
       const segments: Segment[] | null = await parseCaptionFile(file);
       if (!segments || segments.length === 0) {
         setStatus({
           kind: "error",
-          message: "לא ניתן לפענח את הקובץ. ודאי שזה קובץ VTT/SRT תקין.",
+          message: "Unable to parse the file. Please make sure it is a valid VTT/SRT file.",
         });
         return;
       }
@@ -31,12 +31,12 @@ export default function UploadTab({ onResult, setStatus }: Props) {
       onResult(title, segments);
       setStatus({
         kind: "success",
-        message: `הקובץ נטען בהצלחה — ${segments.length} קטעים.`,
+            message: `File uploaded successfully - ${segments.length} segments.`,
       });
     } catch (err) {
       setStatus({
         kind: "error",
-        message: `שגיאה בקריאת הקובץ: ${(err as Error).message}`,
+        message: `Error reading the file: ${(err as Error).message}`,
       });
     } finally {
       setLoading(false);
@@ -44,25 +44,28 @@ export default function UploadTab({ onResult, setStatus }: Props) {
   };
 
   return (
-    <div className="transcript-panel" dir="rtl">
-      <h3 className="transcript-panel-title">העלאת קובץ כתוביות</h3>
+    <div className="transcript-panel" dir="ltr">
+      <h3 className="transcript-panel-title">Upload Caption File(VTT/SRT)</h3>
       <p>
-        כבר יש לך קובץ <b>.vtt</b> או <b>.srt</b>? העלי אותו כאן וקבלי גריד נגיש עם חותמות זמן.
-        זה מתאים גם לסטודנטים שמורידים כתוביות מהסימניה למעלה, או מ-Zoom/Teams.
+        Already have a <b>.vtt</b> or <b>.srt</b> file? Upload it here and get a readable transcript with timestamps.
+        This is also suitable for students who download captions from the bookmarklet above, or from Zoom/Teams.
       </p>
 
-      <label className="transcript-label" htmlFor="custom-title">כותרת מותאמת (אופציונלי)</label>
+      <label className="transcript-label" htmlFor="custom-title">Custom Title (Optional)</label>
       <input
         id="custom-title"
         className="transcript-input"
         type="text"
-        placeholder="למשל: הרצאה 3 — אלגוריתמים"
+        placeholder="For example: Lecture 3 - Algorithms"
         value={customTitle}
         onChange={(e) => setCustomTitle(e.target.value)}
       />
 
-      <label className="transcript-label" htmlFor="caption-file">קובץ הכתוביות</label>
+      <label className="transcript-label" htmlFor="caption-file">Caption File</label>
       <div className="transcript-file-row">
+        <label className="transcript-file-picker" htmlFor="caption-file">
+          {loading ? "Uploading..." : "Choose file"}
+        </label>
         <input
           id="caption-file"
           className="transcript-file-input"
@@ -73,7 +76,7 @@ export default function UploadTab({ onResult, setStatus }: Props) {
         />
         {fileName ? (
           <span className="transcript-bookmarklet-hint">
-            קובץ נבחר: <b>{fileName}</b>
+            Selected file: <b>{fileName}</b>
           </span>
         ) : null}
       </div>

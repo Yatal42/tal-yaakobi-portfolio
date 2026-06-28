@@ -2,26 +2,26 @@ import BookmarkletButton from "./BookmarkletButton";
 
 export default function MoodleTab() {
   return (
-    <div className="transcript-panel" dir="rtl">
-      <h3 className="transcript-panel-title">אוניברסיטה · למידע / Moodle</h3>
+    <div className="transcript-panel" dir="ltr">
+      <h3 className="transcript-panel-title">University · Lemida / Moodle</h3>
       <p>
-        מערכות Moodle (כמו <b>lemida.biu.ac.il</b>) דורשות התחברות אישית, ולא ניתן לגשת אליהן ישירות
-        מהאפליקציה. במקום זה, גררי את הסימניה הזאת לסרגל הסימניות בדפדפן שלך, וכשתהיי בדף ההרצאה
-        — לחצי עליה כדי להוריד את קובץ ה-VTT.
+          Moodle systems (like <b>lemida.biu.ac.il</b>) require personal login, and direct access is not possible from the application.
+        Instead, drag this bookmarklet to your browser's bookmarks bar, and when you are on the lecture page,
+        click on it to download the VTT file.
       </p>
 
       <div className="transcript-bookmarklet-row">
         <BookmarkletButton />
-        <span className="transcript-bookmarklet-hint">
-          <b>1.</b> גררי את הכפתור לסרגל הסימניות &nbsp;·&nbsp;
-          <b>2.</b> פתחי דף הרצאה ב-Lemida &nbsp;·&nbsp;
-          <b>3.</b> לחצי על הסימניה &nbsp;·&nbsp;
-          <b>4.</b> חזרי הנה והעלי את הקובץ דרך הטאב "העלאת קובץ"
-        </span>
+        <ol className="transcript-bookmarklet-steps">
+          <li><b>1.</b> Drag the bookmarklet to your bookmarks bar</li>
+          <li><b>2.</b> Open the lecture page in Lemida</li>
+          <li><b>3.</b> Click on the bookmarklet</li>
+          <li><b>4.</b> Go back and upload the file through the "Upload File" tab</li>
+        </ol>
       </div>
 
       <p style={{ marginTop: 8 }}>
-        הסימניה עובדת רק כשאת מחוברת למערכת. היא לא שולחת מידע אישי לאף שרת — ההורדה קורית ישירות בדפדפן שלך.
+        The bookmarklet only works when you are logged in to the system. It does not send any personal information to any server — the download happens directly in your browser.
       </p>
     </div>
   );

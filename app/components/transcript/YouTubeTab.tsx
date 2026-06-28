@@ -34,39 +34,39 @@ export default function YouTubeTab({ onResult, setStatus }: Props) {
     e.preventDefault();
     const id = extractVideoId(url);
     if (!id) {
-      setStatus({ kind: "error", message: "כתובת לא חוקית. הדביקי לינק מלא של YouTube או מזהה סרטון בן 11 תווים." });
+      setStatus({ kind: "error", message: "Invalid URL. Paste the full YouTube link or 11-character video ID." });
       return;
     }
-    setStatus({ kind: "info", message: "מוריד תמלול..." });
+    setStatus({ kind: "info", message: "Downloading transcript..." });
     setLoading(true);
     try {
       const res = await fetch(`/api/youtube-transcript?v=${encodeURIComponent(id)}`);
       const data = await res.json();
       if (!res.ok) {
         const messages: Record<string, string> = {
-          transcripts_disabled: "כתוביות חסומות בסרטון הזה.",
-          video_unavailable: "הסרטון לא זמין או פרטי.",
-          no_transcript_found: "לא נמצאו כתוביות זמינות.",
-          invalid_video_id: "מזהה הסרטון לא תקין.",
-          missing_parameter: "חסר מזהה סרטון.",
+          transcripts_disabled: "Captions are disabled for this video.",
+          video_unavailable: "The video is unavailable or private.",
+          no_transcript_found: "No captions available.",
+          invalid_video_id: "Invalid video ID.",
+          missing_parameter: "Missing video ID.",
         };
         setStatus({
           kind: "error",
-          message: messages[data?.error] || data?.message || "נכשל באחזור התמלול.",
+          message: messages[data?.error] || data?.message || "Failed to download transcript.",
         });
         return;
       }
       const segments: Segment[] = data.segments ?? [];
       if (segments.length === 0) {
-        setStatus({ kind: "error", message: "לא הוחזרו קטעי תמלול." });
+        setStatus({ kind: "error", message: "No transcript segments returned." });
         return;
       }
       onResult(`YouTube · ${id}`, segments);
-      setStatus({ kind: "success", message: `הורד תמלול עם ${segments.length} קטעים.` });
+      setStatus({ kind: "success", message: `Downloaded transcript with ${segments.length} segments.` });
     } catch (err) {
       setStatus({
         kind: "error",
-        message: `שגיאת רשת: ${(err as Error).message}`,
+        message: `Network error: ${(err as Error).message}`,
       });
     } finally {
       setLoading(false);
@@ -74,10 +74,10 @@ export default function YouTubeTab({ onResult, setStatus }: Props) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="transcript-panel" dir="rtl">
+    <form onSubmit={handleSubmit} className="transcript-panel" dir="ltr">
       <h3 className="transcript-panel-title">YouTube</h3>
-      <p>הדביקי כאן קישור ל-YouTube או למזהה סרטון בן 11 תווים. אנו ננסה כתוביות בעברית ובאנגלית.</p>
-      <label className="transcript-label" htmlFor="yt-url">URL של הסרטון</label>
+      <p>Paste the full YouTube link or 11-character video ID here. We will try to extract captions in Hebrew and English.</p>
+      <label className="transcript-label" htmlFor="yt-url">Video URL</label>
       <input
         id="yt-url"
         className="transcript-input"
@@ -89,7 +89,7 @@ export default function YouTubeTab({ onResult, setStatus }: Props) {
         autoComplete="off"
       />
       <button type="submit" className="transcript-submit" disabled={loading}>
-        {loading ? "מוריד..." : "הורד תמלול"}
+        {loading ? "Downloading..." : "Download Transcript"}
       </button>
     </form>
   );
