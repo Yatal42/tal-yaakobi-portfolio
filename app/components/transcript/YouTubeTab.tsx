@@ -40,7 +40,7 @@ export default function YouTubeTab({ onResult, setStatus }: Props) {
     setStatus({ kind: "info", message: "Downloading transcript..." });
     setLoading(true);
     try {
-      const res = await fetch(`/api/youtube-transcript?v=${encodeURIComponent(id)}`);
+      const res = await fetch(`/transcript-api/youtube-transcript?v=${encodeURIComponent(id)}`);
       const data = await res.json();
       if (!res.ok) {
         const messages: Record<string, string> = {
