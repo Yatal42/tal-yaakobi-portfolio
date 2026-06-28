@@ -72,19 +72,21 @@ export async function loader({ request }: LoaderFunctionArgs) {
       ? [requestedLang, ...languagePriority.filter((lang) => lang !== requestedLang)]
       : [...languagePriority];
 
-    let lastError = "";
-    let lastErrorCode: "no_transcript_found" | "transcripts_disabled" | "video_unavailable" | "too_many_requests" =
-      "no_transcript_found";
+    type ErrorCode = "no_transcript_found" | "transcripts_disabled" | "video_unavailable" | "too_many_requests";
+    const errorState: { code: ErrorCode; message: string } = {
+      code: "no_transcript_found",
+      message: "",
+    };
     const setErrorState = (message: string) => {
-      lastError = message;
+      errorState.message = message;
       if (/transcript is disabled/i.test(message)) {
-        lastErrorCode = "transcripts_disabled";
+        errorState.code = "transcripts_disabled";
       } else if (/video is no longer available|video unavailable/i.test(message)) {
-        lastErrorCode = "video_unavailable";
+        errorState.code = "video_unavailable";
       } else if (/too many requests|captcha/i.test(message)) {
-        lastErrorCode = "too_many_requests";
+        errorState.code = "too_many_requests";
       } else {
-        lastErrorCode = "no_transcript_found";
+        errorState.code = "no_transcript_found";
       }
     };
 
@@ -118,9 +120,9 @@ export async function loader({ request }: LoaderFunctionArgs) {
       setErrorState((error as Error).message || "unknown");
     }
 
-    const status = lastErrorCode === "too_many_requests" ? 429 : 404;
+    const status = errorState.code === "too_many_requests" ? 429 : 404;
     return Response.json(
-      { error: lastErrorCode, video_id: videoId, message: lastError || "No transcript found." },
+      { error: errorState.code, video_id: videoId, message: errorState.message || "No transcript found." },
       { status }
     );
   } catch (error) {
