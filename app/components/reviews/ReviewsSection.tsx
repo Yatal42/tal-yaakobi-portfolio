@@ -32,9 +32,9 @@ export default function ReviewsSection() {
       id="reviews"
       className="retro-section reviews-section motion-section motion-delay-2"
     >
-      <h2 className="retro-section-title">Reviews</h2>
+      <h2 className="retro-section-title">Student Reviews</h2>
       <p className="reviews-subtitle">
-        Honest feedback from students and collaborators I've had the pleasure to work with.
+        Feedback from students I've taught.
       </p>
       <ReviewsCarousel reviews={reviews} />
 

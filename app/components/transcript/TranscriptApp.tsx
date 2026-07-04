@@ -35,8 +35,15 @@ export default function TranscriptApp() {
 
   return (
     <main className="transcript-page">
-      <header className="transcript-hero" dir="ltr">
-        <h1>Transcriptor - Accessible Transcript Extractor</h1>
+      <header className="transcript-hero transcript-hero--with-image" dir="ltr">
+        <div className="transcript-hero-image" aria-hidden="true">
+          <img
+            src="/assets/retro-computer.svg"
+            alt=""
+            className="w-40 md:w-56 h-auto max-w-full"
+          />
+        </div>
+        <h1>Transcriptor - Accessible Transcript Extraction</h1>
       </header>
 
       <div className="transcript-tabs" role="tablist" aria-label="Transcript sources">

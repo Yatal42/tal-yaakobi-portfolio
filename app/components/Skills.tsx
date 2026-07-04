@@ -41,7 +41,7 @@ const Skills = () => {
       <div className="skills-content">
         <h3 className="skills-subtitle">Technical Skills</h3>
         <p className="skills-description">
-          Stack I use to ship end-to-end products with reliability, accessibility, and strong developer experience.
+          Technologies I use to build reliable, accessible, end-to-end products.
         </p>
         <div className="skills-showcase">
           <div

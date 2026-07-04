@@ -1,15 +1,14 @@
 import { useMemo, useState } from "react";
-import RetroAudioPlayer from "./RetroAudioPlayer";
 
 export default function AboutMe() {
   const aboutLines = useMemo(
     () => [
-      "Computer Science graduate with full-stack product development experience.",
-      "Background in software engineering and television production.",
-      "Strong in turning complex technical ideas into clear user flows.",
-      "M.A. student in Science and Technology Education at Bar-Ilan University.",
-      "Accessibility-focused educator with hands-on work alongside deaf students.",
-      "Passionate about algorithmic thinking and technical storytelling."
+      "Computer Science graduate turned full-time CS educator.",
+      "Private tutor for university students in core CS courses.",
+      "Run full independent editions of academic CS courses, sold directly to students.",
+      "M.A. researcher in Science and Technology Education at Bar-Ilan University, focused on how CS should be taught.",
+      "Accessibility-focused teaching, including hands-on work alongside deaf students.",
+      "Software engineering background - I still build, but teaching is the main thing."
     ],
     []
   );
@@ -17,20 +16,20 @@ export default function AboutMe() {
   const strengths = useMemo(
     () => [
       {
-        title: "Vision",
-        text: "I connect product goals to implementation details, so every feature supports a clear user outcome."
+        title: "Clarity",
+        text: "Complex material gets broken into steps that build on each other. Nothing moves forward until it's solid."
       },
       {
-        title: "Curiosity",
-        text: "I learn fast, test ideas early, and keep improving through sharing and feedback."
+        title: "Patience",
+        text: "We work at your pace. I repeat, rephrase, and re-derive as many times as it takes."
       },
       {
-        title: "Community",
-        text: "I value collaboration, mentorship, and communication that keeps teams aligned and motivated."
+        title: "Adaptation",
+        text: "Every student thinks differently. I adjust examples, notation, and pacing to match how you learn."
       },
       {
-        title: "Perspective",
-        text: "I bring cross-disciplinary thinking to product work, combining strategy, creativity, and practical execution."
+        title: "Impact",
+        text: "Passing the exam is the minimum bar. The real test is whether the next course feels easier."
       }
     ],
     []
@@ -49,25 +48,19 @@ export default function AboutMe() {
   return (
     <div className="about-flow-layout">
       <div className="about-main-box">
-        <div className="about-top-layout">
-          <section className="about-subsection about-subsection--intro">
-            <h3 className="about-subsection-title">About Me</h3>
-            <ul className="about-lines-list" role="list">
-              {aboutLines.map((line) => (
-                <li key={line} className="about-line-item">
-                  <span className="about-line-bullet" aria-hidden="true">
-                    ▸
-                  </span>
-                  <span>{line}</span>
-                </li>
-              ))}
-            </ul>
-          </section>
-
-          <div className="about-player-wrap about-player-wrap--side">
-            <RetroAudioPlayer />
-          </div>
-        </div>
+        <section className="about-subsection about-subsection--intro">
+          <h3 className="about-subsection-title">Highlights</h3>
+          <ul className="about-lines-list" role="list">
+            {aboutLines.map((line) => (
+              <li key={line} className="about-line-item">
+                <span className="about-line-bullet" aria-hidden="true">
+                  ▸
+                </span>
+                <span>{line}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
 
         <section className="about-subsection about-subsection--strengths">
           <h3 className="about-subsection-title">My Strengths</h3>

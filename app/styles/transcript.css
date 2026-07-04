@@ -12,6 +12,46 @@
   margin-bottom: 36px;
 }
 
+.transcript-hero--with-image {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  text-align: center;
+}
+
+.transcript-hero-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.transcript-hero-image img {
+  width: 160px;
+  height: auto;
+  max-width: 100%;
+}
+
+@media (min-width: 900px) {
+  .transcript-hero--with-image {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    text-align: left;
+  }
+
+  .transcript-hero--with-image h1 {
+    margin: 0;
+  }
+
+  .transcript-hero-image img {
+    width: 220px;
+  }
+}
+
 .transcript-hero h1 {
   font-family: 'Press Start 2P', monospace;
   font-size: clamp(20px, 4vw, 38px);

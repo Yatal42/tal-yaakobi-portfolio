@@ -1,30 +1,26 @@
+import PageHero from "./PageHero";
+import { scrollToSection } from "../lib/scroll";
+
 const Hero = () => {
   return (
-    <section id="hero" className="retro-section relative">
-      <div className="flex flex-col lg:flex-row items-center justify-center gap-12 mb-8">
-        <div className="flex-1 text-left">
-          <h1 className="pixel-heading">
-            TAL<br />YAAKOBI
-          </h1>
-          <p className="pixel-subheading hero-subheading">FULL STACK DEVELOPER</p>
-          <p className="retro-text hero-intro-text">
-            Full-stack developer focused on accessible products, clear UX, and practical solutions from idea to launch.
-          </p>
-        </div>
-        
-        <div className="flex-1 flex justify-center lg:justify-end">
-          <div className="retro-computer-container">
-            <img 
-              src="/assets/retro-computer.svg" 
-              alt="Retro Computer Setup" 
-              className="w-80 lg:w-96 h-auto max-w-full"
-            />
-          </div>
-        </div>
-      </div>
-    </section>
+    <PageHero
+      imageSide="right"
+      heading={<>TAL<br />YAAKOBI</>}
+      subheading="CS EDUCATOR · PRIVATE TUTOR · RESEARCHER"
+      intro="I teach computer science to university students: private 1:1 tutoring, full independent editions of core CS courses, and research on how CS should be taught in academia."
+      actions={
+        <>
+          <button
+            type="button"
+            className="hero-cta-primary"
+            onClick={() => scrollToSection("contact")}
+          >
+            Get in touch
+          </button>
+        </>
+      }
+    />
   );
 };
 
 export default Hero;
-
