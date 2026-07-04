@@ -22,6 +22,9 @@ node_modules/
 # Vite
 vite.config.ts.timestamp-*
 
+# Vercel
+.vercel/
+
 # IDE & Editors
 .vscode/
 .idea/

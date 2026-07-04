@@ -1870,6 +1870,360 @@ button.project-link {
   padding-bottom: 28px;
 }
 
+.reviews-section {
+  min-height: auto;
+  justify-content: flex-start;
+  padding-top: 34px;
+  padding-bottom: 40px;
+}
+
+.reviews-subtitle {
+  color: #c0c0c0;
+  font-family: 'Orbitron', monospace;
+  font-size: clamp(14px, 1.7vw, 19px);
+  line-height: 1.4;
+  text-align: center;
+  max-width: 760px;
+  margin: 0 0 24px 0;
+}
+
+.reviews-carousel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  max-width: 1350px;
+  margin: 0 auto;
+  padding: 0 0.5rem;
+  width: 100%;
+}
+
+.reviews-carousel-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: min(70vw, 760px);
+}
+
+.review-carousel-card {
+  position: relative;
+  width: 100%;
+  background: #050505;
+  border: 2px solid #ffffff;
+  box-shadow: 4px 4px 0 #fc4198, 8px 8px 0 #000000;
+  padding: 28px 32px;
+  display: grid;
+  gap: 14px;
+  min-height: 260px;
+  color: #ffffff;
+}
+
+.review-carousel-card::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  height: 26px;
+  background: #fc4198;
+  border: 2px solid #ffffff;
+  border-bottom: 2px solid #ffffff;
+}
+
+.review-carousel-card::after {
+  content: "";
+  position: absolute;
+  top: 6px;
+  right: 12px;
+  width: 8px;
+  height: 8px;
+  background: #ffffff;
+  border-radius: 50%;
+  box-shadow:
+    -14px 0 0 #ffffff,
+    -28px 0 0 #ffffff;
+  pointer-events: none;
+}
+
+.review-carousel-header {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+  margin-top: 18px;
+  padding-bottom: 10px;
+  border-bottom: 1px dashed rgba(252, 65, 152, 0.5);
+}
+
+.review-carousel-header h3 {
+  margin: 0;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 14px;
+  line-height: 1.3;
+  color: #ffffff;
+  letter-spacing: 0.5px;
+}
+
+.review-rating {
+  color: #ffd93d;
+  font-size: 18px;
+  white-space: nowrap;
+  letter-spacing: 2px;
+  text-shadow: 0 0 6px rgba(255, 217, 61, 0.5);
+}
+
+.review-rating-empty {
+  color: rgba(255, 255, 255, 0.15);
+  text-shadow: none;
+}
+
+.review-role {
+  margin: 0;
+  font-family: 'Source Code Pro', monospace;
+  font-size: 13px;
+  color: #fc4198;
+  font-weight: 500;
+}
+
+.review-carousel-message {
+  margin: 0;
+  font-family: 'Orbitron', 'Assistant', sans-serif;
+  font-size: clamp(15px, 1.6vw, 17px);
+  line-height: 1.7;
+  color: #ffffff;
+  white-space: pre-line;
+}
+
+.reviews-counter {
+  margin-top: 14px;
+  font-size: 12px;
+  color: #c0c0c0;
+  font-family: 'Source Code Pro', monospace;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+.reviews-carousel-empty {
+  text-align: center;
+  padding: 2rem;
+  color: var(--retro-gray);
+  font-family: 'Orbitron', monospace;
+}
+
+.reviews-cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 28px;
+  width: 100%;
+}
+
+.reviews-cta-button {
+  background: #fc4198;
+  color: #000000;
+  border: 2px solid #ffffff;
+  padding: 14px 28px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 11px;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  box-shadow: 4px 4px 0 #000000;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+.reviews-cta-button:hover {
+  background: #00ff41;
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 #000000;
+}
+
+.reviews-cta-button:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 #000000;
+}
+
+.review-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: reviewModalFadeIn 0.2s ease;
+}
+
+@keyframes reviewModalFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.review-modal {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  max-height: 90vh;
+  overflow-y: auto;
+  background: #050505;
+  border: 3px solid #ffffff;
+  box-shadow: 6px 6px 0 #fc4198, 10px 10px 0 #000000;
+  animation: reviewModalSlideIn 0.25s ease;
+}
+
+@keyframes reviewModalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-12px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.review-modal-header {
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background: #fc4198;
+  border-bottom: 2px solid #ffffff;
+  z-index: 1;
+}
+
+.review-modal-title {
+  margin: 0;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 12px;
+  color: #000000;
+  letter-spacing: 0.5px;
+}
+
+.review-modal-close {
+  background: #000000;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+  width: 28px;
+  height: 28px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 11px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  line-height: 1;
+}
+
+.review-modal-close:hover {
+  background: #ffffff;
+  color: #000000;
+}
+
+.review-modal-body {
+  padding: 18px;
+}
+
+.reviews-form {
+  display: grid;
+  gap: 12px;
+}
+
+.reviews-form-row {
+  display: grid;
+  gap: 6px;
+}
+
+.reviews-label {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px;
+  color: #fc4198;
+  letter-spacing: 0.5px;
+}
+
+.reviews-input,
+.reviews-textarea {
+  width: 100%;
+  background: #000000;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+  padding: 10px 12px;
+  font-family: 'Source Code Pro', monospace;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.reviews-input:focus,
+.reviews-textarea:focus {
+  outline: none;
+  border-color: #fc4198;
+  box-shadow: 0 0 0 2px rgba(252, 65, 152, 0.35);
+}
+
+.reviews-textarea {
+  min-height: 124px;
+  resize: vertical;
+  line-height: 1.5;
+}
+
+.reviews-submit {
+  justify-self: start;
+  background: #fc4198;
+  color: #000000;
+  border: 2px solid #000000;
+  padding: 10px 14px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 9px;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  box-shadow: 2px 2px 0 #ffffff;
+}
+
+.reviews-submit:hover:not(:disabled) {
+  background: #00ff41;
+}
+
+.reviews-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.reviews-form-note {
+  margin: 0;
+  font-family: 'Source Code Pro', monospace;
+  font-size: 11px;
+  color: #c0c0c0;
+  font-style: italic;
+}
+
+.reviews-feedback {
+  border: 2px solid;
+  padding: 8px 10px;
+  font-family: 'Orbitron', monospace;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.reviews-feedback.success {
+  color: #dcffcb;
+  border-color: #00ff41;
+  background: rgba(0, 255, 65, 0.1);
+}
+
+.reviews-feedback.error {
+  color: #ffd9ec;
+  border-color: #fc4198;
+  background: rgba(252, 65, 152, 0.12);
+}
+
 .contact-section {
   min-height: auto;
   justify-content: flex-start;
@@ -2045,6 +2399,70 @@ button.project-link {
   .about-section {
     padding-top: 40px;
     padding-bottom: 16px;
+  }
+
+  .reviews-section {
+    padding-top: 24px;
+    padding-bottom: 28px;
+  }
+
+  .reviews-carousel {
+    gap: 0.5rem;
+    padding: 0 0.5rem;
+  }
+
+  .reviews-carousel-content {
+    max-width: 100%;
+    min-width: 0;
+    flex: 1;
+  }
+
+  .reviews-carousel .svg-nav-button {
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+  }
+
+  .review-carousel-card {
+    padding: 22px 18px;
+    min-height: 220px;
+    box-shadow: 3px 3px 0 #fc4198, 6px 6px 0 #000000;
+  }
+
+  .review-carousel-header h3 {
+    font-size: 12px;
+  }
+
+  .review-carousel-message {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .reviews-cta {
+    margin-top: 20px;
+  }
+
+  .reviews-cta-button {
+    padding: 12px 22px;
+    font-size: 10px;
+    letter-spacing: 1px;
+  }
+
+  .review-modal {
+    max-width: 100%;
+    box-shadow: 4px 4px 0 #fc4198, 8px 8px 0 #000000;
+  }
+
+  .review-modal-header {
+    padding: 10px 12px;
+  }
+
+  .review-modal-title {
+    font-size: 10px;
+  }
+
+  .review-modal-body {
+    padding: 14px;
   }
 
   .contact-section {

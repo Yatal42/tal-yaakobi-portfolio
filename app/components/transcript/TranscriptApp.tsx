@@ -15,8 +15,8 @@ interface StatusMessage {
 
 const TABS: { key: TabKey; label: string }[] = [
   { key: "youtube", label: "YOUTUBE" },
-  { key: "moodle", label: "Univsersity" },
-  { key: "upload", label: "Upload File(VTT/SRT)" },
+  { key: "moodle", label: "UNIVERSITY" },
+  { key: "upload", label: "UPLOAD FILE (VTT/SRT)" },
 ];
 
 export default function TranscriptApp() {
@@ -35,8 +35,8 @@ export default function TranscriptApp() {
 
   return (
     <main className="transcript-page">
-      <header className="transcript-hero" dir="rtl">
-        <h1>Trancriptor - Accessible Transcript Extractor</h1>
+      <header className="transcript-hero" dir="ltr">
+        <h1>Transcriptor - Accessible Transcript Extractor</h1>
       </header>
 
       <div className="transcript-tabs" role="tablist" aria-label="Transcript sources">
@@ -63,7 +63,7 @@ export default function TranscriptApp() {
       ) : null}
 
       {status ? (
-        <div className={`transcript-status ${status.kind}`} dir="rtl" role={status.kind === "error" ? "alert" : "status"}>
+        <div className={`transcript-status ${status.kind}`} dir="ltr" role={status.kind === "error" ? "alert" : "status"}>
           {status.message}
         </div>
       ) : null}

@@ -51,9 +51,10 @@ const RetroNavbar = () => {
 
   const navItems: NavItem[] = [
     { id: 'transcript', label: '</TRANSCRIPT>', kind: 'route', to: '/transcript' },
-    { id: 'projects', label: '</PROJECTS>', kind: 'section' }, 
+    { id: 'projects', label: '</PROJECTS>', kind: 'section' },
     { id: 'skills', label: '</SKILLS>', kind: 'section' },
     { id: 'about', label: '</ABOUT>', kind: 'section' },
+    { id: 'reviews', label: '</REVIEWS>', kind: 'section' },
     { id: 'contact', label: '</CONTACT>', kind: 'section' }
   ];
 

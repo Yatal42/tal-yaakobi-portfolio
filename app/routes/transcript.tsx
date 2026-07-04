@@ -2,11 +2,11 @@ import type { MetaFunction } from "react-router";
 import TranscriptApp from "../components/transcript/TranscriptApp";
 
 export const meta: MetaFunction = () => [
-  { title: "Transcript - Tal Yaakobi" },
+  { title: "Transcriptor | Tal Yaakobi" },
   {
     name: "description",
     content:
-      "Accessible transcript extractor for deaf students - YouTube, Lemida/Moodle and uploaded subtitle files, rendered as a readable grid.",
+      "Accessible transcript extraction from YouTube, Lemida/Moodle, and uploaded VTT/SRT files in a readable card layout.",
   },
 ];
 

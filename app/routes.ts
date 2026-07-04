@@ -5,4 +5,5 @@ export default [
   route("transcript", "routes/transcript.tsx"),
   route("api/youtube-transcript", "routes/api.youtube-transcript.ts"),
   route("transcript-api/youtube-transcript", "routes/transcript-api.youtube-transcript.ts"),
+  route("api/reviews", "routes/api.reviews.ts"),
 ] satisfies RouteConfig;

@@ -41,7 +41,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>Tal Yaakobi - Full Stack Developer</title>
-        <meta name="description" content="Creative developer focused on accessibility solutions and innovative experiences" />
+        <meta name="description" content="Full-stack developer building accessible, thoughtful, and user-centered digital products." />
         <Links />
       </head>
       <body>

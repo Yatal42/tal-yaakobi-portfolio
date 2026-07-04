@@ -72,34 +72,34 @@ export default function Contact() {
 
   return (
     <div className="contact-grid">
-      <RetroButton onClick={handleEmail}>
+      <RetroButton onClick={handleEmail} ariaLabel="Send email" title="Send email">
         <span style={iconStyle}>📧</span>
         <span style={textStyle}>Email</span>
       </RetroButton>
 
-      <RetroButton onClick={() => handleCopy(phone, 'phone')}>
+      <RetroButton onClick={() => handleCopy(phone, 'phone')} ariaLabel="Copy phone number" title="Copy phone number">
         <span style={iconStyle}>📞</span>
         <span style={textStyle}>
           {copyStatus['phone'] ? 'Copied!' : 'Phone'}
         </span>
       </RetroButton>
 
-      <RetroButton onClick={handleWhatsApp}>
+      <RetroButton onClick={handleWhatsApp} ariaLabel="Open WhatsApp chat" title="Open WhatsApp chat">
         <span style={iconStyle}>💬</span>
         <span style={textStyle}>WhatsApp</span>
       </RetroButton>
 
-      <RetroButton onClick={handleLinkedIn}>
+      <RetroButton onClick={handleLinkedIn} ariaLabel="Open LinkedIn profile" title="Open LinkedIn profile">
         <span style={iconStyle}>💼</span>
         <span style={textStyle}>LinkedIn</span>
       </RetroButton>
 
-      <RetroButton onClick={handleDriveMaterials}>
+      <RetroButton onClick={handleDriveMaterials} ariaLabel="Open shared drive materials" title="Open shared drive materials">
         <span style={iconStyle}>📚</span>
         <span style={textStyle}>Drive</span>
       </RetroButton>
 
-      <RetroButton onClick={handleStudentCommunity}>
+      <RetroButton onClick={handleStudentCommunity} ariaLabel="Open student community group" title="Open student community group">
         <span style={iconStyle}>👩‍🎓</span>
         <span style={textStyle}>Community</span>
       </RetroButton>

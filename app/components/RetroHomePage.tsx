@@ -3,6 +3,7 @@ import ProjectCarousel from './ProjectCarousel';
 import Skills from './Skills';
 import AboutMe from './AboutMe';
 import Contact from './Contact';
+import ReviewsSection from "./reviews/ReviewsSection";
 import { projects } from '../data/projects';
 
 const RetroHomePage = () => {
@@ -24,14 +25,16 @@ const RetroHomePage = () => {
           <AboutMe />
         </section>
 
+        <ReviewsSection />
+
         <section id="contact" className="retro-section contact-section">
-          <h2 className="retro-section-title">Let's Collaborate</h2>
+          <h2 className="retro-section-title">Let's Build Together</h2>
           <Contact />
         </section>
       </div>
 
       <div className="retro-footer">
-        Ready to build something amazing together?
+        Open to meaningful products, collaborations, and accessibility-first ideas.
       </div>
     </>
   );

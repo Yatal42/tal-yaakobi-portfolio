@@ -39,7 +39,7 @@ export default function TranscriptResult({ title, segments }: Props) {
         <h2 className="transcript-result-title">{title}</h2>
         {speaker ? (
           <div className="transcript-speaker">
-            {hebrew ? "דובר זוהה:" : "Detected speaker:"} {speaker}
+            Detected speaker: {speaker}
           </div>
         ) : null}
         <a

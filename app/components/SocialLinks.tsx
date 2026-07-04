@@ -27,7 +27,7 @@ const SocialLinks = ({ className = "" }: SocialLinksProps) => {
     <div className={`relative ${className}`} style={containerStyle} id="social-links-container">
       <img 
         src="/assets/side-icons.svg" 
-        alt="Social Links" 
+        alt="Quick social links" 
         className="w-full h-full opacity-90 pointer-events-none"
         style={{ width: '56px', height: '420px', objectFit: 'contain' }}
       />
@@ -56,8 +56,8 @@ const SocialLinks = ({ className = "" }: SocialLinksProps) => {
           width: '84%',
           height: '14%'
         }}
-        title="Visit GitHub Profile"
-        aria-label="Visit GitHub Profile"
+        title="Open GitHub profile"
+        aria-label="Open GitHub profile"
       />
 
       <button
@@ -70,8 +70,8 @@ const SocialLinks = ({ className = "" }: SocialLinksProps) => {
           width: '84%',
           height: '16%'
         }}
-        title="Visit LinkedIn Profile"
-        aria-label="Visit LinkedIn Profile"
+        title="Open LinkedIn profile"
+        aria-label="Open LinkedIn profile"
       />
     </div>
   );

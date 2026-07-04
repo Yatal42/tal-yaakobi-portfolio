@@ -31,6 +31,7 @@ export default function BookmarkletButton() {
       onClick={(e) => e.preventDefault()}
       draggable
       title="Drag to your bookmarks bar"
+      aria-label="Drag bookmarklet to bookmarks bar"
     >
       ⭐ Lemida → VTT
     </a>
