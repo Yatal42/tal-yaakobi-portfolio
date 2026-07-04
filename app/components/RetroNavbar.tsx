@@ -1,46 +1,26 @@
 import { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router';
+import { scrollToSection } from '../lib/scroll';
 
 type NavItem =
-  | { id: string; label: string; kind: 'section' }
-  | { id: string; label: string; kind: 'route'; to: string };
+  | { id: string; label: string; kind: 'route'; to: string }
+  | { id: string; label: string; kind: 'scroll'; targetId: string };
+
+const navItems: NavItem[] = [
+  { id: 'teaching', label: '</TEACHING>', kind: 'route', to: '/teaching' },
+  { id: 'development', label: '</DEV>', kind: 'route', to: '/development' },
+  { id: 'about', label: '</ABOUT>', kind: 'scroll', targetId: 'about' },
+  { id: 'transcript', label: '</TRANSCRIPT>', kind: 'route', to: '/transcript' },
+  { id: 'contact', label: '</CONTACT>', kind: 'scroll', targetId: 'contact' }
+];
 
 const RetroNavbar = () => {
-  const [activeSection, setActiveSection] = useState('');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
   const onHome = location.pathname === '/';
 
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (!element) return;
-
-    const nav = document.querySelector('.retro-nav');
-    const navHeight = nav instanceof HTMLElement ? nav.offsetHeight : 40;
-    const heading = element.querySelector('.retro-section-title');
-    const targetElement = heading instanceof HTMLElement ? heading : element;
-    const targetTop = targetElement.getBoundingClientRect().top + window.scrollY - navHeight - 10;
-
-    window.scrollTo({
-      top: Math.max(targetTop, 0),
-      behavior: 'smooth'
-    });
-  };
-
-  const handleSectionClick = (sectionId: string) => {
-    setActiveSection(sectionId);
-    setIsMobileMenuOpen(false);
-    if (onHome) {
-      scrollToSection(sectionId);
-    } else {
-      navigate(`/#${sectionId}`);
-      setTimeout(() => scrollToSection(sectionId), 60);
-    }
-  };
-
   const handleLogoClick = () => {
-    setActiveSection('');
     setIsMobileMenuOpen(false);
     if (onHome) {
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -49,23 +29,16 @@ const RetroNavbar = () => {
     }
   };
 
-  const navItems: NavItem[] = [
-    { id: 'transcript', label: '</TRANSCRIPT>', kind: 'route', to: '/transcript' },
-    { id: 'projects', label: '</PROJECTS>', kind: 'section' },
-    { id: 'skills', label: '</SKILLS>', kind: 'section' },
-    { id: 'about', label: '</ABOUT>', kind: 'section' },
-    { id: 'reviews', label: '</REVIEWS>', kind: 'section' },
-    { id: 'contact', label: '</CONTACT>', kind: 'section' }
-  ];
+  const handleScrollClick = (targetId: string) => {
+    setIsMobileMenuOpen(false);
+    if (scrollToSection(targetId)) return;
+    navigate(`/#${targetId}`);
+  };
 
-  const renderNavButton = (item: NavItem, baseClass: string) => {
-    const isActive =
-      item.kind === 'route'
-        ? location.pathname === item.to
-        : activeSection === item.id && onHome;
-    const className = `${baseClass} ${isActive ? 'active' : ''}`.trim();
-
+  const renderNavItem = (item: NavItem, baseClass: string) => {
     if (item.kind === 'route') {
+      const isActive = location.pathname === item.to;
+      const className = `${baseClass} ${isActive ? 'active' : ''}`.trim();
       return (
         <Link
           key={item.id}
@@ -80,9 +53,9 @@ const RetroNavbar = () => {
     return (
       <button
         key={item.id}
-        className={className}
-        onClick={() => handleSectionClick(item.id)}
         type="button"
+        className={baseClass}
+        onClick={() => handleScrollClick(item.targetId)}
       >
         {item.label}
       </button>
@@ -102,20 +75,20 @@ const RetroNavbar = () => {
         ☰
       </button>
       <button
-        className={`retro-nav-item logo ${activeSection === '' && onHome ? 'active' : ''}`}
+        className={`retro-nav-item logo ${onHome ? 'active' : ''}`}
         onClick={handleLogoClick}
         type="button"
       >
         TAL YAAKOBI
       </button>
-      {navItems.map((item) => renderNavButton(item, 'retro-nav-item retro-nav-item-desktop'))}
+      {navItems.map((item) => renderNavItem(item, 'retro-nav-item retro-nav-item-desktop'))}
       <div
         id="retro-mobile-menu"
         className={`retro-mobile-menu ${isMobileMenuOpen ? 'open' : ''}`}
       >
         {navItems.map((item) =>
-          renderNavButton(
-            { ...item, id: `mobile-${item.id}` } as NavItem,
+          renderNavItem(
+            { ...item, id: `mobile-${item.id}` },
             'retro-mobile-menu-item'
           )
         )}

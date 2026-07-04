@@ -1,42 +1,35 @@
+import { useEffect } from 'react';
+import { useLocation } from 'react-router';
 import Hero from './Hero';
-import ProjectCarousel from './ProjectCarousel';
-import Skills from './Skills';
 import AboutMe from './AboutMe';
-import Contact from './Contact';
 import ReviewsSection from "./reviews/ReviewsSection";
-import { projects } from '../data/projects';
+import { scrollToSection } from '../lib/scroll';
 
 const RetroHomePage = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (!location.hash) return;
+    const targetId = location.hash.slice(1);
+    const attempt = (retries: number) => {
+      if (scrollToSection(targetId)) return;
+      if (retries <= 0) return;
+      window.setTimeout(() => attempt(retries - 1), 60);
+    };
+    attempt(10);
+  }, [location.hash, location.key]);
 
   return (
-    <>
-      <div className="retro-container">
-        <Hero />
-        <section id="projects" className="retro-section projects-section motion-section motion-delay-1">
-          <h2 className="retro-section-title projects-title">Projects</h2>
-          <p className="projects-subtitle">Selected work, shipped products, and hands-on technical experiments.</p>
-          <ProjectCarousel projects={projects} />
-        </section>
+    <div className="retro-container">
+      <Hero />
 
-        <Skills />
+      <section id="about" className="retro-section about-section motion-section motion-delay-2">
+        <h2 className="retro-section-title">About Me</h2>
+        <AboutMe />
+      </section>
 
-        <section id="about" className="retro-section about-section motion-section motion-delay-2">
-          <h2 className="retro-section-title">About Me</h2>
-          <AboutMe />
-        </section>
-
-        <ReviewsSection />
-
-        <section id="contact" className="retro-section contact-section">
-          <h2 className="retro-section-title">Let's Build Together</h2>
-          <Contact />
-        </section>
-      </div>
-
-      <div className="retro-footer">
-        Open to meaningful products, collaborations, and accessibility-first ideas.
-      </div>
-    </>
+      <ReviewsSection />
+    </div>
   );
 };
 

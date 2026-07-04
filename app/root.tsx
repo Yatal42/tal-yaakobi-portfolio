@@ -1,5 +1,4 @@
 import {
-  Meta,
   Links,
   Outlet,
   Scripts,
@@ -9,6 +8,7 @@ import type { LinksFunction } from "react-router";
 import RetroNavbar from "./components/RetroNavbar";
 import SocialLinks from "./components/SocialLinks";
 import StarfieldBackground from "./components/StarfieldBackground";
+import ContactSection from "./components/ContactSection";
 
 import "./app.css";
 import "./styles/global.css";
@@ -21,8 +21,6 @@ export const links: LinksFunction = () => [
     href: "https://fonts.gstatic.com",
     crossOrigin: "anonymous",
   },
-  { rel: "dns-prefetch", href: "https://prod.spline.design" },
-  { rel: "preconnect", href: "https://prod.spline.design" },
   {
     rel: "stylesheet",
     href: "https://fonts.googleapis.com/css2?family=Goldman:wght@400;700&family=Saira+Condensed:wght@100;200;300;400;500;600;700;800;900&display=swap"
@@ -40,8 +38,8 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Tal Yaakobi - Full Stack Developer</title>
-        <meta name="description" content="Full-stack developer building accessible, thoughtful, and user-centered digital products." />
+        <title>Tal Yaakobi - CS Educator & Private Tutor</title>
+        <meta name="description" content="Private tutoring, full independent editions of university-level computer science courses, and research on how CS should be taught in academia." />
         <Links />
       </head>
       <body>
@@ -51,7 +49,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
           <div className="social-links-wrapper fixed right-4 top-1/2 transform -translate-y-1/2 z-40">
             <SocialLinks className="flex-col gap-4" />
           </div>
-          {children}
+          <div className="retro-main">{children}</div>
+          <ContactSection />
+          <div className="retro-footer">
+            Currently teaching, tutoring, and researching CS education. Reach out anytime.
+          </div>
         </div>
         <ScrollRestoration />
         <Scripts />
