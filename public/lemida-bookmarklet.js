@@ -1,13 +1,13 @@
 (async () => {
   try {
     if (!/lemida\.biu\.ac\.il/.test(location.href)) {
-      alert('הסימניה עובדת רק בדף הרצאה בלמידע (lemida.biu.ac.il).');
+      alert('This bookmarklet works only on lecture pages in Lemida (lemida.biu.ac.il).');
       return;
     }
     const html = document.documentElement.outerHTML;
     const m = html.match(/videoid["'\s:=]+(\d+)/i);
     if (!m) {
-      alert('לא נמצא מזהה סרטון. ודאי שאת בדף הרצאה שהנגן בו נטען.');
+      alert('No video ID was found. Make sure the lecture player has fully loaded.');
       return;
     }
     const videoId = m[1];
@@ -33,7 +33,7 @@
       }
     }
     if (!vtt) {
-      alert('לא נמצאו כתוביות זמינות עבור הסרטון.');
+      alert('No captions are available for this lecture.');
       return;
     }
     const blob = new Blob([vtt], { type: 'text/vtt;charset=utf-8' });
@@ -46,6 +46,6 @@
     a.remove();
     setTimeout(() => URL.revokeObjectURL(url), 1000);
   } catch (e) {
-    alert('שגיאה בהורדת הכתוביות: ' + (e.message || e));
+    alert('Caption download failed: ' + (e.message || e));
   }
 })();

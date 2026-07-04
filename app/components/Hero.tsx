@@ -8,7 +8,7 @@ const Hero = () => {
           </h1>
           <p className="pixel-subheading hero-subheading">FULL STACK DEVELOPER</p>
           <p className="retro-text hero-intro-text">
-            A passionate Computer Science BSc graduate, combining strong technical skills with creative vision.
+            Full-stack developer focused on accessible products, clear UX, and practical solutions from idea to launch.
           </p>
         </div>
         

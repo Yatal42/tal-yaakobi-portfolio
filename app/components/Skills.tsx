@@ -37,11 +37,11 @@ const Skills = () => {
 
   return (
     <section id="skills" className="retro-section skills-section">
-      <h2 className="retro-section-title skills-title">What I'm Good At</h2>
+      <h2 className="retro-section-title skills-title">Core Skills</h2>
       <div className="skills-content">
         <h3 className="skills-subtitle">Technical Skills</h3>
         <p className="skills-description">
-          Technology stack for building products end-to-end with a strong focus on quality and user experience.
+          Stack I use to ship end-to-end products with reliability, accessibility, and strong developer experience.
         </p>
         <div className="skills-showcase">
           <div

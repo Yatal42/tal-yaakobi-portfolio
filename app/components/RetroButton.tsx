@@ -3,9 +3,11 @@ interface RetroButtonProps {
   children: React.ReactNode;
   href?: string;
   type?: 'button' | 'link';
+  ariaLabel?: string;
+  title?: string;
 }
 
-export default function RetroButton({ onClick, children, href, type = 'button' }: RetroButtonProps) {
+export default function RetroButton({ onClick, children, href, type = 'button', ariaLabel, title }: RetroButtonProps) {
   const isExternalHttpLink = typeof href === 'string' && /^https?:\/\//i.test(href);
 
   const baseStyle = {
@@ -40,6 +42,8 @@ export default function RetroButton({ onClick, children, href, type = 'button' }
         target={isExternalHttpLink ? "_blank" : undefined}
         rel={isExternalHttpLink ? "noopener noreferrer" : undefined}
         style={baseStyle}
+        aria-label={ariaLabel}
+        title={title}
         onMouseEnter={(e) => {
           e.currentTarget.style.background = '#00FF41';
           e.currentTarget.style.transform = 'translateY(-4px)';
@@ -61,6 +65,8 @@ export default function RetroButton({ onClick, children, href, type = 'button' }
       type="button"
       onClick={onClick}
       style={baseStyle}
+      aria-label={ariaLabel}
+      title={title}
       onMouseEnter={(e) => {
         e.currentTarget.style.background = '#00FF41';
         e.currentTarget.style.transform = 'translateY(-4px)';

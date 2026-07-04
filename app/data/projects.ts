@@ -4,7 +4,7 @@ export const projects: Project[] = [
   {
     title: "My Portfolio",
     description:
-      "My personal portfolio website, the one you are currently viewing. Built with React, TypeScript, and Tailwind CSS, with a custom retro-inspired UI and interactive sections. It was developed with the help of Cursor AI.",
+      "Personal portfolio site built with React, TypeScript, and Tailwind CSS. Includes a custom retro UI, interactive sections, and accessibility-focused structure.",
     technologies: [
       "React",
       "TypeScript",
@@ -19,13 +19,13 @@ export const projects: Project[] = [
   {
     title: "Chord-I",
     description:
-      "AI-powered chord detection system that extracts chords from songs using machine learning algorithms and audio processing techniques. Currently in active development with focus on accuracy and real-time processing.",
+      "AI-powered chord detection system that extracts chords from songs using machine learning and audio processing. Currently focused on accuracy and real-time performance.",
     technologies: [
       "AI",
       "Machine Learning",
       "Audio Processing",
       "Python",
-      "Typescript",
+      "TypeScript",
       "React",
       "Next.js",
       "Tailwind CSS",
@@ -39,7 +39,7 @@ export const projects: Project[] = [
   {
     title: "Popcorn Palace",
     description:
-      "Backend cinema ticket booking system built with NestJS, PostgreSQL, TypeORM, and Docker. Features a robust REST API, scalable architecture, and comprehensive test coverage with unit & E2E tests.",
+      "Backend cinema ticket-booking system built with NestJS, PostgreSQL, TypeORM, and Docker. Includes a scalable REST API and strong unit and end-to-end test coverage.",
     technologies: [
       "NestJS",
       "PostgreSQL",
@@ -52,9 +52,9 @@ export const projects: Project[] = [
     githubUrl: "https://github.com/Yatal42/popcorn-palace",
   },
   {
-    title: "Task & projects Gantt Chart",
+    title: "Task & Projects Gantt Chart",
     description:
-      "Full-stack project for managing tasks and projects with dependency handling, date shifting, and live updates. Built with React + TypeScript on the frontend and Node.js + Express + MySQL on the backend.",
+      "Full-stack task and project planner with dependency handling, date shifting, and live updates. Built with React + TypeScript on the frontend and Node.js + Express + MySQL on the backend.",
     technologies: ["React", "TypeScript", "Node.js", "Express", "MySQL"],
     status: "Completed",
     githubUrl: "https://github.com/Yatal42/React-task-Gantt-Chart",
@@ -63,8 +63,8 @@ export const projects: Project[] = [
   {
     title: "Calories Tracker - Frontend",
     description:
-      "Frontend interface for the calories tracking application. Provides user-friendly interface for meal logging and calorie monitoring with responsive design.",
-    technologies: ["React", "JavaScript", "HTML", "CSS", "indexDB"],
+      "Frontend for a calorie-tracking application with meal logging, calorie monitoring, and a responsive experience.",
+    technologies: ["React", "JavaScript", "HTML", "CSS", "IndexedDB"],
     status: "Completed",
     githubUrl: "https://github.com/Yatal42/Calories_Frontend_Project",
     liveUrl: "https://yatal42.github.io/Calories_Frontend_Project/",

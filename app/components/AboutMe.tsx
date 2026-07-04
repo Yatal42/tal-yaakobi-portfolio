@@ -4,13 +4,12 @@ import RetroAudioPlayer from "./RetroAudioPlayer";
 export default function AboutMe() {
   const aboutLines = useMemo(
     () => [
-      "A passionate Computer Science BSc graduate",
-      "Combining strong technical skills with creative vision",
-      "Unique background in both software engineering and TV production",
-      "Approaching technical challenges with analytical precision and creative thinking",
-      "M.A. student in Science and Technology Education, focused on Wellbeing Education at Bar-Ilan University.",
-      "Accessibility-aware educator with hands-on work alongside deaf students.",
-      "Deeply connected to algorithmic thinking and currently writing a Hebrew book about algorithms."
+      "Computer Science graduate with full-stack product development experience.",
+      "Background in software engineering and television production.",
+      "Strong in turning complex technical ideas into clear user flows.",
+      "M.A. student in Science and Technology Education at Bar-Ilan University.",
+      "Accessibility-focused educator with hands-on work alongside deaf students.",
+      "Passionate about algorithmic thinking and technical storytelling."
     ],
     []
   );
@@ -19,19 +18,19 @@ export default function AboutMe() {
     () => [
       {
         title: "Vision",
-        text: "As a former TV producer, I'm naturally wired to see the whole board. I approach software development with a passion for understanding the 'why' behind every feature, ensuring that even the smallest details serve the big-picture vision."
+        text: "I connect product goals to implementation details, so every feature supports a clear user outcome."
       },
       {
         title: "Curiosity",
-        text: "My curiosity is my engine. I love diving into new subjects, and I find that sharing my journey-whether with my students or on LinkedIn-is the best way to deepen my own understanding. For me, learning isn't just a task; it's a core passion."
+        text: "I learn fast, test ideas early, and keep improving through sharing and feedback."
       },
       {
         title: "Community",
-        text: "Whether leading a team, collaborating in meetups, or mentoring students, my approach is fostering an environment where people feel connected, heard, and empowered through empathy and clear communication."
+        text: "I value collaboration, mentorship, and communication that keeps teams aligned and motivated."
       },
       {
         title: "Perspective",
-        text: "My approach to problem-solving is deeply shaped by my passion for diverse fields like art, history, music, and philosophy. It's not about knowing facts, but about having a rich toolkit of mental models that allows me to ask better questions and connect strategic goals to the human needs behind them."
+        text: "I bring cross-disciplinary thinking to product work, combining strategy, creativity, and practical execution."
       }
     ],
     []

@@ -1,28 +1,23 @@
 import { useEffect, useState } from "react";
+import ReviewsCarousel from "./ReviewsCarousel";
+import ReviewFormModal from "./ReviewFormModal";
+import { mockReviews } from "~/data/reviews";
 import type { Review } from "~/types/review";
-import ReviewForm from "./ReviewForm";
-import ReviewsList from "./ReviewsList";
 
 export default function ReviewsSection() {
-  const [reviews, setReviews] = useState<Review[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const [apiReviews, setApiReviews] = useState<Review[]>([]);
+  const [isFormOpen, setIsFormOpen] = useState(false);
 
   const loadReviews = async () => {
-    setLoading(true);
-    setError(null);
     try {
       const res = await fetch("/api/reviews");
+      if (!res.ok) return;
       const data = await res.json();
-      if (!res.ok) {
-        setError(data?.error || "Unable to load reviews right now.");
-        return;
+      if (Array.isArray(data?.reviews)) {
+        setApiReviews(data.reviews);
       }
-      setReviews(Array.isArray(data?.reviews) ? data.reviews : []);
-    } catch (fetchError) {
-      setError(`Network error: ${(fetchError as Error).message}`);
-    } finally {
-      setLoading(false);
+    } catch {
+      // Silent - mock reviews will still display
     }
   };
 
@@ -30,16 +25,36 @@ export default function ReviewsSection() {
     void loadReviews();
   }, []);
 
+  const reviews = [...mockReviews, ...apiReviews];
+
   return (
-    <section id="reviews" className="retro-section reviews-section">
+    <section
+      id="reviews"
+      className="retro-section reviews-section motion-section motion-delay-2"
+    >
       <h2 className="retro-section-title">Reviews</h2>
       <p className="reviews-subtitle">
-        Honest feedback from collaborators, students, and teams. New reviews are moderated before publishing.
+        Honest feedback from students and collaborators I've had the pleasure to work with.
       </p>
-      <div className="reviews-layout">
-        <ReviewForm onSubmitted={() => void loadReviews()} />
-        <ReviewsList reviews={reviews} loading={loading} error={error} />
+      <ReviewsCarousel reviews={reviews} />
+
+      <div className="reviews-cta">
+        <button
+          type="button"
+          className="reviews-cta-button"
+          onClick={() => setIsFormOpen(true)}
+        >
+          Leave a Review
+        </button>
       </div>
+
+      <ReviewFormModal
+        isOpen={isFormOpen}
+        onClose={() => setIsFormOpen(false)}
+        onSubmitted={() => {
+          void loadReviews();
+        }}
+      />
     </section>
   );
 }

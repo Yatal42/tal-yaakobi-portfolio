@@ -68,6 +68,7 @@ export default function ReviewForm({ onSubmitted }: Props) {
           value={role}
           onChange={(event) => setRole(event.target.value)}
           maxLength={120}
+          placeholder="Student, Colleague, etc."
         />
       </div>
 
@@ -79,11 +80,11 @@ export default function ReviewForm({ onSubmitted }: Props) {
           value={rating}
           onChange={(event) => setRating(Number(event.target.value))}
         >
-          <option value={5}>5 - Excellent</option>
-          <option value={4}>4 - Very Good</option>
-          <option value={3}>3 - Good</option>
-          <option value={2}>2 - Fair</option>
-          <option value={1}>1 - Needs Improvement</option>
+          <option value={5}>★★★★★ 5 - Excellent</option>
+          <option value={4}>★★★★☆ 4 - Very Good</option>
+          <option value={3}>★★★☆☆ 3 - Good</option>
+          <option value={2}>★★☆☆☆ 2 - Fair</option>
+          <option value={1}>★☆☆☆☆ 1 - Needs Improvement</option>
         </select>
       </div>
 
@@ -94,15 +95,21 @@ export default function ReviewForm({ onSubmitted }: Props) {
           className="reviews-textarea"
           value={message}
           onChange={(event) => setMessage(event.target.value)}
+          dir="auto"
           minLength={20}
           maxLength={800}
           required
+          placeholder="Share your experience..."
         />
       </div>
 
       <button className="reviews-submit" type="submit" disabled={submitting}>
         {submitting ? "Submitting..." : "Submit Review"}
       </button>
+
+      <p className="reviews-form-note">
+        Reviews are moderated before publishing.
+      </p>
 
       {feedback ? (
         <div className={`reviews-feedback ${feedback.kind}`} role={feedback.kind === "error" ? "alert" : "status"}>
