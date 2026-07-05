@@ -6,7 +6,7 @@ export default function AboutMe() {
       "Computer Science graduate turned full-time CS educator.",
       "Private tutor for university students in core CS courses.",
       "Run full independent editions of academic CS courses, sold directly to students.",
-      "M.A. researcher in Science and Technology Education at Bar-Ilan University, focused on how CS should be taught.",
+      "M.A. researcher in Science and Technology Education at Bar-Ilan University, focused on how CS is taught and how it could be taught better.",
       "Accessibility-focused teaching, including hands-on work alongside deaf students.",
       "Software engineering background - I still build, but teaching is the main thing."
     ],
@@ -29,7 +29,7 @@ export default function AboutMe() {
       },
       {
         title: "Impact",
-        text: "Passing the exam is the minimum bar. The real test is whether the next course feels easier."
+        text: "The goal is more than passing the exam - it's making the next course easier to face."
       }
     ],
     []

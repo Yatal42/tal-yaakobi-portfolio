@@ -9,7 +9,7 @@ const TeachingPage = () => {
         imageSide="right"
         heading="TEACHING"
         subheading="TUTORING · COURSES · RESEARCH"
-        intro="Three parts of one job: private tutoring, full courses that mirror the university syllabus, and research on how CS should be taught."
+        intro="Three parts of one job: private tutoring, full courses that mirror the university syllabus, and research on how CS is taught and how it could be taught better."
       />
 
       <Services />

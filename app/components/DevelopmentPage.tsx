@@ -17,7 +17,7 @@ const DevelopmentPage = () => {
       <section id="projects" className="retro-section projects-section motion-section motion-delay-1">
         <h2 className="retro-section-title projects-title">Projects</h2>
         <p className="projects-subtitle">
-          Selected work, shipped products, and hands-on technical experiments.
+          A selection of practice projects and technical experiments I've built end to end.
         </p>
         <ProjectCarousel projects={projects} />
       </section>

@@ -12,7 +12,7 @@ const services = [
   {
     id: "research",
     title: "CS Education Research",
-    text: "M.A. research at Bar-Ilan University on how computer science should be taught. The research and the teaching inform each other.",
+    text: "M.A. research at Bar-Ilan University on how computer science is taught and how it could be taught better. The research and the teaching inform each other.",
   },
 ];
 

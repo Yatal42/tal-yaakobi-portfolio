@@ -39,7 +39,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>Tal Yaakobi - CS Educator & Private Tutor</title>
-        <meta name="description" content="Private tutoring, full independent editions of university-level computer science courses, and research on how CS should be taught in academia." />
+        <meta name="description" content="Private tutoring, full independent editions of university-level computer science courses, and research on how CS is taught and how it could be taught better." />
         <Links />
       </head>
       <body>
@@ -52,7 +52,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
           <div className="retro-main">{children}</div>
           <ContactSection />
           <div className="retro-footer">
-            Currently teaching, tutoring, and researching CS education. Reach out anytime.
+            Ready to build something amazing together?
           </div>
         </div>
         <ScrollRestoration />

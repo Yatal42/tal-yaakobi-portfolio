@@ -7,7 +7,7 @@ const Hero = () => {
       imageSide="right"
       heading={<>TAL<br />YAAKOBI</>}
       subheading="CS EDUCATOR · PRIVATE TUTOR · RESEARCHER"
-      intro="I teach computer science to university students: private 1:1 tutoring, full independent editions of core CS courses, and research on how CS should be taught in academia."
+      intro="I teach computer science to university students: private 1:1 tutoring, full independent editions of core CS courses, and research on how CS is taught and how it could be taught better."
       actions={
         <>
           <button
