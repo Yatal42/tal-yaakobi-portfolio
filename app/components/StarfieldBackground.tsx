@@ -29,7 +29,7 @@ const StarfieldBackground = () => {
       stars.push(star);
     }
 
-    stars.forEach((star, index) => {
+    stars.forEach((star) => {
       const starElement = document.createElement('div');
       starElement.className = `star ${star.size}`;
       starElement.style.left = `${star.x}%`;

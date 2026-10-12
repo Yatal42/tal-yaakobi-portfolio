@@ -1,31 +1,10 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import ReviewsCarousel from "./ReviewsCarousel";
 import ReviewFormModal from "./ReviewFormModal";
-import { mockReviews } from "~/data/reviews";
-import type { Review } from "~/types/review";
+import { reviews } from "~/data/reviews";
 
 export default function ReviewsSection() {
-  const [apiReviews, setApiReviews] = useState<Review[]>([]);
   const [isFormOpen, setIsFormOpen] = useState(false);
-
-  const loadReviews = async () => {
-    try {
-      const res = await fetch("/api/reviews");
-      if (!res.ok) return;
-      const data = await res.json();
-      if (Array.isArray(data?.reviews)) {
-        setApiReviews(data.reviews);
-      }
-    } catch {
-      // Silent - mock reviews will still display
-    }
-  };
-
-  useEffect(() => {
-    void loadReviews();
-  }, []);
-
-  const reviews = [...mockReviews, ...apiReviews];
 
   return (
     <section
@@ -51,9 +30,6 @@ export default function ReviewsSection() {
       <ReviewFormModal
         isOpen={isFormOpen}
         onClose={() => setIsFormOpen(false)}
-        onSubmitted={() => {
-          void loadReviews();
-        }}
       />
     </section>
   );

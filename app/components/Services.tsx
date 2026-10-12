@@ -1,20 +1,4 @@
-const services = [
-  {
-    id: "tutoring",
-    title: "Private Tutoring",
-    text: "One-on-one sessions, online or in person. We work at your pace, whether it's exam prep or full course coverage.",
-  },
-  {
-    id: "courses",
-    title: "Full Private Courses",
-    text: "Complete independent editions of core CS courses. Structured lessons, recordings, materials, and practice included.",
-  },
-  {
-    id: "research",
-    title: "CS Education Research",
-    text: "M.A. research at Bar-Ilan University on how computer science is taught and how it could be taught better. The research and the teaching inform each other.",
-  },
-];
+import { Link } from "react-router";
 
 const subjects = [
   "Data Structures",
@@ -34,6 +18,19 @@ const subjects = [
   "Machine Learning",
 ];
 
+const services = [
+  {
+    id: "tutoring",
+    title: "Private Tutoring",
+    text: "One-on-one sessions, online or in person. We work at your pace, whether it's exam prep or full course coverage.",
+  },
+  {
+    id: "research",
+    title: "CS Education Research",
+    text: "M.A. research at Bar-Ilan University on how computer science is taught and how it could be taught better. The research and the teaching inform each other.",
+  },
+];
+
 const Services = () => {
   return (
     <section
@@ -42,7 +39,7 @@ const Services = () => {
     >
       <h2 className="retro-section-title">What I Do</h2>
       <p className="services-subtitle">
-        Private tutoring, full courses, and research into how computer science is taught.
+        Private tutoring, and research into how computer science is taught.
       </p>
 
       <ol className="services-list">
@@ -69,7 +66,12 @@ const Services = () => {
           ))}
         </ul>
         <p className="services-subjects-note">
-          Not on the list? Reach out - most core CS courses are on the table.
+          Not on the list? Reach out. Most core CS courses are on the table.
+          Recorded courses for sale are in the{" "}
+          <Link to="/courses" className="services-inline-link">
+            course catalog
+          </Link>
+          .
         </p>
       </div>
     </section>
