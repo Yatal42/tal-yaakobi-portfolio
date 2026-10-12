@@ -1,10 +1,6 @@
 import { useState } from "react";
 
-interface Props {
-  onSubmitted: () => void;
-}
-
-export default function ReviewForm({ onSubmitted }: Props) {
+export default function ReviewForm() {
   const [name, setName] = useState("");
   const [role, setRole] = useState("");
   const [rating, setRating] = useState(5);
@@ -35,7 +31,6 @@ export default function ReviewForm({ onSubmitted }: Props) {
       setRole("");
       setRating(5);
       setMessage("");
-      onSubmitted();
     } catch (error) {
       setFeedback({ kind: "error", text: `Network error: ${(error as Error).message}` });
     } finally {

@@ -2624,6 +2624,26 @@ button.project-link {
   color: #ffffff;
 }
 
+.catalog-list {
+  gap: 36px;
+}
+
+.catalog-card {
+  gap: 10px;
+}
+
+.catalog-status {
+  margin: 0;
+  align-self: flex-start;
+  padding: 6px 10px;
+  border: 2px solid #00ff41;
+  color: #00ff41;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px;
+  letter-spacing: 1px;
+  line-height: 1.4;
+}
+
 .services-subjects {
   width: 100%;
   max-width: 780px;
@@ -2691,12 +2711,26 @@ button.project-link {
   }
 }
 
+.services-list + .services-subjects-note {
+  margin-top: 48px;
+}
+
 .services-subjects-note {
   margin: 8px 0 0 0;
   color: #c0c0c0;
   font-family: 'Orbitron', monospace;
   font-size: 15px;
   text-align: center;
+}
+
+.services-inline-link {
+  color: var(--neon-green);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.services-inline-link:hover {
+  color: var(--neon-pink);
 }
 
 @media (max-width: 600px) {

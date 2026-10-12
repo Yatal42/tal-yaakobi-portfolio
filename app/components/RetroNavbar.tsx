@@ -8,9 +8,9 @@ type NavItem =
 
 const navItems: NavItem[] = [
   { id: 'teaching', label: '</TEACHING>', kind: 'route', to: '/teaching' },
-  { id: 'development', label: '</DEV>', kind: 'route', to: '/development' },
+  { id: 'courses', label: '</COURSES>', kind: 'route', to: '/courses' },
+  { id: 'development', label: '</DEVELOPMENT>', kind: 'route', to: '/development' },
   { id: 'about', label: '</ABOUT>', kind: 'scroll', targetId: 'about' },
-  { id: 'transcript', label: '</TRANSCRIPT>', kind: 'route', to: '/transcript' },
   { id: 'contact', label: '</CONTACT>', kind: 'scroll', targetId: 'contact' }
 ];
 
