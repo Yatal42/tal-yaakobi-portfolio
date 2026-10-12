@@ -41,9 +41,9 @@ const CoursesPage = () => {
             <p className="services-subjects-note">Signed in as {user.name}.</p>
           ) : null}
           {!user ? (
-            <Link className="hero-cta-primary" to="/login?returnTo=/courses">
+            <a className="hero-cta-primary" href="/auth/google?returnTo=/courses">
               Sign in with Google
-            </Link>
+            </a>
           ) : (
             <form method="post" action="/logout">
               <button className="classroom-signout" type="submit">

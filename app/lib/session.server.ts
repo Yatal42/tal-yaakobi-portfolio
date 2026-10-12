@@ -34,7 +34,7 @@ export async function getUser(request: Request): Promise<AuthUser | null> {
 export async function requireUser(request: Request, returnTo: string) {
   const user = await getUser(request);
   if (user) return user;
-  const url = new URL("/login", request.url);
+  const url = new URL(googleAuthConfigured() ? "/auth/google" : "/login", request.url);
   url.searchParams.set("returnTo", returnTo);
   throw redirect(url.pathname + url.search);
 }
