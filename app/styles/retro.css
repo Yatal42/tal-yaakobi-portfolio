@@ -2430,6 +2430,8 @@ button.project-link {
 /* Persistent + page-level contact block */
 .retro-main {
   display: block;
+  position: relative;
+  z-index: 1;
 }
 
 .contact-block {
@@ -2642,6 +2644,229 @@ button.project-link {
   font-size: 10px;
   letter-spacing: 1px;
   line-height: 1.4;
+  text-decoration: none;
+}
+
+.catalog-open:hover {
+  background: #00ff41;
+  color: #050505;
+}
+
+.catalog-access {
+  width: 100%;
+  max-width: 780px;
+  margin-top: 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+}
+
+.catalog-access .hero-cta-primary {
+  width: auto;
+  max-width: none;
+  text-decoration: none;
+}
+
+.login-section {
+  align-items: flex-start;
+  gap: 20px;
+  padding-top: 48px;
+}
+
+.login-lead {
+  max-width: 640px;
+}
+
+.login-error {
+  margin: 0;
+  color: #fc4198;
+  font-family: 'Orbitron', monospace;
+  font-size: 16px;
+  max-width: 640px;
+}
+
+.login-google {
+  width: auto;
+  text-decoration: none;
+}
+
+.classroom {
+  width: min(1180px, 100%);
+  margin: 28px auto 72px;
+  padding: 28px 32px 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  background: #ffffff;
+  color: #111111;
+  border: 3px solid #111111;
+  box-shadow: 8px 8px 0 #111111;
+}
+
+.classroom .pixel-heading,
+.classroom .pixel-subheading,
+.classroom .retro-text,
+.classroom .services-inline-link {
+  color: #111111;
+  text-shadow: none;
+}
+
+.classroom .services-inline-link:hover {
+  color: #333333;
+}
+
+.classroom-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.classroom-kicker {
+  margin-bottom: 8px;
+  font-size: 12px;
+}
+
+.classroom-title {
+  margin: 0 0 8px;
+  font-family: 'Orbitron', monospace;
+  font-size: 22px;
+  line-height: 1.35;
+  letter-spacing: 0;
+  color: #111111;
+}
+
+.classroom-signout {
+  background: #ffffff;
+  color: #111111;
+  border: 2px solid #111111;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px;
+  padding: 12px 14px;
+  cursor: pointer;
+}
+
+.classroom-signout:hover {
+  color: #ffffff;
+  background: #111111;
+  border-color: #111111;
+}
+
+.classroom-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(220px, 0.6fr);
+  gap: 28px;
+  align-items: start;
+}
+
+.classroom-player {
+  display: flex;
+  flex-direction: column;
+  border: 3px solid #111111;
+  background: #ffffff;
+}
+
+.classroom-video {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #111111;
+  display: block;
+}
+
+.classroom-video-empty {
+  display: flex;
+  align-items: flex-end;
+  padding: 28px;
+  background: #f4f4f4;
+}
+
+.classroom-player-caption {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px 18px 18px;
+}
+
+.classroom-player-label,
+.classroom-side-title,
+.classroom-file-kind {
+  margin: 0;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: #111111;
+}
+
+.classroom-player-title {
+  margin: 0;
+  font-family: 'Orbitron', monospace;
+  font-size: 20px;
+  color: #111111;
+}
+
+.classroom-player-note,
+.classroom-file-list,
+.classroom-lessons ol {
+  margin: 0;
+  color: #111111;
+  font-family: 'Orbitron', monospace;
+  font-size: 16px;
+}
+
+.classroom-files,
+.classroom-lessons {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.classroom-file-list,
+.classroom-lessons ol {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.classroom-file-list li,
+.classroom-lessons button {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+  width: 100%;
+  text-align: left;
+  color: #111111;
+  background: transparent;
+  border: 2px solid transparent;
+  font-family: 'Orbitron', monospace;
+  font-size: 16px;
+  padding: 8px 0;
+}
+
+.classroom-lessons button {
+  cursor: pointer;
+  justify-content: flex-start;
+}
+
+.classroom-lessons button.is-active {
+  border-color: #111111;
+  background: #ffffff;
+  color: #111111;
+  font-weight: 700;
+  padding: 8px 10px;
+}
+
+@media (max-width: 800px) {
+  .classroom-layout,
+  .classroom-heading {
+    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 .services-subjects {
