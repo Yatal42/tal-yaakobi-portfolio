@@ -5,10 +5,9 @@ import ReviewForm from "./ReviewForm";
 interface Props {
   isOpen: boolean;
   onClose: () => void;
-  onSubmitted: () => void;
 }
 
-export default function ReviewFormModal({ isOpen, onClose, onSubmitted }: Props) {
+export default function ReviewFormModal({ isOpen, onClose }: Props) {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -57,11 +56,7 @@ export default function ReviewFormModal({ isOpen, onClose, onSubmitted }: Props)
           </button>
         </div>
         <div className="review-modal-body">
-          <ReviewForm
-            onSubmitted={() => {
-              onSubmitted();
-            }}
-          />
+          <ReviewForm />
         </div>
       </div>
     </div>

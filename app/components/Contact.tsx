@@ -12,7 +12,7 @@ export default function Contact() {
       await navigator.clipboard.writeText(text);
       setCopyStatus({ [type]: true });
       setTimeout(() => setCopyStatus({ [type]: false }), 2000);
-    } catch (err) {
+    } catch {
       const textArea = document.createElement('textarea');
       textArea.value = text;
       document.body.appendChild(textArea);
