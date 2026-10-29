@@ -3,11 +3,12 @@ import { Link, useNavigate } from 'react-router';
 import { scrollToSection } from '../lib/scroll';
 import { localizePath, stripLocale, useI18n } from '../lib/locale';
 import { useViewer } from '../lib/viewer';
+import LogoutButton from './LogoutButton';
 
 const RetroNavbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { locale, t, location } = useI18n();
-  const { enrolled } = useViewer();
+  const { user, enrolled, openLogin } = useViewer();
   const navigate = useNavigate();
   const barePath = stripLocale(location.pathname);
   const onHome = barePath === '/';
@@ -75,6 +76,13 @@ const RetroNavbar = () => {
               {t.nav.myArea}
             </Link>
           ) : null}
+          {user ? (
+            <LogoutButton className="btn-bevel site-nav-auth" />
+          ) : (
+            <button type="button" className="btn-bevel site-nav-auth" onClick={openLogin}>
+              {t.courses.signIn}
+            </button>
+          )}
           <Link
             to={switchTo}
             className="btn-bevel site-nav-lang"
@@ -108,6 +116,15 @@ const RetroNavbar = () => {
             {item.label}
           </button>
         ))}
+        {enrolled.length > 0 ? (
+          <Link
+            to={localizePath('/my', locale)}
+            className="site-mobile-link site-mobile-my"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            {t.nav.myArea}
+          </Link>
+        ) : null}
       </div>
     </nav>
   );

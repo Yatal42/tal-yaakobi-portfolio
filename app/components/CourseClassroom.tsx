@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Link } from "react-router";
-import LogoutButton from "./LogoutButton";
 import SectionHeader from "./ui/SectionHeader";
 import Window from "./ui/Window";
 import type { CourseId } from "../data/courses";
@@ -27,12 +26,7 @@ export default function CourseClassroom({ courseId, access, email }: CourseClass
   return (
     <section className="section classroom" aria-labelledby="classroom-title">
       <div className="container">
-        <SectionHeader
-          eyebrow={t.classroom.eyebrow}
-          title={title}
-          id="classroom-title"
-          aside={<LogoutButton returnTo={localizePath("/", locale)} />}
-        />
+        <SectionHeader eyebrow={t.classroom.eyebrow} title={title} id="classroom-title" />
 
         {access ? (
           <div className="classroom-layout">

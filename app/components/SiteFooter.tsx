@@ -1,11 +1,8 @@
 import { Link } from "react-router";
-import LogoutButton from "./LogoutButton";
 import { localizePath, useI18n } from "../lib/locale";
-import { useViewer } from "../lib/viewer";
 
 export default function SiteFooter() {
   const { locale, t } = useI18n();
-  const { user } = useViewer();
 
   return (
     <footer className="site-footer">
@@ -18,13 +15,6 @@ export default function SiteFooter() {
           <li><Link to={localizePath("/development", locale)}>{t.footer.development}</Link></li>
         </ul>
       </div>
-
-      {user ? (
-        <div className="site-footer-account">
-          <span dir="ltr">{user.email}</span>
-          <LogoutButton />
-        </div>
-      ) : null}
     </footer>
   );
 }

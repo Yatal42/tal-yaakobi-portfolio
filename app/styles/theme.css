@@ -546,6 +546,22 @@ button {
     font-size: 1.1rem;
     font-weight: 600;
     text-align: start;
+    text-decoration: none;
+  }
+}
+
+.site-mobile-my {
+  display: none;
+}
+
+@media (max-width: 560px) {
+  .site-nav-my {
+    display: none;
+  }
+
+  .site-mobile-my {
+    display: block;
+    color: var(--pink);
   }
 }
 
@@ -1114,19 +1130,6 @@ button {
 
 .site-footer-links a:hover {
   color: var(--pink);
-}
-
-.site-footer-account {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  padding: 12px var(--gutter) 20px;
-  border-top: 1px dashed var(--line-strong);
-  color: var(--text-dim);
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
 }
 
 .logout-form {
