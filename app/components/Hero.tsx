@@ -1,11 +1,9 @@
 import { scrollToSection } from "../lib/scroll";
 import { useI18n } from "../lib/locale";
-import { useViewer } from "../lib/viewer";
 import TypingTag from "./ui/TypingTag";
 
 const Hero = () => {
   const { t } = useI18n();
-  const { enrolled } = useViewer();
 
   return (
     <section id="hero" className="hero" aria-labelledby="hero-title">
@@ -26,11 +24,6 @@ const Hero = () => {
             <button type="button" className="btn btn-primary" onClick={() => scrollToSection("contact")}>
               {t.hero.book}
             </button>
-            {enrolled.length > 0 ? (
-              <button type="button" className="btn btn-ghost" onClick={() => scrollToSection("my-courses")}>
-                <span aria-hidden="true">▶</span> {t.hero.resume}
-              </button>
-            ) : null}
           </div>
         </div>
 

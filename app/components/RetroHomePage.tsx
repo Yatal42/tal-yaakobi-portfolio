@@ -3,7 +3,6 @@ import { useLocation } from 'react-router';
 import Hero from './Hero';
 import About from './About';
 import TeachingApproach from './TeachingApproach';
-import PersonalArea from './PersonalArea';
 import CourseCatalog from './CourseCatalog';
 import ReviewsSection from "./reviews/ReviewsSection";
 import { scrollToSection } from '../lib/scroll';
@@ -27,7 +26,6 @@ const RetroHomePage = () => {
       <Hero />
       <About />
       <TeachingApproach />
-      <PersonalArea />
       <CourseCatalog />
       <ReviewsSection />
     </>

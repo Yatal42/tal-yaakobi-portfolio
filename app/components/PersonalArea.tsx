@@ -98,9 +98,9 @@ export default function PersonalArea() {
               </button>
             </Window>
 
-            <button type="button" className="text-link dashboard-all" onClick={() => scrollToSection("courses")}>
+            <Link to={localizePath("/#courses", locale)} className="text-link dashboard-all">
               {t.personal.allCourses} <span className="arrow" aria-hidden="true">→</span>
-            </button>
+            </Link>
           </div>
         </div>
       </div>

@@ -2,10 +2,12 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router';
 import { scrollToSection } from '../lib/scroll';
 import { localizePath, stripLocale, useI18n } from '../lib/locale';
+import { useViewer } from '../lib/viewer';
 
 const RetroNavbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { locale, t, location } = useI18n();
+  const { enrolled } = useViewer();
   const navigate = useNavigate();
   const barePath = stripLocale(location.pathname);
   const onHome = barePath === '/';
@@ -63,6 +65,16 @@ const RetroNavbar = () => {
         </div>
 
         <div className="site-nav-tools">
+          {enrolled.length > 0 ? (
+            <Link
+              to={localizePath('/my', locale)}
+              className="btn-bevel site-nav-my"
+              aria-current={barePath === '/my' ? 'page' : undefined}
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              {t.nav.myArea}
+            </Link>
+          ) : null}
           <Link
             to={switchTo}
             className="btn-bevel site-nav-lang"

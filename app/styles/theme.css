@@ -695,12 +695,6 @@ button {
   margin-top: clamp(40px, 5vw, 56px);
 }
 
-.subjects-note {
-  margin: 18px 0 0;
-  color: var(--text-muted);
-  font-size: 0.98rem;
-}
-
 .approach-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);

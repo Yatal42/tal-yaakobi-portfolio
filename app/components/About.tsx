@@ -36,7 +36,6 @@ export default function About() {
               <li key={subject} className="chip">{subject}</li>
             ))}
           </ul>
-          <p className="subjects-note">{t.about.subjectsNote}</p>
         </div>
       </div>
     </section>
