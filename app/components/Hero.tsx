@@ -2,6 +2,7 @@ import { courses } from "../data/courses";
 import { scrollToSection } from "../lib/scroll";
 import { useI18n } from "../lib/locale";
 import { useViewer } from "../lib/viewer";
+import TypingTag from "./ui/TypingTag";
 
 const Hero = () => {
   const { t } = useI18n();
@@ -12,10 +13,7 @@ const Hero = () => {
     <section id="hero" className="hero" aria-labelledby="hero-title">
       <div className="container hero-layout">
         <div className="hero-text">
-          <p className="hero-tag" lang="en" dir="ltr">
-            {t.hero.tag}
-            <span className="hero-cursor" aria-hidden="true">_</span>
-          </p>
+          <TypingTag text={t.hero.tag} />
           <h1 className="hero-title" id="hero-title">
             {t.hero.name}
             <span className="hero-title-dot" aria-hidden="true">.</span>

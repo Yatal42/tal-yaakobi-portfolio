@@ -19,7 +19,7 @@ export const en = {
     switchLabel: "עב",
   },
   hero: {
-    tag: "> CS TUTOR",
+    tag: "> CS & MATH TUTOR",
     name: "Tal Yaakobi",
     lead: "Private lessons and group practice sessions across undergraduate computer science courses. I focus on breaking the material into small steps and building deep understanding.",
     tags: ["Tutor at HIT", "B.Sc. CS, Dean's List", "CS education researcher"],

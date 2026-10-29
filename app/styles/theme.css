@@ -570,8 +570,20 @@ button {
   color: var(--pink);
 }
 
+.hero-tag-typed {
+  white-space: pre;
+}
+
+.hero-tag-rest {
+  visibility: hidden;
+}
+
 .hero-cursor {
   animation: blink 1.1s steps(1) infinite;
+}
+
+.hero-cursor-solid {
+  animation: none;
 }
 
 @keyframes blink {

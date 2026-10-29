@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import TypingTag from "./ui/TypingTag";
 
 interface PageHeroProps {
   id?: string;
@@ -21,10 +22,7 @@ const PageHero = ({
     <section id={id} className="hero hero-compact" aria-labelledby={`${id}-title`}>
       <div className="container hero-layout">
         <div className="hero-text">
-          <p className="hero-tag" lang="en" dir="ltr">
-            {`> ${eyebrow}`}
-            <span className="hero-cursor" aria-hidden="true">_</span>
-          </p>
+          <TypingTag text={`> ${eyebrow}`} />
           <h1 className="hero-title" id={`${id}-title`}>
             {heading}
             <span className="hero-title-dot" aria-hidden="true">.</span>
