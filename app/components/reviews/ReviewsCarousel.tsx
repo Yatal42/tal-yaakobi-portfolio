@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import NavigationButton from "../NavigationButton";
 import type { Review } from "~/types/review";
+import { useI18n } from "../../lib/locale";
 
 interface ReviewsCarouselProps {
   reviews: Review[];
@@ -11,6 +12,7 @@ const ReviewsCarousel = ({
   reviews,
   autoPlayIntervalMs = 10000,
 }: ReviewsCarouselProps) => {
+  const { t } = useI18n();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
@@ -34,7 +36,7 @@ const ReviewsCarousel = ({
   }, [goNext, isPaused, reviews.length, autoPlayIntervalMs, currentIndex]);
 
   if (!reviews || reviews.length === 0) {
-    return <div className="reviews-carousel-empty">No reviews available</div>;
+    return <div className="reviews-carousel-empty">{t.reviews.empty}</div>;
   }
 
   const review = reviews[currentIndex];
@@ -56,7 +58,7 @@ const ReviewsCarousel = ({
         direction="prev"
         onClick={() => handleManualNav(goPrev)}
         disabled={reviews.length <= 1}
-        itemLabel="review"
+        ariaLabel={t.reviews.previous}
       />
 
       <div className="reviews-carousel-content">
@@ -65,7 +67,7 @@ const ReviewsCarousel = ({
             <h3>{review.name}</h3>
             <span
               className="review-rating"
-              aria-label={`${review.rating} out of 5`}
+              aria-label={`${review.rating} ${t.reviews.rating}`}
             >
               {"★".repeat(review.rating)}
               <span className="review-rating-empty">
@@ -78,7 +80,7 @@ const ReviewsCarousel = ({
         </article>
 
         <div className="reviews-counter" aria-live="polite">
-          <span>
+          <span dir="ltr">
             {currentIndex + 1} / {reviews.length}
           </span>
         </div>
@@ -88,7 +90,7 @@ const ReviewsCarousel = ({
         direction="next"
         onClick={() => handleManualNav(goNext)}
         disabled={reviews.length <= 1}
-        itemLabel="review"
+        ariaLabel={t.reviews.next}
       />
     </div>
   );

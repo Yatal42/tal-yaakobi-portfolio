@@ -1,24 +1,25 @@
 import PageHero from "./PageHero";
-import ProjectCarousel from './ProjectCarousel';
-import Skills from './Skills';
-import { projects } from '../data/projects';
+import ProjectCarousel from "./ProjectCarousel";
+import Skills from "./Skills";
+import { projects } from "../data/projects";
+import { useI18n } from "../lib/locale";
 
 const DevelopmentPage = () => {
+  const { locale, t } = useI18n();
+
   return (
     <div className="retro-container">
       <PageHero
         id="dev-intro"
         imageSide="right"
-        heading="DEV"
-        subheading="SOFTWARE ENGINEERING BACKGROUND"
-        intro="I have a full-stack software engineering background and still ship code. It keeps my teaching grounded in how CS is used in practice. Here are the projects and the stack behind them."
+        localizedHeading={locale === "he"}
+        heading={t.development.heading}
+        subheading={t.development.subheading}
+        imageAlt={t.hero.imageAlt}
       />
 
       <section id="projects" className="retro-section projects-section motion-section motion-delay-1">
-        <h2 className="retro-section-title projects-title">Projects</h2>
-        <p className="projects-subtitle">
-          A selection of practice projects and technical experiments I've built end to end.
-        </p>
+        <p className="projects-lead">{t.development.projectsTitle}</p>
         <ProjectCarousel projects={projects} />
       </section>
 

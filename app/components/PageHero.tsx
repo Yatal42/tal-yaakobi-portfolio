@@ -4,22 +4,22 @@ interface PageHeroProps {
   id?: string;
   heading: ReactNode;
   subheading: ReactNode;
-  intro: ReactNode;
   imageSide?: "left" | "right";
   imageSrc?: string;
   imageAlt?: string;
   actions?: ReactNode;
+  localizedHeading?: boolean;
 }
 
 const PageHero = ({
   id = "hero",
   heading,
   subheading,
-  intro,
   imageSide = "right",
   imageSrc = "/assets/retro-computer.svg",
   imageAlt = "Retro Computer Setup",
   actions,
+  localizedHeading = false,
 }: PageHeroProps) => {
   return (
     <section
@@ -28,9 +28,8 @@ const PageHero = ({
     >
       <div className="page-hero-layout">
         <div className="page-hero-text">
-          <h1 className="pixel-heading">{heading}</h1>
+          <h1 className={`pixel-heading${localizedHeading ? " copy-heading" : ""}`}>{heading}</h1>
           <p className="pixel-subheading hero-subheading">{subheading}</p>
-          <p className="retro-text hero-intro-text">{intro}</p>
           {actions ? <div className="hero-cta-row">{actions}</div> : null}
         </div>
 

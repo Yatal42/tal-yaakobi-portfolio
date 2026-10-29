@@ -1,41 +1,11 @@
-import { useMemo, useState } from "react";
+import { useState } from "react";
+import { useI18n } from "../lib/locale";
 
 export default function AboutMe() {
-  const aboutLines = useMemo(
-    () => [
-      "Computer Science graduate turned full-time CS educator.",
-      "Private tutor for university students in core CS courses.",
-      "Run full independent editions of academic CS courses, sold directly to students.",
-      "M.A. researcher in Science and Technology Education at Bar-Ilan University, focused on how CS is taught and how it could be taught better.",
-      "Accessibility-focused teaching, including hands-on work alongside deaf students.",
-      "Software engineering background - I still build, but teaching is the main thing."
-    ],
-    []
-  );
-
-  const strengths = useMemo(
-    () => [
-      {
-        title: "Clarity",
-        text: "Complex material gets broken into steps that build on each other. Nothing moves forward until it's solid."
-      },
-      {
-        title: "Patience",
-        text: "We work at your pace. I repeat, rephrase, and re-derive as many times as it takes."
-      },
-      {
-        title: "Adaptation",
-        text: "Every student thinks differently. I adjust examples, notation, and pacing to match how you learn."
-      },
-      {
-        title: "Impact",
-        text: "The goal is more than passing the exam - it's making the next course easier to face."
-      }
-    ],
-    []
-  );
-
+  const { t } = useI18n();
+  const strengths = t.about.strengths;
   const [strengthIndex, setStrengthIndex] = useState(0);
+  const active = strengths[strengthIndex] ?? strengths[0];
 
   const goPrevStrength = () => {
     setStrengthIndex((prev) => (prev - 1 + strengths.length) % strengths.length);
@@ -48,55 +18,41 @@ export default function AboutMe() {
   return (
     <div className="about-flow-layout">
       <div className="about-main-box">
-        <section className="about-subsection about-subsection--intro">
-          <h3 className="about-subsection-title">Highlights</h3>
-          <ul className="about-lines-list" role="list">
-            {aboutLines.map((line) => (
-              <li key={line} className="about-line-item">
-                <span className="about-line-bullet" aria-hidden="true">
-                  ▸
-                </span>
-                <span>{line}</span>
-              </li>
-            ))}
-          </ul>
-        </section>
-
         <section className="about-subsection about-subsection--strengths">
-          <h3 className="about-subsection-title">My Strengths</h3>
+          <h3 className="about-subsection-title">{t.about.strengthsTitle}</h3>
           <div className="about-strengths-carousel">
             <button
               type="button"
               className="about-strengths-nav"
               onClick={goPrevStrength}
-              aria-label="Previous strength"
+              aria-label={t.about.previous}
             >
               ◀
             </button>
 
             <article className="about-strength-card" aria-live="polite">
-              <h4 className="about-strength-card-title">{strengths[strengthIndex].title}</h4>
-              <p className="about-strength-card-text">{strengths[strengthIndex].text}</p>
+              <h4 className="about-strength-card-title">{active.title}</h4>
+              <p className="about-strength-card-text">{active.text}</p>
             </article>
 
             <button
               type="button"
               className="about-strengths-nav"
               onClick={goNextStrength}
-              aria-label="Next strength"
+              aria-label={t.about.next}
             >
               ▶
             </button>
           </div>
 
-          <div className="about-strengths-dots" role="tablist" aria-label="Strength slides">
+          <div className="about-strengths-dots" role="tablist" aria-label={t.about.slides}>
             {strengths.map((strength, index) => (
               <button
                 key={strength.title}
                 type="button"
                 className={`about-strength-dot ${index === strengthIndex ? "is-active" : ""}`}
                 onClick={() => setStrengthIndex(index)}
-                aria-label={`Show ${strength.title}`}
+                aria-label={`${t.about.show} ${strength.title}`}
                 aria-selected={index === strengthIndex}
               />
             ))}
@@ -106,4 +62,4 @@ export default function AboutMe() {
       </div>
     </div>
   );
-} 
+}

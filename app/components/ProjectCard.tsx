@@ -1,7 +1,12 @@
 import { useEffect, useMemo, useState } from 'react';
 import type { ProjectCardProps } from '../types/project';
+import { useI18n } from '../lib/locale';
 
 const ProjectCard = ({ project, isActive }: ProjectCardProps) => {
+  const { locale, t } = useI18n();
+  const copy = t.development.projectCopy[project.id];
+  const title = copy.title;
+  const description = copy.description;
   const [isVideoOpen, setIsVideoOpen] = useState(false);
   const videoEmbedUrl = useMemo(() => {
     if (!project.videoId) return '';
@@ -10,7 +15,7 @@ const ProjectCard = ({ project, isActive }: ProjectCardProps) => {
 
   useEffect(() => {
     setIsVideoOpen(false);
-  }, [project.title, project.videoId]);
+  }, [title, project.videoId]);
 
   useEffect(() => {
     if (!isVideoOpen) return undefined;
@@ -38,19 +43,19 @@ const ProjectCard = ({ project, isActive }: ProjectCardProps) => {
       <div className="svg-project-window">
         <img
           src="/assets/project-window.svg"
-          alt="Project Window"
+          alt={t.development.windowAlt}
           className="window-background"
         />
 
         <div className="project-content-overlay">
           <div className="project-title-overlay">
-            <h3>{project.title}</h3>
+            <h3 dir={locale === "he" ? "rtl" : "ltr"}>{title}</h3>
           </div>
 
           <div className="project-main-content">
             <div className="project-content-area">
               <div className="project-description">
-                <p>{project.description.length > 250 ? project.description.substring(0, 250) + "..." : project.description}</p>
+                <p dir={locale === "he" ? "rtl" : "ltr"}>{description.length > 250 ? description.substring(0, 250) + "..." : description}</p>
               </div>
 
               <div className="project-technologies">
@@ -65,7 +70,7 @@ const ProjectCard = ({ project, isActive }: ProjectCardProps) => {
             <div className="project-footer">
               <div className="project-status">
                 <span className={`status ${project.status.toLowerCase().replace(' ', '-')}`}>
-                  {project.status}
+                  {t.development.status[project.status as "Completed" | "In Development"]}
                 </span>
               </div>
 
@@ -77,7 +82,7 @@ const ProjectCard = ({ project, isActive }: ProjectCardProps) => {
                     rel="noopener noreferrer"
                     className="project-link project-link--github"
                   >
-                    GitHub
+                    {t.development.github}
                   </a>
                 )}
                 {project.liveUrl && (
@@ -87,7 +92,7 @@ const ProjectCard = ({ project, isActive }: ProjectCardProps) => {
                     rel="noopener noreferrer"
                     className="project-link project-link--live"
                   >
-                    Live
+                    {t.development.live}
                   </a>
                 )}
                 {project.videoId && (
@@ -96,7 +101,7 @@ const ProjectCard = ({ project, isActive }: ProjectCardProps) => {
                     className="project-link project-link--video"
                     onClick={() => setIsVideoOpen(true)}
                   >
-                    Video
+                    {t.development.video}
                   </button>
                 )}
               </div>
@@ -110,7 +115,7 @@ const ProjectCard = ({ project, isActive }: ProjectCardProps) => {
           className="project-video-modal-backdrop"
           role="dialog"
           aria-modal="true"
-          aria-label={`${project.title} video`}
+          aria-label={`${title} video`}
           onClick={() => setIsVideoOpen(false)}
         >
           <div className="project-video-modal" onClick={(event) => event.stopPropagation()}>
@@ -118,14 +123,14 @@ const ProjectCard = ({ project, isActive }: ProjectCardProps) => {
               type="button"
               className="project-video-close"
               onClick={() => setIsVideoOpen(false)}
-              aria-label="Close video"
+              aria-label={t.development.closeVideo}
             >
               x
             </button>
             <iframe
               className="project-video-iframe"
               src={videoEmbedUrl}
-              title={`${project.title} video`}
+              title={`${title} video`}
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               referrerPolicy="strict-origin-when-cross-origin"
               allowFullScreen

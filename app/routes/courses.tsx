@@ -1,15 +1,11 @@
-import type { MetaFunction } from "react-router";
-import CoursesPage from "../components/CoursesPage";
+import { redirect, type LoaderFunctionArgs } from "react-router";
+import { localeFromPathname, localizePath } from "../lib/locale";
 
-export const meta: MetaFunction = () => [
-  { title: "Courses | Tal Yaakobi" },
-  {
-    name: "description",
-    content:
-      "Coming soon: full editions of Probability for Undergraduate Computer Science, Automata and Formal Languages, and Computability and Complexity.",
-  },
-];
+export function loader({ request }: LoaderFunctionArgs) {
+  const locale = localeFromPathname(new URL(request.url).pathname);
+  return redirect(`${localizePath("/", locale)}#courses`);
+}
 
 export default function CoursesRoute() {
-  return <CoursesPage />;
+  return null;
 }

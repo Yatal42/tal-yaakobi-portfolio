@@ -1,7 +1,9 @@
 import { useState } from "react";
 import RetroButton from "./RetroButton";
+import { useI18n } from "../lib/locale";
 
 export default function Contact() {
+  const { t } = useI18n();
   const [copyStatus, setCopyStatus] = useState<{ [key: string]: boolean }>({});
   const email = "taltal2345@gmail.com";
   const phone = "050-9251635";
@@ -63,45 +65,38 @@ export default function Contact() {
     color: '#000000'
   };
 
-  const textStyle = {
-    fontSize: '10px',
-    textAlign: 'center' as const,
-    lineHeight: '1.2',
-    color: '#FFFFFF'
-  };
-
   return (
     <div className="contact-grid">
-      <RetroButton onClick={handleEmail} ariaLabel="Send email" title="Send email">
+      <RetroButton onClick={handleEmail} ariaLabel={t.contact.sendEmail} title={t.contact.sendEmail}>
         <span style={iconStyle}>📧</span>
-        <span style={textStyle}>Email</span>
+        <span className="retro-contact-text">{t.contact.email}</span>
       </RetroButton>
 
-      <RetroButton onClick={() => handleCopy(phone, 'phone')} ariaLabel="Copy phone number" title="Copy phone number">
+      <RetroButton onClick={() => handleCopy(phone, 'phone')} ariaLabel={t.contact.copyPhone} title={t.contact.copyPhone}>
         <span style={iconStyle}>📞</span>
-        <span style={textStyle}>
-          {copyStatus['phone'] ? 'Copied!' : 'Phone'}
+        <span className="retro-contact-text">
+          {copyStatus['phone'] ? t.contact.copied : t.contact.phone}
         </span>
       </RetroButton>
 
-      <RetroButton onClick={handleWhatsApp} ariaLabel="Open WhatsApp chat" title="Open WhatsApp chat">
+      <RetroButton onClick={handleWhatsApp} ariaLabel={t.contact.openWhatsapp} title={t.contact.openWhatsapp}>
         <span style={iconStyle}>💬</span>
-        <span style={textStyle}>WhatsApp</span>
+        <span className="retro-contact-text">{t.contact.whatsapp}</span>
       </RetroButton>
 
-      <RetroButton onClick={handleLinkedIn} ariaLabel="Open LinkedIn profile" title="Open LinkedIn profile">
+      <RetroButton onClick={handleLinkedIn} ariaLabel={t.contact.openLinkedin} title={t.contact.openLinkedin}>
         <span style={iconStyle}>💼</span>
-        <span style={textStyle}>LinkedIn</span>
+        <span className="retro-contact-text">{t.contact.linkedin}</span>
       </RetroButton>
 
-      <RetroButton onClick={handleDriveMaterials} ariaLabel="Open shared drive materials" title="Open shared drive materials">
+      <RetroButton onClick={handleDriveMaterials} ariaLabel={t.contact.openDrive} title={t.contact.openDrive}>
         <span style={iconStyle}>📚</span>
-        <span style={textStyle}>Drive</span>
+        <span className="retro-contact-text">{t.contact.drive}</span>
       </RetroButton>
 
-      <RetroButton onClick={handleStudentCommunity} ariaLabel="Open student community group" title="Open student community group">
+      <RetroButton onClick={handleStudentCommunity} ariaLabel={t.contact.openCommunity} title={t.contact.openCommunity}>
         <span style={iconStyle}>👩‍🎓</span>
-        <span style={textStyle}>Community</span>
+        <span className="retro-contact-text">{t.contact.community}</span>
       </RetroButton>
 
     </div>

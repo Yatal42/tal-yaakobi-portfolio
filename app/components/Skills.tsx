@@ -15,8 +15,10 @@ import {
   SiVite,
   SiDotnet
 } from 'react-icons/si';
+import { useI18n } from '../lib/locale';
 
 const Skills = () => {
+  const { t } = useI18n();
   const techIcons = [
     { name: 'React', Icon: SiReact, color: '#61DAFB' },
     { name: 'TypeScript', Icon: SiTypescript, color: '#3178C6' },
@@ -37,16 +39,13 @@ const Skills = () => {
 
   return (
     <section id="skills" className="retro-section skills-section">
-      <h2 className="retro-section-title skills-title">Core Skills</h2>
+      <h2 className="retro-section-title skills-title">{t.development.skillsTitle}</h2>
       <div className="skills-content">
-        <h3 className="skills-subtitle">Technical Skills</h3>
-        <p className="skills-description">
-          Technologies I use to build reliable, accessible, end-to-end products.
-        </p>
+        <h3 className="skills-subtitle">{t.development.skillsSubtitle}</h3>
         <div className="skills-showcase">
           <div
             role="list"
-            aria-label="Technologies"
+            aria-label={t.development.technologiesLabel}
             className="skills-tech-grid"
           >
             {techIcons.map((tech) => (
