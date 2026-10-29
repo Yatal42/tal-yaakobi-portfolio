@@ -17,20 +17,21 @@ const isProduction = process.env.NODE_ENV === "production";
 function sessionSecret() {
   const secret = process.env.SESSION_SECRET;
   if (secret) return secret;
-  if (isProduction) throw new Error("SESSION_SECRET must be set in production.");
-  return "dev-session-secret";
+  return isProduction ? null : "dev-session-secret";
 }
 
 let storage: ReturnType<typeof createCookieSessionStorage<SessionData>> | null = null;
 
 function authSession() {
+  const secret = sessionSecret();
+  if (!secret) return null;
   storage ??= createCookieSessionStorage<SessionData>({
     cookie: {
       name: "__auth",
       httpOnly: true,
       path: "/",
       sameSite: "lax",
-      secrets: [sessionSecret()],
+      secrets: [secret],
       secure: isProduction,
       maxAge: 60 * 60 * 24 * 14,
     },
@@ -43,7 +44,9 @@ function googleAuthConfigured() {
 }
 
 export async function getUser(request: Request): Promise<AuthUser | null> {
-  const session = await authSession().getSession(request.headers.get("Cookie"));
+  const sessions = authSession();
+  if (!sessions) return null;
+  const session = await sessions.getSession(request.headers.get("Cookie"));
   return session.get("user") ?? null;
 }
 
@@ -65,10 +68,11 @@ function withAuthError(returnTo: string) {
 
 export async function startGoogleLogin(request: Request) {
   const returnTo = safeReturnTo(new URL(request.url).searchParams.get("returnTo"));
-  if (!googleAuthConfigured()) throw redirect(withAuthError(returnTo));
+  const sessions = authSession();
+  if (!googleAuthConfigured() || !sessions) throw redirect(withAuthError(returnTo));
 
   const state = crypto.randomUUID();
-  const session = await authSession().getSession(request.headers.get("Cookie"));
+  const session = await sessions.getSession(request.headers.get("Cookie"));
   session.set("oauthState", state);
   session.set("returnTo", returnTo);
 
@@ -81,7 +85,7 @@ export async function startGoogleLogin(request: Request) {
   google.searchParams.set("prompt", "select_account");
 
   return redirect(google.toString(), {
-    headers: { "Set-Cookie": await authSession().commitSession(session) },
+    headers: { "Set-Cookie": await sessions.commitSession(session) },
   });
 }
 
@@ -89,7 +93,9 @@ export async function finishGoogleLogin(request: Request) {
   const url = new URL(request.url);
   const code = url.searchParams.get("code");
   const state = url.searchParams.get("state");
-  const session = await authSession().getSession(request.headers.get("Cookie"));
+  const sessions = authSession();
+  if (!sessions) throw redirect("/?auth=error");
+  const session = await sessions.getSession(request.headers.get("Cookie"));
   const expectedState = session.get("oauthState");
   const returnTo = safeReturnTo(session.get("returnTo"));
   session.unset("oauthState");
@@ -102,20 +108,22 @@ export async function finishGoogleLogin(request: Request) {
 
   if (!user) {
     throw redirect(withAuthError(returnTo), {
-      headers: { "Set-Cookie": await authSession().commitSession(session) },
+      headers: { "Set-Cookie": await sessions.commitSession(session) },
     });
   }
 
   session.set("user", user);
   throw redirect(returnTo, {
-    headers: { "Set-Cookie": await authSession().commitSession(session) },
+    headers: { "Set-Cookie": await sessions.commitSession(session) },
   });
 }
 
 export async function logout(request: Request, returnTo: string) {
-  const session = await authSession().getSession(request.headers.get("Cookie"));
+  const sessions = authSession();
+  if (!sessions) return redirect(safeReturnTo(returnTo));
+  const session = await sessions.getSession(request.headers.get("Cookie"));
   return redirect(safeReturnTo(returnTo), {
-    headers: { "Set-Cookie": await authSession().destroySession(session) },
+    headers: { "Set-Cookie": await sessions.destroySession(session) },
   });
 }
 
