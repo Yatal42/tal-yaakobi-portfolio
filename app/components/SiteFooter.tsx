@@ -1,8 +1,7 @@
-import { Link } from "react-router";
-import { localizePath, useI18n } from "../lib/locale";
+import { useI18n } from "../lib/locale";
 
 export default function SiteFooter() {
-  const { locale, t } = useI18n();
+  const { t } = useI18n();
 
   return (
     <footer className="site-footer">
@@ -12,7 +11,6 @@ export default function SiteFooter() {
           <li><a href="/CV.pdf" target="_blank" rel="noopener noreferrer">{t.footer.cv}</a></li>
           <li><a href="https://github.com/Yatal42" target="_blank" rel="noopener noreferrer">{t.footer.github}</a></li>
           <li><a href="https://www.linkedin.com/in/tal-yaakobi-191059227/" target="_blank" rel="noopener noreferrer">{t.footer.linkedin}</a></li>
-          <li><Link to={localizePath("/development", locale)}>{t.footer.development}</Link></li>
         </ul>
       </div>
     </footer>

@@ -1,15 +1,11 @@
-import type { MetaFunction } from "react-router";
-import DevelopmentPage from "../components/DevelopmentPage";
-import { getMessages, localeFromPathname } from "../lib/locale";
+import { redirect, type LoaderFunctionArgs } from "react-router";
+import { localeFromPathname, localizePath } from "../lib/locale";
 
-export const meta: MetaFunction = ({ location }) => {
-  const t = getMessages(localeFromPathname(location.pathname));
-  return [
-    { title: t.meta.developmentTitle },
-    { name: "description", content: t.meta.developmentDescription },
-  ];
-};
+export function loader({ request }: LoaderFunctionArgs) {
+  const locale = localeFromPathname(new URL(request.url).pathname);
+  return redirect(localizePath("/", locale), 301);
+}
 
 export default function DevelopmentRoute() {
-  return <DevelopmentPage />;
+  return null;
 }

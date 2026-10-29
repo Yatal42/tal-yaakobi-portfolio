@@ -3,9 +3,6 @@ export const en = {
     homeTitle: "Tal Yaakobi - CS Tutoring and Private Lessons",
     homeDescription:
       "Private lessons and practice sessions in computer science with Tal Yaakobi, a tutor at HIT: data structures, algorithms, probability, automata and more. Clear explanations and practice that leads to understanding.",
-    developmentTitle: "Development | Tal Yaakobi",
-    developmentDescription:
-      "Software engineering projects, technical experiments, and the stack Tal Yaakobi builds with.",
   },
   nav: {
     about: "About",
@@ -209,7 +206,6 @@ export const en = {
     cv: "CV",
     github: "GitHub",
     linkedin: "LinkedIn",
-    development: "Development",
   },
   auth: {
     title: "Sign in to your learning area",
@@ -229,53 +225,6 @@ export const en = {
     lessonLabel: (index: number) => `Lesson ${index}`,
     playerEmpty: "The lesson recording will play here.",
     noLessons: "Lessons for this course will be uploaded soon.",
-  },
-  development: {
-    heading: "Development",
-    eyebrow: "SOFTWARE DEVELOPER",
-    intro: "Besides teaching, I also develop software. Here are some projects I built and the technologies I worked with.",
-    projectsTitle: "Selected projects",
-    empty: "No projects available",
-    previous: "Previous project",
-    next: "Next project",
-    closeVideo: "Close video",
-    github: "GitHub",
-    live: "Live",
-    video: "Video",
-    skillsEyebrow: "STACK",
-    skillsTitle: "Tools I work with",
-    technologiesLabel: "Technologies",
-    status: {
-      Completed: "Completed",
-      "In Development": "In Development",
-    },
-    projectCopy: {
-      portfolio: {
-        title: "My Portfolio",
-        description:
-          "Personal portfolio site built with React, TypeScript, and Tailwind CSS. Includes a custom retro UI, interactive sections, and accessibility-focused structure.",
-      },
-      chord: {
-        title: "Chord-I",
-        description:
-          "AI-powered chord detection system that extracts chords from songs using machine learning and audio processing. I'm currently working on improving accuracy and real-time detection.",
-      },
-      popcorn: {
-        title: "Popcorn Palace",
-        description:
-          "Backend cinema ticket-booking system built with NestJS, PostgreSQL, TypeORM, and Docker. Includes a scalable REST API and strong unit and end-to-end test coverage.",
-      },
-      gantt: {
-        title: "Task & Projects Gantt Chart",
-        description:
-          "Full-stack task and project planner with dependency handling, date shifting, and live updates. Built with React + TypeScript on the frontend and Node.js + Express + MySQL on the backend.",
-      },
-      calories: {
-        title: "Calories Tracker - Frontend",
-        description:
-          "Frontend for a calorie-tracking application with meal logging, calorie counting, and a layout that works on mobile too.",
-      },
-    },
   },
 };
 

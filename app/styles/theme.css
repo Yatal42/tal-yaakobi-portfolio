@@ -651,10 +651,6 @@ button {
   filter: drop-shadow(0 0 48px rgba(255, 95, 168, 0.14));
 }
 
-.hero-compact .hero-image {
-  max-width: 340px;
-}
-
 .about-layout {
   display: grid;
   grid-template-columns: 1.35fr 1fr;
@@ -1219,14 +1215,6 @@ button {
   overflow-y: auto;
 }
 
-.modal:has(.video-frame) {
-  width: min(960px, 100%);
-}
-
-.win-body:has(.video-frame) {
-  padding: 0;
-}
-
 @keyframes fade-in {
   from {
     opacity: 0;
@@ -1267,17 +1255,6 @@ button {
   border: 1px solid var(--pink);
   color: var(--pink);
   font-size: 0.9rem;
-}
-
-.video-frame {
-  aspect-ratio: 16 / 9;
-}
-
-.video-frame iframe {
-  display: block;
-  width: 100%;
-  height: 100%;
-  border: 0;
 }
 
 .reviews-form {
@@ -1352,70 +1329,6 @@ button {
 .reviews-feedback.success {
   border-color: var(--green);
   color: var(--green);
-}
-
-.projects-lead {
-  margin: 0 0 32px;
-}
-
-.project-carousel {
-  max-width: 860px;
-}
-
-.project-head {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 16px;
-}
-
-.project-title {
-  margin: 0;
-  font-size: clamp(1.3rem, 2.2vw, 1.6rem);
-  font-weight: 800;
-  line-height: 1.25;
-}
-
-.project-description {
-  max-width: 65ch;
-  margin: 14px 0 20px;
-  color: var(--text-muted);
-}
-
-.project-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 28px;
-}
-
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  gap: 12px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.skills-tile {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 12px 14px;
-  background: var(--bg-elev);
-  border: 1px solid var(--line);
-  font-size: 0.95rem;
-  font-weight: 500;
-}
-
-.skills-icon {
-  flex: none;
-  color: var(--text-dim);
-}
-
-.skills-tile:hover .skills-icon {
-  color: var(--pink);
 }
 
 @media (max-width: 1024px) {

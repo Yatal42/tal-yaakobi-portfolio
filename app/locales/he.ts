@@ -5,8 +5,6 @@ export const he: Messages = {
     homeTitle: "טל יעקובי - תרגול ושיעורים פרטיים במדעי המחשב",
     homeDescription:
       "שיעורים פרטיים ותרגול במדעי המחשב עם טל יעקובי, מתרגלת ב-HIT: מבני נתונים, אלגוריתמים, הסתברות, אוטומטים ועוד. הסבר פשוט ותרגול שמביא להבנה.",
-    developmentTitle: "פיתוח | טל יעקובי",
-    developmentDescription: "פרויקטים, ניסויים טכניים, והכלים שטל יעקובי בונה איתם.",
   },
   nav: {
     about: "אודות",
@@ -209,7 +207,6 @@ export const he: Messages = {
     cv: "קורות חיים",
     github: "GitHub",
     linkedin: "LinkedIn",
-    development: "פיתוח",
   },
   auth: {
     title: "התחברות לאזור האישי",
@@ -228,52 +225,5 @@ export const he: Messages = {
     lessonLabel: (index: number) => `שיעור ${index}`,
     playerEmpty: "ההקלטה של השיעור תופיע כאן.",
     noLessons: "השיעורים של הקורס יעלו בקרוב.",
-  },
-  development: {
-    heading: "פיתוח",
-    eyebrow: "SOFTWARE DEVELOPER",
-    intro: "חוץ מהוראה, אני גם מפתחת תוכנה. כאן אפשר לראות פרויקטים שבניתי ואת הטכנולוגיות שעבדתי איתן.",
-    projectsTitle: "פרויקטים נבחרים",
-    empty: "אין פרויקטים",
-    previous: "הפרויקט הקודם",
-    next: "הפרויקט הבא",
-    closeVideo: "סגירת הסרטון",
-    github: "GitHub",
-    live: "אתר",
-    video: "סרטון",
-    skillsEyebrow: "STACK",
-    skillsTitle: "כלים",
-    technologiesLabel: "טכנולוגיות",
-    status: {
-      Completed: "הושלם",
-      "In Development": "בפיתוח",
-    },
-    projectCopy: {
-      portfolio: {
-        title: "הפורטפוליו שלי",
-        description:
-          "אתר אישי שנבנה ב־React, TypeScript ו־Tailwind CSS. כולל ממשק רטרו, אזורים אינטראקטיביים ומבנה עם דגש על נגישות.",
-      },
-      chord: {
-        title: "Chord-I",
-        description:
-          "מערכת לזיהוי אקורדים מתוך שירים, בעזרת למידת מכונה ועיבוד שמע. כרגע אני עובדת על שיפור הדיוק ועל זיהוי בזמן אמת.",
-      },
-      popcorn: {
-        title: "Popcorn Palace",
-        description:
-          "מערכת שרת להזמנת כרטיסי קולנוע, ב־NestJS, PostgreSQL, TypeORM ו־Docker. כוללת REST API ובדיקות יחידה ובדיקות קצה לקצה.",
-      },
-      gantt: {
-        title: "תרשים גאנט למשימות ופרויקטים",
-        description:
-          "מתכנן משימות ופרויקטים עם תלויות, הזזת תאריכים ועדכון חי. צד הלקוח ב־React ו־TypeScript, וצד השרת ב־Node.js, Express ו־MySQL.",
-      },
-      calories: {
-        title: "מעקב קלוריות - צד לקוח",
-        description:
-          "צד הלקוח של אפליקציית מעקב קלוריות, עם רישום ארוחות, ספירת קלוריות ותצוגה שמותאמת גם לנייד.",
-      },
-    },
   },
 };
