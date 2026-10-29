@@ -1,7 +1,8 @@
 import type { ActionFunctionArgs } from "react-router";
 import { getClientIp, getIpHash } from "~/lib/net.server";
 import { isRateLimited } from "~/lib/rateLimit.server";
-import { isReviewEmailConfigured, sendReviewNotification } from "~/lib/reviews/email.server";
+import { sendReviewNotification } from "~/lib/reviews/email.server";
+import { addPendingReview, isReviewStoreConfigured } from "~/lib/reviews/store.server";
 import { parseReviewInput } from "~/lib/reviews/validation";
 
 const RATE_SCOPE = "reviews";
@@ -23,7 +24,7 @@ export async function action({ request }: ActionFunctionArgs) {
     return Response.json({ error: "Method not allowed." }, { status: 405 });
   }
 
-  if (!isReviewEmailConfigured()) {
+  if (!isReviewStoreConfigured()) {
     return Response.json(
       { error: "Review submissions are not configured yet." },
       { status: 503 }
@@ -44,10 +45,15 @@ export async function action({ request }: ActionFunctionArgs) {
     );
   }
 
-  const sent = await sendReviewNotification(parsed.value);
-  if (!sent) {
+  try {
+    await addPendingReview(parsed.value);
+  } catch (error) {
+    console.error("[reviews] Could not store review:", (error as Error).message);
     return Response.json({ error: "Could not submit your review right now." }, { status: 500 });
   }
+
+  const siteUrl = process.env.PUBLIC_SITE_URL ?? new URL(request.url).origin;
+  await sendReviewNotification(parsed.value, new URL("/admin/reviews", siteUrl).toString());
 
   return Response.json({
     ok: true,

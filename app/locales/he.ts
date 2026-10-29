@@ -218,6 +218,23 @@ export const he: Messages = {
     noAccessTitle: "אין עדיין גישה לקורסים.",
     noAccessText: (email: string) => `החשבון ${email} עוד לא קיבל גישה. אם נרשמתם לקורס, כתבו לי ואפתח לכם גישה.`,
   },
+  admin: {
+    eyebrow: "ADMIN",
+    title: "חוות דעת לאישור",
+    groups: {
+      pending: "ממתינות לאישור",
+      approved: "מאושרות ומוצגות באתר",
+      rejected: "נדחו",
+    },
+    empty: "אין כאן חוות דעת.",
+    approve: "אישור",
+    reject: "דחייה",
+    unpublish: "הסרה מהאתר",
+    restore: "החזרה להמתנה",
+    remove: "מחיקה",
+    confirmDelete: "למחוק את חוות הדעת לצמיתות?",
+    notConfigured: "מסד הנתונים לא מחובר, ולכן אין חוות דעת להצגה.",
+  },
   classroom: {
     eyebrow: "MY COURSE",
     back: "חזרה לקורסים",

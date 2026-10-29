@@ -6,6 +6,13 @@ export interface Review {
   rating: number;
 }
 
+export type ReviewStatus = "pending" | "approved" | "rejected";
+
+export interface StoredReview extends Review {
+  status: ReviewStatus;
+  createdAt: string;
+}
+
 export interface ReviewInput {
   name: string;
   role: string;

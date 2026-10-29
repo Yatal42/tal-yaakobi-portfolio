@@ -7,6 +7,7 @@ const pages = [
   route("courses/:courseId", "routes/courses.$courseId.tsx"),
   route("development", "routes/development.tsx"),
   route("my", "routes/my.tsx"),
+  route("admin/reviews", "routes/admin.reviews.tsx"),
 ] satisfies RouteConfig;
 
 export default [
@@ -18,6 +19,7 @@ export default [
     route("courses/:courseId", "routes/courses.$courseId.tsx", { id: "en-course" }),
     route("development", "routes/development.tsx", { id: "en-development" }),
     route("my", "routes/my.tsx", { id: "en-my" }),
+    route("admin/reviews", "routes/admin.reviews.tsx", { id: "en-admin-reviews" }),
   ]),
   route("auth/google", "routes/auth.google.tsx"),
   route("auth/google/callback", "routes/auth.google.callback.tsx"),

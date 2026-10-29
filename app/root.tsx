@@ -15,7 +15,7 @@ import LoginModal from "./components/LoginModal";
 import { localeFromPathname } from "./lib/locale";
 import { ViewerProvider } from "./lib/viewer";
 import { getUser } from "./lib/session.server";
-import { enrolledCourses } from "./lib/access.server";
+import { enrolledCourses, isAdmin } from "./lib/access.server";
 
 import "./app.css";
 import "./styles/theme.css";
@@ -25,6 +25,7 @@ export async function loader({ request }: LoaderFunctionArgs) {
   return {
     user: user ? { name: user.name, email: user.email } : null,
     enrolled: enrolledCourses(user?.email),
+    admin: isAdmin(user?.email),
   };
 }
 
@@ -60,7 +61,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        <ViewerProvider user={data?.user ?? null} enrolled={data?.enrolled ?? []}>
+        <ViewerProvider user={data?.user ?? null} enrolled={data?.enrolled ?? []} admin={data?.admin ?? false}>
           <div className="site">
             <RetroNavbar />
             <main className="site-main">{children}</main>

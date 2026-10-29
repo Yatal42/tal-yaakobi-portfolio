@@ -1,10 +1,6 @@
 import type { ReviewInput } from "~/types/review";
 
-export function isReviewEmailConfigured() {
-  return Boolean(process.env.RESEND_API_KEY && process.env.REVIEWS_NOTIFY_EMAIL);
-}
-
-export async function sendReviewNotification(review: ReviewInput): Promise<boolean> {
+export async function sendReviewNotification(review: ReviewInput, adminUrl: string): Promise<boolean> {
   const apiKey = process.env.RESEND_API_KEY;
   const to = process.env.REVIEWS_NOTIFY_EMAIL;
   if (!apiKey || !to) {
@@ -25,13 +21,15 @@ export async function sendReviewNotification(review: ReviewInput): Promise<boole
       body: JSON.stringify({
         from,
         to,
-        subject: `New portfolio review from ${review.name}`,
+        subject: `חוות דעת חדשה ממתינה לאישור: ${review.name}`,
         text: [
-          `Name: ${review.name}`,
-          `Role: ${review.role || "-"}`,
-          `Rating: ${stars} (${review.rating}/5)`,
+          `שם: ${review.name}`,
+          `תפקיד: ${review.role || "-"}`,
+          `דירוג: ${stars} (${review.rating}/5)`,
           "",
           review.message,
+          "",
+          `לאישור או דחייה: ${adminUrl}`,
         ].join("\n"),
       }),
     });
