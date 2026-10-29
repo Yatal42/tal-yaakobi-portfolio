@@ -77,3 +77,4 @@ temp/
 *.mov
 *.mp4
 !public/3.mp4
+.design-audit/

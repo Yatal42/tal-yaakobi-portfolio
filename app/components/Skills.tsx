@@ -15,57 +15,42 @@ import {
   SiVite,
   SiDotnet
 } from 'react-icons/si';
+import SectionHeader from './ui/SectionHeader';
 import { useI18n } from '../lib/locale';
+
+const techIcons = [
+  { name: 'React', Icon: SiReact },
+  { name: 'TypeScript', Icon: SiTypescript },
+  { name: 'Next.js', Icon: SiNextdotjs },
+  { name: 'Tailwind', Icon: SiTailwindcss },
+  { name: 'HTML5', Icon: SiHtml5 },
+  { name: 'CSS3', Icon: SiCss },
+  { name: 'Node.js', Icon: SiNodedotjs },
+  { name: 'NestJS', Icon: SiNestjs },
+  { name: 'Python', Icon: SiPython },
+  { name: 'Express', Icon: SiExpress },
+  { name: 'PostgreSQL', Icon: SiPostgresql },
+  { name: 'MongoDB', Icon: SiMongodb },
+  { name: 'MySQL', Icon: SiMysql },
+  { name: 'Vite', Icon: SiVite },
+  { name: 'C#/.NET', Icon: SiDotnet }
+];
 
 const Skills = () => {
   const { t } = useI18n();
-  const techIcons = [
-    { name: 'React', Icon: SiReact, color: '#61DAFB' },
-    { name: 'TypeScript', Icon: SiTypescript, color: '#3178C6' },
-    { name: 'Next.js', Icon: SiNextdotjs, color: '#FFFFFF' },
-    { name: 'Tailwind', Icon: SiTailwindcss, color: '#06B6D4' },
-    { name: 'HTML5', Icon: SiHtml5, color: '#E34F26' },
-    { name: 'CSS3', Icon: SiCss, color: '#1572B6' },
-    { name: 'Node.js', Icon: SiNodedotjs, color: '#5FA04E' },
-    { name: 'NestJS', Icon: SiNestjs, color: '#E0234E' },
-    { name: 'Python', Icon: SiPython, color: '#3776AB' },
-    { name: 'Express', Icon: SiExpress, color: '#FFFFFF' },
-    { name: 'PostgreSQL', Icon: SiPostgresql, color: '#4169E1' },
-    { name: 'MongoDB', Icon: SiMongodb, color: '#47A248' },
-    { name: 'MySQL', Icon: SiMysql, color: '#4479A1' },
-    { name: 'Vite', Icon: SiVite, color: '#646CFF' },
-    { name: 'C#/.NET', Icon: SiDotnet, color: '#512BD4' }
-  ];
 
   return (
-    <section id="skills" className="retro-section skills-section">
-      <h2 className="retro-section-title skills-title">{t.development.skillsTitle}</h2>
-      <div className="skills-content">
-        <h3 className="skills-subtitle">{t.development.skillsSubtitle}</h3>
-        <div className="skills-showcase">
-          <div
-            role="list"
-            aria-label={t.development.technologiesLabel}
-            className="skills-tech-grid"
-          >
-            {techIcons.map((tech) => (
-              <div
-                key={tech.name}
-                role="listitem"
-                aria-label={tech.name}
-                className="skills-tech-tile"
-              >
-                <tech.Icon
-                  size={30}
-                  color={tech.color}
-                  aria-hidden="true"
-                  className="skills-tech-icon"
-                />
-                <span className="skills-tech-name">{tech.name}</span>
-              </div>
-            ))}
-          </div>
-        </div>
+    <section id="skills" className="section" aria-labelledby="skills-title">
+      <div className="container">
+        <SectionHeader eyebrow={t.development.skillsEyebrow} title={t.development.skillsTitle} id="skills-title" />
+        <ul className="skills-grid" aria-label={t.development.technologiesLabel}>
+          {techIcons.map(({ name, Icon }) => (
+            <li key={name} className="skills-tile" dir="ltr">
+              <Icon size={22} aria-hidden="true" className="skills-icon" />
+              <span>{name}</span>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );

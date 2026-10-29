@@ -11,7 +11,6 @@ export interface Project {
 
 export interface ProjectCardProps {
   project: Project;
-  isActive: boolean;
 }
 
 export interface ProjectCarouselProps {

@@ -5,26 +5,27 @@ import { projects } from "../data/projects";
 import { useI18n } from "../lib/locale";
 
 const DevelopmentPage = () => {
-  const { locale, t } = useI18n();
+  const { t } = useI18n();
 
   return (
-    <div className="retro-container">
+    <>
       <PageHero
         id="dev-intro"
-        imageSide="right"
-        localizedHeading={locale === "he"}
+        eyebrow={t.development.eyebrow}
         heading={t.development.heading}
-        subheading={t.development.subheading}
+        lead={t.development.intro}
         imageAlt={t.hero.imageAlt}
       />
 
-      <section id="projects" className="retro-section projects-section motion-section motion-delay-1">
-        <p className="projects-lead">{t.development.projectsTitle}</p>
-        <ProjectCarousel projects={projects} />
+      <section id="projects" className="section" aria-label={t.development.projectsTitle}>
+        <div className="container">
+          <p className="section-intro projects-lead">{t.development.projectsTitle}</p>
+          <ProjectCarousel projects={projects} />
+        </div>
       </section>
 
       <Skills />
-    </div>
+    </>
   );
 };
 

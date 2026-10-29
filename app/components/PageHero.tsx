@@ -2,45 +2,37 @@ import type { ReactNode } from "react";
 
 interface PageHeroProps {
   id?: string;
+  eyebrow: string;
   heading: ReactNode;
-  subheading: ReactNode;
-  imageSide?: "left" | "right";
+  lead?: ReactNode;
   imageSrc?: string;
-  imageAlt?: string;
-  actions?: ReactNode;
-  localizedHeading?: boolean;
+  imageAlt: string;
 }
 
 const PageHero = ({
   id = "hero",
+  eyebrow,
   heading,
-  subheading,
-  imageSide = "right",
+  lead,
   imageSrc = "/assets/retro-computer.svg",
-  imageAlt = "Retro Computer Setup",
-  actions,
-  localizedHeading = false,
+  imageAlt,
 }: PageHeroProps) => {
   return (
-    <section
-      id={id}
-      className={`retro-section page-hero page-hero--image-${imageSide} relative`}
-    >
-      <div className="page-hero-layout">
-        <div className="page-hero-text">
-          <h1 className={`pixel-heading${localizedHeading ? " copy-heading" : ""}`}>{heading}</h1>
-          <p className="pixel-subheading hero-subheading">{subheading}</p>
-          {actions ? <div className="hero-cta-row">{actions}</div> : null}
+    <section id={id} className="hero hero-compact" aria-labelledby={`${id}-title`}>
+      <div className="container hero-layout">
+        <div className="hero-text">
+          <p className="hero-tag" lang="en" dir="ltr">
+            {`> ${eyebrow}`}
+            <span className="hero-cursor" aria-hidden="true">_</span>
+          </p>
+          <h1 className="hero-title" id={`${id}-title`}>
+            {heading}
+            <span className="hero-title-dot" aria-hidden="true">.</span>
+          </h1>
+          {lead ? <p className="hero-lead">{lead}</p> : null}
         </div>
-
-        <div className="page-hero-image">
-          <div className="retro-computer-container">
-            <img
-              src={imageSrc}
-              alt={imageAlt}
-              className="page-hero-image-img"
-            />
-          </div>
+        <div className="hero-media">
+          <img src={imageSrc} alt={imageAlt} className="hero-image" />
         </div>
       </div>
     </section>

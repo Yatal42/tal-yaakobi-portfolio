@@ -1,5 +1,6 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import NavigationButton from "../NavigationButton";
+import Window from "../ui/Window";
 import type { Review } from "~/types/review";
 import { useI18n } from "../../lib/locale";
 
@@ -8,14 +9,11 @@ interface ReviewsCarouselProps {
   autoPlayIntervalMs?: number;
 }
 
-const ReviewsCarousel = ({
-  reviews,
-  autoPlayIntervalMs = 10000,
-}: ReviewsCarouselProps) => {
+const ReviewsCarousel = ({ reviews, autoPlayIntervalMs = 10000 }: ReviewsCarouselProps) => {
   const { t } = useI18n();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
-  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const [autoPlay, setAutoPlay] = useState(true);
 
   const goNext = useCallback(() => {
     setCurrentIndex((prev) => (prev + 1) % reviews.length);
@@ -26,24 +24,24 @@ const ReviewsCarousel = ({
   }, [reviews.length]);
 
   useEffect(() => {
-    if (isPaused || reviews.length <= 1 || autoPlayIntervalMs <= 0) {
-      return undefined;
-    }
-    intervalRef.current = setInterval(goNext, autoPlayIntervalMs);
-    return () => {
-      if (intervalRef.current) clearInterval(intervalRef.current);
-    };
-  }, [goNext, isPaused, reviews.length, autoPlayIntervalMs, currentIndex]);
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) setAutoPlay(false);
+  }, []);
+
+  useEffect(() => {
+    if (!autoPlay || isPaused || reviews.length <= 1 || autoPlayIntervalMs <= 0) return undefined;
+    const id = window.setInterval(goNext, autoPlayIntervalMs);
+    return () => window.clearInterval(id);
+  }, [autoPlay, goNext, isPaused, reviews.length, autoPlayIntervalMs, currentIndex]);
 
   if (!reviews || reviews.length === 0) {
-    return <div className="reviews-carousel-empty">{t.reviews.empty}</div>;
+    return <p className="reviews-empty">{t.reviews.empty}</p>;
   }
 
   const review = reviews[currentIndex];
 
   const handleManualNav = (fn: () => void) => {
+    setAutoPlay(false);
     fn();
-    if (intervalRef.current) clearInterval(intervalRef.current);
   };
 
   return (
@@ -54,44 +52,43 @@ const ReviewsCarousel = ({
       onFocus={() => setIsPaused(true)}
       onBlur={() => setIsPaused(false)}
     >
-      <NavigationButton
-        direction="prev"
-        onClick={() => handleManualNav(goPrev)}
-        disabled={reviews.length <= 1}
-        ariaLabel={t.reviews.previous}
-      />
+      <Window title="reviews.txt" className="review-window">
+        <figure className="review" dir="rtl" lang="he" aria-live="polite">
+          <p
+            className="review-stars"
+            role="img"
+            aria-label={`${review.rating} ${t.reviews.rating}`}
+          >
+            {"★".repeat(review.rating)}
+            <span className="review-stars-empty">{"★".repeat(5 - review.rating)}</span>
+          </p>
+          <blockquote className="review-quote">
+            <p>{review.message}</p>
+          </blockquote>
+          <figcaption className="review-author">
+            {review.name}
+            {review.role ? <span className="review-role"> · {review.role}</span> : null}
+          </figcaption>
+        </figure>
+      </Window>
 
-      <div className="reviews-carousel-content">
-        <article className="review-carousel-card" dir="rtl" lang="he">
-          <div className="review-carousel-header">
-            <h3>{review.name}</h3>
-            <span
-              className="review-rating"
-              aria-label={`${review.rating} ${t.reviews.rating}`}
-            >
-              {"★".repeat(review.rating)}
-              <span className="review-rating-empty">
-                {"★".repeat(5 - review.rating)}
-              </span>
-            </span>
-          </div>
-          {review.role ? <p className="review-role">{review.role}</p> : null}
-          <p className="review-carousel-message">{review.message}</p>
-        </article>
-
-        <div className="reviews-counter" aria-live="polite">
-          <span dir="ltr">
-            {currentIndex + 1} / {reviews.length}
-          </span>
-        </div>
+      <div className="carousel-controls">
+        <NavigationButton
+          direction="prev"
+          onClick={() => handleManualNav(goPrev)}
+          disabled={reviews.length <= 1}
+          ariaLabel={t.reviews.previous}
+        />
+        <span className="carousel-counter" dir="ltr">
+          {currentIndex + 1} / {reviews.length}
+        </span>
+        <NavigationButton
+          direction="next"
+          onClick={() => handleManualNav(goNext)}
+          disabled={reviews.length <= 1}
+          ariaLabel={t.reviews.next}
+        />
       </div>
-
-      <NavigationButton
-        direction="next"
-        onClick={() => handleManualNav(goNext)}
-        disabled={reviews.length <= 1}
-        ariaLabel={t.reviews.next}
-      />
     </div>
   );
 };
