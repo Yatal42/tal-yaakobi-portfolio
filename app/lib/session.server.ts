@@ -38,7 +38,7 @@ function authSession() {
   return storage;
 }
 
-export function googleAuthConfigured() {
+function googleAuthConfigured() {
   return Boolean(process.env.GOOGLE_CLIENT_ID && process.env.GOOGLE_CLIENT_SECRET);
 }
 
@@ -53,12 +53,12 @@ export async function requireUser(request: Request, returnTo: string) {
   throw redirect(`/auth/google?returnTo=${encodeURIComponent(returnTo)}`);
 }
 
-export function safeReturnTo(value: string | null | undefined) {
+function safeReturnTo(value: string | null | undefined) {
   if (!value || !value.startsWith("/") || value.startsWith("//") || value.startsWith("/\\")) return "/";
   return value;
 }
 
-export function withAuthError(returnTo: string) {
+function withAuthError(returnTo: string) {
   const [path] = returnTo.split(/[?#]/);
   return `${path}?auth=error`;
 }
