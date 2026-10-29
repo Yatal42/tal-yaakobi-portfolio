@@ -2,8 +2,10 @@ import { useState } from 'react';
 import ProjectCard from './ProjectCard';
 import NavigationButton from './NavigationButton';
 import type { ProjectCarouselProps } from '../types/project';
+import { useI18n } from '../lib/locale';
 
 const ProjectCarousel = ({ projects }: ProjectCarouselProps) => {
+  const { t } = useI18n();
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const nextProject = () => {
@@ -15,7 +17,7 @@ const ProjectCarousel = ({ projects }: ProjectCarouselProps) => {
   };
 
   if (!projects || projects.length === 0) {
-    return <div className="project-carousel-empty">No projects available</div>;
+    return <div className="project-carousel-empty">{t.development.empty}</div>;
   }
 
   return (
@@ -26,6 +28,7 @@ const ProjectCarousel = ({ projects }: ProjectCarouselProps) => {
           direction="prev" 
           onClick={prevProject}
           disabled={projects.length <= 1}
+          ariaLabel={t.development.previous}
         />
       </div>
       
@@ -36,7 +39,7 @@ const ProjectCarousel = ({ projects }: ProjectCarouselProps) => {
         />
         
         <div className="project-counter">
-          <span>{currentIndex + 1} / {projects.length}</span>
+          <span dir="ltr">{currentIndex + 1} / {projects.length}</span>
         </div>
       </div>
       
@@ -45,6 +48,7 @@ const ProjectCarousel = ({ projects }: ProjectCarouselProps) => {
           direction="next" 
           onClick={nextProject}
           disabled={projects.length <= 1}
+          ariaLabel={t.development.next}
         />
       </div>
       
@@ -54,11 +58,13 @@ const ProjectCarousel = ({ projects }: ProjectCarouselProps) => {
           direction="prev" 
           onClick={prevProject}
           disabled={projects.length <= 1}
+          ariaLabel={t.development.previous}
         />
         <NavigationButton 
           direction="next" 
           onClick={nextProject}
           disabled={projects.length <= 1}
+          ariaLabel={t.development.next}
         />
       </div>
     </div>

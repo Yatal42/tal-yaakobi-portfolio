@@ -2,8 +2,10 @@ import { useState } from "react";
 import ReviewsCarousel from "./ReviewsCarousel";
 import ReviewFormModal from "./ReviewFormModal";
 import { reviews } from "~/data/reviews";
+import { useI18n } from "../../lib/locale";
 
 export default function ReviewsSection() {
+  const { t } = useI18n();
   const [isFormOpen, setIsFormOpen] = useState(false);
 
   return (
@@ -11,10 +13,7 @@ export default function ReviewsSection() {
       id="reviews"
       className="retro-section reviews-section motion-section motion-delay-2"
     >
-      <h2 className="retro-section-title">Student Reviews</h2>
-      <p className="reviews-subtitle">
-        Feedback from students I've taught.
-      </p>
+      <h2 className="retro-section-title">{t.reviews.title}</h2>
       <ReviewsCarousel reviews={reviews} />
 
       <div className="reviews-cta">
@@ -23,7 +22,7 @@ export default function ReviewsSection() {
           className="reviews-cta-button"
           onClick={() => setIsFormOpen(true)}
         >
-          Leave a Review
+          {t.reviews.leave}
         </button>
       </div>
 

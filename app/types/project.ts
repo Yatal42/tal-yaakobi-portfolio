@@ -1,4 +1,5 @@
 export interface Project {
+  id: "portfolio" | "chord" | "popcorn" | "gantt" | "calories";
   title: string;
   description: string;
   technologies: string[];

@@ -2,6 +2,7 @@ import type { Project } from "../types/project";
 
 export const projects: Project[] = [
   {
+    id: "portfolio",
     title: "My Portfolio",
     description:
       "Personal portfolio site built with React, TypeScript, and Tailwind CSS. Includes a custom retro UI, interactive sections, and accessibility-focused structure.",
@@ -17,6 +18,7 @@ export const projects: Project[] = [
     githubUrl: "https://github.com/Yatal42/tal-yaakobi-portfolio",
   },
   {
+    id: "chord",
     title: "Chord-I",
     description:
       "AI-powered chord detection system that extracts chords from songs using machine learning and audio processing. Currently focused on accuracy and real-time performance.",
@@ -37,6 +39,7 @@ export const projects: Project[] = [
     status: "In Development",
   },
   {
+    id: "popcorn",
     title: "Popcorn Palace",
     description:
       "Backend cinema ticket-booking system built with NestJS, PostgreSQL, TypeORM, and Docker. Includes a scalable REST API and strong unit and end-to-end test coverage.",
@@ -52,6 +55,7 @@ export const projects: Project[] = [
     githubUrl: "https://github.com/Yatal42/popcorn-palace",
   },
   {
+    id: "gantt",
     title: "Task & Projects Gantt Chart",
     description:
       "Full-stack task and project planner with dependency handling, date shifting, and live updates. Built with React + TypeScript on the frontend and Node.js + Express + MySQL on the backend.",
@@ -61,6 +65,7 @@ export const projects: Project[] = [
     videoId: "mx6-K3wZFmE",
   },
   {
+    id: "calories",
     title: "Calories Tracker - Frontend",
     description:
       "Frontend for a calorie-tracking application with meal logging, calorie monitoring, and a responsive experience.",

@@ -1,14 +1,17 @@
 import {
   Links,
+  Meta,
   Outlet,
   Scripts,
   ScrollRestoration,
+  useLocation,
 } from "react-router";
 import type { LinksFunction } from "react-router";
 import RetroNavbar from "./components/RetroNavbar";
 import SocialLinks from "./components/SocialLinks";
 import StarfieldBackground from "./components/StarfieldBackground";
 import ContactSection from "./components/ContactSection";
+import { getMessages, localeFromPathname } from "./lib/locale";
 
 import "./app.css";
 import "./styles/global.css";
@@ -33,26 +36,29 @@ export const links: LinksFunction = () => [
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {
+  const { pathname } = useLocation();
+  const locale = localeFromPathname(pathname);
+  const t = getMessages(locale);
+
   return (
-    <html lang="en">
+    <html lang={locale} dir={locale === "he" ? "rtl" : "ltr"}>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Tal Yaakobi - CS Educator & Private Tutor</title>
-        <meta name="description" content="Private tutoring, full independent editions of university-level computer science courses, and research on how CS is taught and how it could be taught better." />
+        <Meta />
         <Links />
       </head>
       <body>
         <div className="retro-theme min-h-screen">
           <StarfieldBackground />
           <RetroNavbar />
-          <div className="social-links-wrapper fixed right-4 top-1/2 transform -translate-y-1/2 z-40">
+          <div className="social-links-wrapper fixed top-1/2 transform -translate-y-1/2 z-40">
             <SocialLinks className="flex-col gap-4" />
           </div>
           <div className="retro-main">{children}</div>
           <ContactSection />
           <div className="retro-footer">
-            Ready to build something amazing together?
+            {t.footer}
           </div>
         </div>
         <ScrollRestoration />

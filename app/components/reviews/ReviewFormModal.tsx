@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import ReviewForm from "./ReviewForm";
+import { useI18n } from "../../lib/locale";
 
 interface Props {
   isOpen: boolean;
@@ -8,6 +9,7 @@ interface Props {
 }
 
 export default function ReviewFormModal({ isOpen, onClose }: Props) {
+  const { t } = useI18n();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -40,17 +42,17 @@ export default function ReviewFormModal({ isOpen, onClose }: Props) {
       className="review-modal-backdrop"
       role="dialog"
       aria-modal="true"
-      aria-label="Leave a review"
+      aria-label={t.reviews.dialog}
       onClick={onClose}
     >
       <div className="review-modal" onClick={(event) => event.stopPropagation()}>
         <div className="review-modal-header">
-          <h3 className="review-modal-title">Leave a Review</h3>
+          <h3 className="review-modal-title">{t.reviews.modalTitle}</h3>
           <button
             type="button"
             className="review-modal-close"
             onClick={onClose}
-            aria-label="Close review form"
+            aria-label={t.reviews.close}
           >
             x
           </button>
