@@ -1,60 +1,31 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import ReviewsCarousel from "./ReviewsCarousel";
 import ReviewFormModal from "./ReviewFormModal";
-import { mockReviews } from "~/data/reviews";
-import type { Review } from "~/types/review";
+import SectionHeader from "../ui/SectionHeader";
+import { reviews } from "~/data/reviews";
+import { useI18n } from "../../lib/locale";
 
 export default function ReviewsSection() {
-  const [apiReviews, setApiReviews] = useState<Review[]>([]);
+  const { t } = useI18n();
   const [isFormOpen, setIsFormOpen] = useState(false);
 
-  const loadReviews = async () => {
-    try {
-      const res = await fetch("/api/reviews");
-      if (!res.ok) return;
-      const data = await res.json();
-      if (Array.isArray(data?.reviews)) {
-        setApiReviews(data.reviews);
-      }
-    } catch {
-      // Silent - mock reviews will still display
-    }
-  };
-
-  useEffect(() => {
-    void loadReviews();
-  }, []);
-
-  const reviews = [...mockReviews, ...apiReviews];
-
   return (
-    <section
-      id="reviews"
-      className="retro-section reviews-section motion-section motion-delay-2"
-    >
-      <h2 className="retro-section-title">Student Reviews</h2>
-      <p className="reviews-subtitle">
-        Feedback from students I've taught.
-      </p>
-      <ReviewsCarousel reviews={reviews} />
-
-      <div className="reviews-cta">
-        <button
-          type="button"
-          className="reviews-cta-button"
-          onClick={() => setIsFormOpen(true)}
-        >
-          Leave a Review
-        </button>
+    <section id="reviews" className="section" aria-labelledby="reviews-title">
+      <div className="container">
+        <SectionHeader
+          eyebrow={t.reviews.eyebrow}
+          title={t.reviews.title}
+          id="reviews-title"
+          aside={
+            <button type="button" className="btn btn-secondary btn-sm" onClick={() => setIsFormOpen(true)}>
+              {t.reviews.leave}
+            </button>
+          }
+        />
+        <ReviewsCarousel reviews={reviews} />
       </div>
 
-      <ReviewFormModal
-        isOpen={isFormOpen}
-        onClose={() => setIsFormOpen(false)}
-        onSubmitted={() => {
-          void loadReviews();
-        }}
-      />
+      <ReviewFormModal isOpen={isFormOpen} onClose={() => setIsFormOpen(false)} />
     </section>
   );
 }

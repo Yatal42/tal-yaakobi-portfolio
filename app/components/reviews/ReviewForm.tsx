@@ -1,15 +1,13 @@
 import { useState } from "react";
+import { translateReviewApi, useI18n } from "../../lib/locale";
 
-interface Props {
-  onSubmitted: () => void;
-}
-
-export default function ReviewForm({ onSubmitted }: Props) {
+export default function ReviewForm() {
   const [name, setName] = useState("");
   const [role, setRole] = useState("");
   const [rating, setRating] = useState(5);
   const [message, setMessage] = useState("");
   const [submitting, setSubmitting] = useState(false);
+  const { locale, t } = useI18n();
   const [feedback, setFeedback] = useState<{ kind: "error" | "success"; text: string } | null>(null);
 
   const submit = async (event: React.FormEvent) => {
@@ -24,20 +22,25 @@ export default function ReviewForm({ onSubmitted }: Props) {
       });
       const data = await res.json();
       if (!res.ok) {
-        setFeedback({ kind: "error", text: data?.error || "Could not submit your review." });
+        setFeedback({
+          kind: "error",
+          text: translateReviewApi(data?.error || t.reviewForm.fallbackError, locale),
+        });
         return;
       }
       setFeedback({
         kind: "success",
-        text: data?.message || "Thanks! Your review was submitted and is waiting for approval.",
+        text: translateReviewApi(
+          data?.message || "Thanks! Your review was sent and will be added to the site soon.",
+          locale
+        ),
       });
       setName("");
       setRole("");
       setRating(5);
       setMessage("");
-      onSubmitted();
-    } catch (error) {
-      setFeedback({ kind: "error", text: `Network error: ${(error as Error).message}` });
+    } catch {
+      setFeedback({ kind: "error", text: t.reviewForm.network });
     } finally {
       setSubmitting(false);
     }
@@ -46,7 +49,7 @@ export default function ReviewForm({ onSubmitted }: Props) {
   return (
     <form className="reviews-form" onSubmit={submit}>
       <div className="reviews-form-row">
-        <label className="reviews-label" htmlFor="review-name">Name</label>
+        <label className="reviews-label" htmlFor="review-name">{t.reviewForm.name}</label>
         <input
           id="review-name"
           className="reviews-input"
@@ -60,7 +63,7 @@ export default function ReviewForm({ onSubmitted }: Props) {
       </div>
 
       <div className="reviews-form-row">
-        <label className="reviews-label" htmlFor="review-role">Role (Optional)</label>
+        <label className="reviews-label" htmlFor="review-role">{t.reviewForm.role}</label>
         <input
           id="review-role"
           className="reviews-input"
@@ -68,28 +71,28 @@ export default function ReviewForm({ onSubmitted }: Props) {
           value={role}
           onChange={(event) => setRole(event.target.value)}
           maxLength={120}
-          placeholder="Student, Colleague, etc."
+          placeholder={t.reviewForm.rolePlaceholder}
         />
       </div>
 
       <div className="reviews-form-row">
-        <label className="reviews-label" htmlFor="review-rating">Rating</label>
+        <label className="reviews-label" htmlFor="review-rating">{t.reviewForm.rating}</label>
         <select
           id="review-rating"
           className="reviews-input"
           value={rating}
           onChange={(event) => setRating(Number(event.target.value))}
         >
-          <option value={5}>★★★★★ 5 - Excellent</option>
-          <option value={4}>★★★★☆ 4 - Very Good</option>
-          <option value={3}>★★★☆☆ 3 - Good</option>
-          <option value={2}>★★☆☆☆ 2 - Fair</option>
-          <option value={1}>★☆☆☆☆ 1 - Needs Improvement</option>
+          <option value={5}>{t.reviewForm.ratings[0]}</option>
+          <option value={4}>{t.reviewForm.ratings[1]}</option>
+          <option value={3}>{t.reviewForm.ratings[2]}</option>
+          <option value={2}>{t.reviewForm.ratings[3]}</option>
+          <option value={1}>{t.reviewForm.ratings[4]}</option>
         </select>
       </div>
 
       <div className="reviews-form-row">
-        <label className="reviews-label" htmlFor="review-message">Review</label>
+        <label className="reviews-label" htmlFor="review-message">{t.reviewForm.message}</label>
         <textarea
           id="review-message"
           className="reviews-textarea"
@@ -99,16 +102,16 @@ export default function ReviewForm({ onSubmitted }: Props) {
           minLength={20}
           maxLength={800}
           required
-          placeholder="Share your experience..."
+          placeholder={t.reviewForm.messagePlaceholder}
         />
       </div>
 
       <button className="reviews-submit" type="submit" disabled={submitting}>
-        {submitting ? "Submitting..." : "Submit Review"}
+        {submitting ? t.reviewForm.submitting : t.reviewForm.submit}
       </button>
 
       <p className="reviews-form-note">
-        Reviews are moderated before publishing.
+        {t.reviewForm.note}
       </p>
 
       {feedback ? (

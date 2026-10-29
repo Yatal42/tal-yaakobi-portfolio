@@ -1,18 +1,32 @@
 import {
   Links,
+  Meta,
   Outlet,
   Scripts,
   ScrollRestoration,
+  useLocation,
+  useRouteLoaderData,
 } from "react-router";
-import type { LinksFunction } from "react-router";
+import type { LinksFunction, LoaderFunctionArgs } from "react-router";
 import RetroNavbar from "./components/RetroNavbar";
-import SocialLinks from "./components/SocialLinks";
-import StarfieldBackground from "./components/StarfieldBackground";
-import ContactSection from "./components/ContactSection";
+import Contact from "./components/Contact";
+import SiteFooter from "./components/SiteFooter";
+import LoginModal from "./components/LoginModal";
+import { localeFromPathname } from "./lib/locale";
+import { ViewerProvider } from "./lib/viewer";
+import { getUser } from "./lib/session.server";
+import { enrolledCourses } from "./lib/access.server";
 
 import "./app.css";
-import "./styles/global.css";
-import "./styles/retro.css";
+import "./styles/theme.css";
+
+export async function loader({ request }: LoaderFunctionArgs) {
+  const user = await getUser(request);
+  return {
+    user: user ? { name: user.name, email: user.email } : null,
+    enrolled: enrolledCourses(user?.email),
+  };
+}
 
 export const links: LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -23,38 +37,38 @@ export const links: LinksFunction = () => [
   },
   {
     rel: "stylesheet",
-    href: "https://fonts.googleapis.com/css2?family=Goldman:wght@400;700&family=Saira+Condensed:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    href: "https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800&family=JetBrains+Mono:wght@400;600&family=Press+Start+2P&display=swap",
   },
   {
     rel: "icon",
     type: "image/svg+xml",
-    href: "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3QgeD0iNCIgeT0iNiIgd2lkdGg9IjI0IiBoZWlnaHQ9IjE2IiByeD0iMiIgZmlsbD0iIzI5NWE3ZCIvPgo8cmVjdCB4PSI2IiB5PSI4IiB3aWR0aD0iMjAiIGhlaWdodD0iMTAiIGZpbGw9IiMwNTA4MmUiLz4KPHJlY3QgeD0iMTAiIHk9IjI0IiB3aWR0aD0iMTIiIGhlaWdodD0iMiIgZmlsbD0iIzI5NWE3ZCIvPgo8L3N2Zz4K"
-  }
+    href: "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3QgeD0iNCIgeT0iNiIgd2lkdGg9IjI0IiBoZWlnaHQ9IjE2IiByeD0iMiIgZmlsbD0iIzI5NWE3ZCIvPgo8cmVjdCB4PSI2IiB5PSI4IiB3aWR0aD0iMjAiIGhlaWdodD0iMTAiIGZpbGw9IiMwNTA4MmUiLz4KPHJlY3QgeD0iMTAiIHk9IjI0IiB3aWR0aD0iMTIiIGhlaWdodD0iMiIgZmlsbD0iIzI5NWE3ZCIvPgo8L3N2Zz4K",
+  },
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {
+  const { pathname } = useLocation();
+  const locale = localeFromPathname(pathname);
+  const data = useRouteLoaderData<typeof loader>("root");
+
   return (
-    <html lang="en">
+    <html lang={locale} dir={locale === "he" ? "rtl" : "ltr"}>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Tal Yaakobi - CS Educator & Private Tutor</title>
-        <meta name="description" content="Private tutoring, full independent editions of university-level computer science courses, and research on how CS is taught and how it could be taught better." />
+        <Meta />
         <Links />
       </head>
       <body>
-        <div className="retro-theme min-h-screen">
-          <StarfieldBackground />
-          <RetroNavbar />
-          <div className="social-links-wrapper fixed right-4 top-1/2 transform -translate-y-1/2 z-40">
-            <SocialLinks className="flex-col gap-4" />
+        <ViewerProvider user={data?.user ?? null} enrolled={data?.enrolled ?? []}>
+          <div className="site">
+            <RetroNavbar />
+            <main className="site-main">{children}</main>
+            <Contact />
+            <SiteFooter />
+            <LoginModal />
           </div>
-          <div className="retro-main">{children}</div>
-          <ContactSection />
-          <div className="retro-footer">
-            Ready to build something amazing together?
-          </div>
-        </div>
+        </ViewerProvider>
         <ScrollRestoration />
         <Scripts />
       </body>
