@@ -6,8 +6,9 @@ import TeachingApproach from './TeachingApproach';
 import CourseCatalog from './CourseCatalog';
 import ReviewsSection from "./reviews/ReviewsSection";
 import { scrollToSection } from '../lib/scroll';
+import type { Review } from '../types/review';
 
-const RetroHomePage = () => {
+const RetroHomePage = ({ reviews }: { reviews: Review[] }) => {
   const location = useLocation();
 
   useEffect(() => {
@@ -27,7 +28,7 @@ const RetroHomePage = () => {
       <About />
       <TeachingApproach />
       <CourseCatalog />
-      <ReviewsSection />
+      <ReviewsSection reviews={reviews} />
     </>
   );
 };

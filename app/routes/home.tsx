@@ -1,5 +1,7 @@
-import type { MetaFunction } from "react-router";
+import { useLoaderData, type MetaFunction } from "react-router";
 import RetroHomePage from "../components/RetroHomePage";
+import { reviews } from "../data/reviews";
+import { listApprovedReviews } from "../lib/reviews/store.server";
 import { getMessages, localeFromPathname } from "../lib/locale";
 
 export const meta: MetaFunction = ({ location }) => {
@@ -10,8 +12,11 @@ export const meta: MetaFunction = ({ location }) => {
   ];
 };
 
+export async function loader() {
+  return { reviews: [...(await listApprovedReviews()), ...reviews] };
+}
+
 export default function Home() {
-  return (
-    <RetroHomePage />
-  );
+  const data = useLoaderData<typeof loader>();
+  return <RetroHomePage reviews={data.reviews} />;
 }

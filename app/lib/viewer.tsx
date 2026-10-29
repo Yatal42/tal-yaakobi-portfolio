@@ -11,6 +11,7 @@ interface ViewerValue {
   user: ViewerUser | null;
   signedIn: boolean;
   enrolled: CourseId[];
+  admin: boolean;
   loginOpen: boolean;
   loginError: boolean;
   openLogin: () => void;
@@ -23,10 +24,11 @@ const ViewerContext = createContext<ViewerValue | null>(null);
 interface ViewerProviderProps {
   user: ViewerUser | null;
   enrolled: CourseId[];
+  admin: boolean;
   children: ReactNode;
 }
 
-export function ViewerProvider({ user, enrolled, children }: ViewerProviderProps) {
+export function ViewerProvider({ user, enrolled, admin, children }: ViewerProviderProps) {
   const location = useLocation();
   const navigate = useNavigate();
   const [loginOpen, setLoginOpen] = useState(false);
@@ -58,13 +60,14 @@ export function ViewerProvider({ user, enrolled, children }: ViewerProviderProps
       user,
       signedIn: Boolean(user),
       enrolled,
+      admin,
       loginOpen,
       loginError,
       openLogin,
       closeLogin,
       courseState,
     };
-  }, [user, enrolled, loginOpen, loginError, openLogin, closeLogin]);
+  }, [user, enrolled, admin, loginOpen, loginError, openLogin, closeLogin]);
 
   return <ViewerContext.Provider value={value}>{children}</ViewerContext.Provider>;
 }

@@ -4,6 +4,12 @@ const allowlist: Record<string, readonly CourseId[]> = {
   "taltal2345@gmail.com": courseIds,
 };
 
+const admins = new Set(["taltal2345@gmail.com"]);
+
+export function isAdmin(email: string | null | undefined) {
+  return Boolean(email && admins.has(email.trim().toLowerCase()));
+}
+
 function isCourseId(value: string): value is CourseId {
   return (courseIds as readonly string[]).includes(value);
 }

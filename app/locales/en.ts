@@ -218,6 +218,23 @@ export const en = {
     noAccessText: (email: string) =>
       `The account ${email} doesn't have access yet. If you enrolled in a course, write to me and I'll open it for you.`,
   },
+  admin: {
+    eyebrow: "ADMIN",
+    title: "Reviews to approve",
+    groups: {
+      pending: "Waiting for approval",
+      approved: "Approved and shown on the site",
+      rejected: "Rejected",
+    },
+    empty: "No reviews here.",
+    approve: "Approve",
+    reject: "Reject",
+    unpublish: "Remove from site",
+    restore: "Back to pending",
+    remove: "Delete",
+    confirmDelete: "Delete this review permanently?",
+    notConfigured: "The database isn't connected, so there are no reviews to show.",
+  },
   classroom: {
     eyebrow: "MY COURSE",
     back: "Back to courses",

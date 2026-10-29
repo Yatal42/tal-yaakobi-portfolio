@@ -2,10 +2,10 @@ import { useState } from "react";
 import ReviewsCarousel from "./ReviewsCarousel";
 import ReviewFormModal from "./ReviewFormModal";
 import SectionHeader from "../ui/SectionHeader";
-import { reviews } from "~/data/reviews";
+import type { Review } from "~/types/review";
 import { useI18n } from "../../lib/locale";
 
-export default function ReviewsSection() {
+export default function ReviewsSection({ reviews }: { reviews: Review[] }) {
   const { t } = useI18n();
   const [isFormOpen, setIsFormOpen] = useState(false);
 
