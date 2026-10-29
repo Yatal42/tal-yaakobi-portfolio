@@ -1,18 +1,19 @@
+import { Link } from "react-router";
 import SectionHeader from "./ui/SectionHeader";
 import Window from "./ui/Window";
 import ProgressBar from "./ui/ProgressBar";
 import { samplePercent, sampleProgress } from "../data/courseProgress";
 import { scrollToSection } from "../lib/scroll";
-import { useI18n } from "../lib/locale";
+import { localizePath, useI18n } from "../lib/locale";
 import { useViewer } from "../lib/viewer";
 
 export default function PersonalArea() {
-  const { t } = useI18n();
-  const { signedIn } = useViewer();
-
-  if (!signedIn) return null;
-
+  const { locale, t } = useI18n();
+  const { enrolled } = useViewer();
   const { courseId, currentIndex, totalLessons, lessons, week } = sampleProgress;
+
+  if (!enrolled.includes(courseId)) return null;
+
   const lessonTitles = t.personal.lessons[courseId as keyof typeof t.personal.lessons] ?? [];
   const currentTitle = lessonTitles[currentIndex];
   const courseTitle = t.courses.titles[courseId];
@@ -33,9 +34,9 @@ export default function PersonalArea() {
               {courseTitle} · {t.personal.lessonOf(currentIndex + 1, totalLessons)}
             </p>
             <h3 className="dashboard-lesson">{currentTitle}</h3>
-            <button type="button" className="btn btn-primary">
+            <Link to={localizePath(`/courses/${courseId}`, locale)} className="btn btn-primary">
               <span aria-hidden="true">▶</span> {t.personal.continue}
-            </button>
+            </Link>
 
             <ProgressBar
               value={samplePercent}

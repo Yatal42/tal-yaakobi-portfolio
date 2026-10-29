@@ -1,10 +1,11 @@
 import { Link } from "react-router";
+import LogoutButton from "./LogoutButton";
 import { localizePath, useI18n } from "../lib/locale";
 import { useViewer } from "../lib/viewer";
 
 export default function SiteFooter() {
   const { locale, t } = useI18n();
-  const { previewEnabled, signedIn, setPreviewSignedIn } = useViewer();
+  const { user } = useViewer();
 
   return (
     <footer className="site-footer">
@@ -18,25 +19,10 @@ export default function SiteFooter() {
         </ul>
       </div>
 
-      {previewEnabled ? (
-        <div className="preview-toggle" role="group" aria-label={t.footer.preview}>
-          <span>{t.footer.preview}</span>
-          <button
-            type="button"
-            className="btn-bevel"
-            aria-pressed={!signedIn}
-            onClick={() => setPreviewSignedIn(false)}
-          >
-            {t.footer.guest}
-          </button>
-          <button
-            type="button"
-            className="btn-bevel"
-            aria-pressed={signedIn}
-            onClick={() => setPreviewSignedIn(true)}
-          >
-            {t.footer.signedIn}
-          </button>
+      {user ? (
+        <div className="site-footer-account">
+          <span dir="ltr">{user.email}</span>
+          <LogoutButton />
         </div>
       ) : null}
     </footer>

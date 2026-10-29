@@ -5,17 +5,28 @@ import {
   Scripts,
   ScrollRestoration,
   useLocation,
+  useRouteLoaderData,
 } from "react-router";
-import type { LinksFunction } from "react-router";
+import type { LinksFunction, LoaderFunctionArgs } from "react-router";
 import RetroNavbar from "./components/RetroNavbar";
 import Contact from "./components/Contact";
 import SiteFooter from "./components/SiteFooter";
 import LoginModal from "./components/LoginModal";
 import { localeFromPathname } from "./lib/locale";
 import { ViewerProvider } from "./lib/viewer";
+import { getUser } from "./lib/session.server";
+import { enrolledCourses } from "./lib/access.server";
 
 import "./app.css";
 import "./styles/theme.css";
+
+export async function loader({ request }: LoaderFunctionArgs) {
+  const user = await getUser(request);
+  return {
+    user: user ? { name: user.name, email: user.email } : null,
+    enrolled: enrolledCourses(user?.email),
+  };
+}
 
 export const links: LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -38,6 +49,7 @@ export const links: LinksFunction = () => [
 export function Layout({ children }: { children: React.ReactNode }) {
   const { pathname } = useLocation();
   const locale = localeFromPathname(pathname);
+  const data = useRouteLoaderData<typeof loader>("root");
 
   return (
     <html lang={locale} dir={locale === "he" ? "rtl" : "ltr"}>
@@ -48,7 +60,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        <ViewerProvider>
+        <ViewerProvider user={data?.user ?? null} enrolled={data?.enrolled ?? []}>
           <div className="site">
             <RetroNavbar />
             <main className="site-main">{children}</main>

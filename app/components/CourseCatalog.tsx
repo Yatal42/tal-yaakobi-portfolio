@@ -1,5 +1,6 @@
 import SectionHeader from "./ui/SectionHeader";
 import CourseCard from "./CourseCard";
+import LogoutButton from "./LogoutButton";
 import Window from "./ui/Window";
 import { courses } from "../data/courses";
 import { useI18n } from "../lib/locale";
@@ -7,7 +8,7 @@ import { useViewer } from "../lib/viewer";
 
 const CourseCatalog = () => {
   const { t } = useI18n();
-  const { courseState, showSignIn, openLogin } = useViewer();
+  const { user, enrolled, courseState, openLogin } = useViewer();
 
   return (
     <section id="courses" className="section" aria-labelledby="courses-title">
@@ -25,7 +26,7 @@ const CourseCatalog = () => {
           ))}
         </ul>
 
-        {showSignIn ? (
+        {!user ? (
           <Window title="notice.txt" className="signin-window" bodyClassName="signin-banner">
             <p>
               <strong>{t.courses.bannerTitle}</strong> {t.courses.bannerText}
@@ -33,6 +34,13 @@ const CourseCatalog = () => {
             <button type="button" className="btn btn-primary btn-sm" onClick={openLogin}>
               {t.courses.signIn}
             </button>
+          </Window>
+        ) : enrolled.length === 0 ? (
+          <Window title="access.txt" className="signin-window" bodyClassName="signin-banner">
+            <p>
+              <strong>{t.auth.noAccessTitle}</strong> {t.auth.noAccessText(user.email)}
+            </p>
+            <LogoutButton className="btn btn-secondary btn-sm" />
           </Window>
         ) : null}
       </div>

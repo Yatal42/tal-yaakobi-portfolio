@@ -1,9 +1,7 @@
-import ProgressBar from "./ui/ProgressBar";
+import { Link } from "react-router";
 import Window from "./ui/Window";
 import type { Course, CourseState } from "../data/courses";
-import { samplePercent, sampleProgress } from "../data/courseProgress";
-import { scrollToSection } from "../lib/scroll";
-import { useI18n } from "../lib/locale";
+import { localizePath, useI18n } from "../lib/locale";
 import { useViewer } from "../lib/viewer";
 
 interface CourseCardProps {
@@ -12,7 +10,7 @@ interface CourseCardProps {
 }
 
 export default function CourseCard({ course, state }: CourseCardProps) {
-  const { t } = useI18n();
+  const { locale, t } = useI18n();
   const { openLogin } = useViewer();
   const title = t.courses.titles[course.id];
   const meta = [
@@ -39,7 +37,7 @@ export default function CourseCard({ course, state }: CourseCardProps) {
           </span>
           <h3 className="course-title">{title}</h3>
 
-          {state === "soon" ? (
+          {state === "soon" || meta.length === 0 ? (
             <ul className="chip-list chip-list-sm">
               {t.courses.topics[course.id].map((topic) => (
                 <li key={topic} className="chip">{topic}</li>
@@ -54,16 +52,9 @@ export default function CourseCard({ course, state }: CourseCardProps) {
           )}
 
           {state === "enrolled" ? (
-            <>
-              <ProgressBar
-                value={samplePercent}
-                label={t.personal.progressLabel}
-                caption={t.personal.lessonOf(sampleProgress.currentIndex + 1, sampleProgress.totalLessons)}
-              />
-              <button type="button" className="btn btn-primary btn-sm" onClick={() => scrollToSection("my-courses")}>
-                {t.courses.continue}
-              </button>
-            </>
+            <Link to={localizePath(`/courses/${course.id}`, locale)} className="btn btn-primary btn-sm">
+              {t.courses.enter}
+            </Link>
           ) : null}
 
           {state === "locked" ? (

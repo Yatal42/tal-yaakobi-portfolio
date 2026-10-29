@@ -1,58 +1,70 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
-import { courses, type Course, type CourseState } from "../data/courses";
-import { sampleProgress } from "../data/courseProgress";
+import { useLocation, useNavigate } from "react-router";
+import type { Course, CourseId, CourseState } from "../data/courses";
+
+export interface ViewerUser {
+  name: string;
+  email: string;
+}
 
 interface ViewerValue {
+  user: ViewerUser | null;
   signedIn: boolean;
-  previewEnabled: boolean;
-  setPreviewSignedIn: (value: boolean) => void;
+  enrolled: CourseId[];
   loginOpen: boolean;
+  loginError: boolean;
   openLogin: () => void;
   closeLogin: () => void;
   courseState: (course: Course) => CourseState;
-  showSignIn: boolean;
 }
 
 const ViewerContext = createContext<ViewerValue | null>(null);
 
-export function ViewerProvider({ children }: { children: ReactNode }) {
-  const previewEnabled = import.meta.env.DEV;
-  const [signedIn, setSignedIn] = useState(false);
+interface ViewerProviderProps {
+  user: ViewerUser | null;
+  enrolled: CourseId[];
+  children: ReactNode;
+}
+
+export function ViewerProvider({ user, enrolled, children }: ViewerProviderProps) {
+  const location = useLocation();
+  const navigate = useNavigate();
   const [loginOpen, setLoginOpen] = useState(false);
+  const [loginError, setLoginError] = useState(false);
 
   useEffect(() => {
-    if (!previewEnabled) return;
-    const preview = new URLSearchParams(window.location.search).get("preview");
-    if (preview === "signed-in") setSignedIn(true);
-  }, [previewEnabled]);
+    const params = new URLSearchParams(location.search);
+    if (params.get("auth") !== "error") return;
+    setLoginError(true);
+    setLoginOpen(true);
+    params.delete("auth");
+    const search = params.toString();
+    navigate({ pathname: location.pathname, search: search ? `?${search}` : "", hash: location.hash }, { replace: true });
+  }, [location.search, location.pathname, location.hash, navigate]);
 
-  const setPreviewSignedIn = useCallback(
-    (value: boolean) => {
-      if (previewEnabled) setSignedIn(value);
-    },
-    [previewEnabled]
-  );
-
-  const openLogin = useCallback(() => setLoginOpen(true), []);
+  const openLogin = useCallback(() => {
+    setLoginError(false);
+    setLoginOpen(true);
+  }, []);
   const closeLogin = useCallback(() => setLoginOpen(false), []);
 
   const value = useMemo<ViewerValue>(() => {
     const courseState = (course: Course): CourseState => {
-      if (signedIn && sampleProgress.enrolled.includes(course.id)) return "enrolled";
+      if (enrolled.includes(course.id)) return "enrolled";
       if (course.published) return "locked";
       return "soon";
     };
     return {
-      signedIn,
-      previewEnabled,
-      setPreviewSignedIn,
+      user,
+      signedIn: Boolean(user),
+      enrolled,
       loginOpen,
+      loginError,
       openLogin,
       closeLogin,
       courseState,
-      showSignIn: !signedIn && (previewEnabled || courses.some((course) => course.published)),
     };
-  }, [signedIn, previewEnabled, setPreviewSignedIn, loginOpen, openLogin, closeLogin]);
+  }, [user, enrolled, loginOpen, loginError, openLogin, closeLogin]);
 
   return <ViewerContext.Provider value={value}>{children}</ViewerContext.Provider>;
 }
