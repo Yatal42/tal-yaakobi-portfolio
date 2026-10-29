@@ -1,10 +1,9 @@
-import { Link } from "react-router";
 import SectionHeader from "./ui/SectionHeader";
 import Window from "./ui/Window";
-import { localizePath, useI18n } from "../lib/locale";
+import { useI18n } from "../lib/locale";
 
 export default function About() {
-  const { locale, t } = useI18n();
+  const { t } = useI18n();
 
   return (
     <section id="about" className="section" aria-labelledby="about-title">
@@ -37,13 +36,7 @@ export default function About() {
               <li key={subject} className="chip">{subject}</li>
             ))}
           </ul>
-          <p className="subjects-note">
-            {t.about.subjectsNote}
-            <Link to={`${localizePath("/", locale)}#courses`} className="text-link">
-              {t.about.catalogLink}
-            </Link>
-            .
-          </p>
+          <p className="subjects-note">{t.about.subjectsNote}</p>
         </div>
       </div>
     </section>

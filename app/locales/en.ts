@@ -2,7 +2,7 @@ export const en = {
   meta: {
     homeTitle: "Tal Yaakobi - CS Tutoring and Private Lessons",
     homeDescription:
-      "Tutoring at the Student Advancement Center, private computer science lessons, and M.A. studies with a thesis on deaf people.",
+      "Private lessons and practice sessions in computer science with Tal Yaakobi, a tutor at HIT: data structures, algorithms, probability, automata and more. Clear explanations and practice that leads to understanding.",
     developmentTitle: "Development | Tal Yaakobi",
     developmentDescription:
       "Software engineering projects, technical experiments, and the stack Tal Yaakobi builds with.",
@@ -21,10 +21,11 @@ export const en = {
   hero: {
     tag: "> CS TUTOR",
     name: "Tal Yaakobi",
-    lead: "CS tutoring and private lessons. I break the material into small steps, until you can keep going on your own.",
-    tags: ["Tutor at HIT", "Private lessons", "CS education researcher"],
+    lead: "Private lessons and group practice sessions across undergraduate computer science courses. I focus on breaking the material into small steps and building deep understanding.",
+    tags: ["Tutor at HIT", "B.Sc. CS, Dean's List", "CS education researcher"],
     book: "Book a lesson",
     courses: "Recorded courses",
+    coursesSoon: "Recorded courses, coming soon",
     resume: "Pick up where I left off",
     imageAlt: "Retro computer illustration with Tal's photo on the screen",
   },
@@ -32,8 +33,9 @@ export const en = {
     eyebrow: "ABOUT",
     title: "About",
     bio: [
-      "B.Sc. in Computer Science with Dean's List honors, and an M.A. student in Science and Technology Education. My research looks at how computer science is taught in academia, and especially at how deaf students experience their studies.",
-      "I tutor at the Student Advancement Center at Holon Institute of Technology, with an emphasis on simple practice that builds real understanding. I also teach English and math at a remedial teaching center, to children in grades 1 through 9.",
+      "I'm a tutor at the Student Advancement Center at HIT, and I give private lessons and group practice sessions to undergraduate computer science students. I know these courses closely, and I know where students usually get stuck.",
+      "I'm also an M.A. student in Science and Technology Education. My research looks at how computer science is taught in academia, and especially at how deaf students experience their studies.",
+      "I also teach English and math at a remedial teaching center, to children in grades 1 through 9.",
     ],
     timeline: [
       { label: "B.Sc.", value: "Computer Science, Dean's List" },
@@ -57,16 +59,15 @@ export const en = {
       "Data Science",
       "Machine Learning",
     ],
-    subjectsNote: "Your course isn't listed? Write to me, most core courses are covered. Recorded courses are in the",
-    catalogLink: "course catalog",
+    subjectsNote: "Your course isn't listed? Write to me, most core courses are covered.",
   },
   approach: {
     eyebrow: "HOW I TEACH",
     title: "How I teach",
     items: [
       {
-        title: "Simplicity",
-        text: "Practice breaks the material into short steps. First the idea, then the exercises.",
+        title: "The idea first",
+        text: "Before solving, we figure out what the question is testing and why the tool works. That way the next exercise doesn't look new.",
       },
       {
         title: "The student side",
@@ -78,7 +79,7 @@ export const en = {
       },
       {
         title: "Practice",
-        text: "The session is built around practice. The aim is to be able to continue on your own afterward.",
+        text: "Each session is built around exercises from your course and past exams. The aim is for you to keep going on your own afterward.",
       },
     ],
   },
@@ -118,7 +119,7 @@ export const en = {
     eyebrow: "COURSES",
     title: "Recorded courses",
     intro:
-      "Recorded lessons with practice sheets and solutions, following the order of the course. Viewing is open to enrolled students.",
+      "I'm preparing recorded courses that follow the order of the course material, with practice sheets and solutions. Viewing will be open to enrolled students.",
     status: {
       soon: "Coming soon",
       locked: "Enrolled only",
@@ -193,8 +194,6 @@ export const en = {
   contact: {
     eyebrow: "CONTACT",
     title: "Let's talk",
-    intro:
-      "Tell me which course, when the exam is, and what feels most stuck. I'll get back to you with a plan for a first lesson.",
     email: "Email",
     phone: "Phone",
     copied: "Copied!",
@@ -229,8 +228,8 @@ export const en = {
   development: {
     heading: "Development",
     eyebrow: "SOFTWARE DEVELOPER",
-    intro: "I develop software first. Then I develop learning the same way I develop software. I also learn. Here are the projects and the tools.",
-    projectsTitle: "Projects I built, and the tools they were built with.",
+    intro: "Besides teaching, I also develop software. Here are some projects I built and the technologies I worked with.",
+    projectsTitle: "Selected projects",
     empty: "No projects available",
     previous: "Previous project",
     next: "Next project",
@@ -254,7 +253,7 @@ export const en = {
       chord: {
         title: "Chord-I",
         description:
-          "AI-powered chord detection system that extracts chords from songs using machine learning and audio processing. Currently focused on accuracy and real-time performance.",
+          "AI-powered chord detection system that extracts chords from songs using machine learning and audio processing. I'm currently working on improving accuracy and real-time detection.",
       },
       popcorn: {
         title: "Popcorn Palace",
@@ -269,7 +268,7 @@ export const en = {
       calories: {
         title: "Calories Tracker - Frontend",
         description:
-          "Frontend for a calorie-tracking application with meal logging, calorie monitoring, and a responsive experience.",
+          "Frontend for a calorie-tracking application with meal logging, calorie counting, and a layout that works on mobile too.",
       },
     },
   },

@@ -77,12 +77,7 @@ export default function Contact() {
   return (
     <section id="contact" className="section contact" aria-labelledby="contact-title">
       <div className="container contact-layout">
-        <SectionHeader
-          eyebrow={t.contact.eyebrow}
-          title={t.contact.title}
-          intro={t.contact.intro}
-          id="contact-title"
-        />
+        <SectionHeader eyebrow={t.contact.eyebrow} title={t.contact.title} id="contact-title" />
         <ul className="contact-list">
           {items.map((item) => (
             <li key={item.id}>

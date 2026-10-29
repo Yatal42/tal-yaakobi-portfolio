@@ -1,10 +1,12 @@
+import { courses } from "../data/courses";
 import { scrollToSection } from "../lib/scroll";
 import { useI18n } from "../lib/locale";
 import { useViewer } from "../lib/viewer";
 
 const Hero = () => {
   const { t } = useI18n();
-  const { signedIn } = useViewer();
+  const { signedIn, courseState } = useViewer();
+  const hasOpenCourse = courses.some((course) => courseState(course) !== "soon");
 
   return (
     <section id="hero" className="hero" aria-labelledby="hero-title">
@@ -29,7 +31,7 @@ const Hero = () => {
               {t.hero.book}
             </button>
             <button type="button" className="btn btn-secondary" onClick={() => scrollToSection("courses")}>
-              {t.hero.courses}
+              {hasOpenCourse ? t.hero.courses : t.hero.coursesSoon}
             </button>
             {signedIn ? (
               <button type="button" className="btn btn-ghost" onClick={() => scrollToSection("my-courses")}>
