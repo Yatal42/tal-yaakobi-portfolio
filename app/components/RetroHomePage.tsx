@@ -1,11 +1,14 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router';
 import Hero from './Hero';
-import AboutMe from './AboutMe';
+import About from './About';
+import TeachingApproach from './TeachingApproach';
+import CourseCatalog from './CourseCatalog';
 import ReviewsSection from "./reviews/ReviewsSection";
 import { scrollToSection } from '../lib/scroll';
+import type { Review } from '../types/review';
 
-const RetroHomePage = () => {
+const RetroHomePage = ({ reviews }: { reviews: Review[] }) => {
   const location = useLocation();
 
   useEffect(() => {
@@ -20,16 +23,13 @@ const RetroHomePage = () => {
   }, [location.hash, location.key]);
 
   return (
-    <div className="retro-container">
+    <>
       <Hero />
-
-      <section id="about" className="retro-section about-section motion-section motion-delay-2">
-        <h2 className="retro-section-title">About Me</h2>
-        <AboutMe />
-      </section>
-
-      <ReviewsSection />
-    </div>
+      <About />
+      <TeachingApproach />
+      <CourseCatalog />
+      <ReviewsSection reviews={reviews} />
+    </>
   );
 };
 

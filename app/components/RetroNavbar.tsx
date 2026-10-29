@@ -1,97 +1,130 @@
 import { useState } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { scrollToSection } from '../lib/scroll';
-
-type NavItem =
-  | { id: string; label: string; kind: 'route'; to: string }
-  | { id: string; label: string; kind: 'scroll'; targetId: string };
-
-const navItems: NavItem[] = [
-  { id: 'teaching', label: '</TEACHING>', kind: 'route', to: '/teaching' },
-  { id: 'development', label: '</DEV>', kind: 'route', to: '/development' },
-  { id: 'about', label: '</ABOUT>', kind: 'scroll', targetId: 'about' },
-  { id: 'transcript', label: '</TRANSCRIPT>', kind: 'route', to: '/transcript' },
-  { id: 'contact', label: '</CONTACT>', kind: 'scroll', targetId: 'contact' }
-];
+import { localizePath, stripLocale, useI18n } from '../lib/locale';
+import { useViewer } from '../lib/viewer';
+import LogoutButton from './LogoutButton';
 
 const RetroNavbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const location = useLocation();
+  const { locale, t, location } = useI18n();
+  const { user, enrolled, openLogin } = useViewer();
   const navigate = useNavigate();
-  const onHome = location.pathname === '/';
+  const barePath = stripLocale(location.pathname);
+  const onHome = barePath === '/';
+  const homePath = localizePath('/', locale);
+  const otherLocale = locale === 'he' ? 'en' : 'he';
+  const switchTo = localizePath(`${barePath}${location.hash}`, otherLocale);
+
+  const navItems = [
+    { id: 'about', label: t.nav.about },
+    { id: 'courses', label: t.nav.courses },
+    { id: 'reviews', label: t.nav.reviews },
+    { id: 'contact', label: t.nav.contact },
+  ];
 
   const handleLogoClick = () => {
     setIsMobileMenuOpen(false);
     if (onHome) {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
-      navigate('/');
+      navigate(homePath);
     }
   };
 
   const handleScrollClick = (targetId: string) => {
     setIsMobileMenuOpen(false);
-    if (scrollToSection(targetId)) return;
-    navigate(`/#${targetId}`);
-  };
-
-  const renderNavItem = (item: NavItem, baseClass: string) => {
-    if (item.kind === 'route') {
-      const isActive = location.pathname === item.to;
-      const className = `${baseClass} ${isActive ? 'active' : ''}`.trim();
-      return (
-        <Link
-          key={item.id}
-          to={item.to}
-          className={className}
-          onClick={() => setIsMobileMenuOpen(false)}
-        >
-          {item.label}
-        </Link>
-      );
-    }
-    return (
-      <button
-        key={item.id}
-        type="button"
-        className={baseClass}
-        onClick={() => handleScrollClick(item.targetId)}
-      >
-        {item.label}
-      </button>
-    );
+    if (onHome && scrollToSection(targetId)) return;
+    navigate(`${homePath}#${targetId}`);
   };
 
   return (
-    <nav className="retro-nav">
-      <button
-        className={`retro-mobile-menu-button ${isMobileMenuOpen ? 'active' : ''}`}
-        onClick={() => setIsMobileMenuOpen((prev) => !prev)}
-        type="button"
-        aria-label={isMobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
-        aria-expanded={isMobileMenuOpen}
-        aria-controls="retro-mobile-menu"
-      >
-        ☰
-      </button>
-      <button
-        className={`retro-nav-item logo ${onHome ? 'active' : ''}`}
-        onClick={handleLogoClick}
-        type="button"
-      >
-        TAL YAAKOBI
-      </button>
-      {navItems.map((item) => renderNavItem(item, 'retro-nav-item retro-nav-item-desktop'))}
-      <div
-        id="retro-mobile-menu"
-        className={`retro-mobile-menu ${isMobileMenuOpen ? 'open' : ''}`}
-      >
-        {navItems.map((item) =>
-          renderNavItem(
-            { ...item, id: `mobile-${item.id}` },
-            'retro-mobile-menu-item'
-          )
-        )}
+    <nav className="site-nav">
+      <div className="site-nav-inner">
+        <button
+          className="site-nav-logo"
+          onClick={handleLogoClick}
+          type="button"
+          aria-label={t.nav.home}
+          lang="en"
+          dir="ltr"
+        >
+          TAL <span className="site-nav-logo-accent">YAAKOBI</span>
+        </button>
+
+        <div className="site-nav-links">
+          {navItems.map((item) => (
+            <button
+              key={item.id}
+              type="button"
+              className="site-nav-link"
+              onClick={() => handleScrollClick(item.id)}
+            >
+              {item.label}
+            </button>
+          ))}
+        </div>
+
+        <div className="site-nav-tools">
+          {enrolled.length > 0 ? (
+            <Link
+              to={localizePath('/my', locale)}
+              className="btn-bevel site-nav-my"
+              aria-current={barePath === '/my' ? 'page' : undefined}
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              {t.nav.myArea}
+            </Link>
+          ) : null}
+          {user ? (
+            <LogoutButton className="btn-bevel site-nav-auth" />
+          ) : (
+            <button type="button" className="btn-bevel site-nav-auth" onClick={openLogin}>
+              {t.courses.signIn}
+            </button>
+          )}
+          <Link
+            to={switchTo}
+            className="btn-bevel site-nav-lang"
+            hrefLang={otherLocale}
+            lang={otherLocale}
+            aria-label={t.nav.switchTo}
+          >
+            {t.nav.switchLabel}
+          </Link>
+          <button
+            className="btn-bevel site-nav-menu"
+            onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+            type="button"
+            aria-label={isMobileMenuOpen ? t.nav.closeMenu : t.nav.openMenu}
+            aria-expanded={isMobileMenuOpen}
+            aria-controls="site-mobile-menu"
+          >
+            {isMobileMenuOpen ? '×' : '☰'}
+          </button>
+        </div>
+      </div>
+
+      <div id="site-mobile-menu" className={`site-mobile-menu ${isMobileMenuOpen ? 'open' : ''}`}>
+        {navItems.map((item) => (
+          <button
+            key={item.id}
+            type="button"
+            className="site-mobile-link"
+            onClick={() => handleScrollClick(item.id)}
+          >
+            {item.label}
+          </button>
+        ))}
+        {enrolled.length > 0 ? (
+          <Link
+            to={localizePath('/my', locale)}
+            className="site-mobile-link site-mobile-my"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            {t.nav.myArea}
+          </Link>
+        ) : null}
       </div>
     </nav>
   );

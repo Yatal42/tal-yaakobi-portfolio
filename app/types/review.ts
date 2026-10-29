@@ -1,11 +1,14 @@
-export type ReviewStatus = "pending" | "approved" | "rejected";
-
 export interface Review {
   id: string;
   name: string;
   role: string;
   message: string;
   rating: number;
+}
+
+export type ReviewStatus = "pending" | "approved" | "rejected";
+
+export interface StoredReview extends Review {
   status: ReviewStatus;
   createdAt: string;
 }
