@@ -2,14 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://www.talyaakobi.com/</loc>
+    <lastmod>2026-10-30T18:48:27+00:00</lastmod>
+    <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="he" href="https://www.talyaakobi.com/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.talyaakobi.com/en"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.talyaakobi.com/"/>
   </url>
   <url>
     <loc>https://www.talyaakobi.com/en</loc>
+    <lastmod>2026-10-30T18:48:27+00:00</lastmod>
+    <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="he" href="https://www.talyaakobi.com/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.talyaakobi.com/en"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.talyaakobi.com/"/>
+  </url>
+  <url>
+    <loc>https://www.talyaakobi.com/CV.pdf</loc>
+    <lastmod>2026-10-30T18:48:27+00:00</lastmod>
+    <priority>0.8</priority>
   </url>
 </urlset>
