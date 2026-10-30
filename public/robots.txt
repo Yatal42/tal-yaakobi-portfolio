@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /en/admin/
+Disallow: /auth/
+Disallow: /api/
+Disallow: /my
+Disallow: /en/my
+
+Sitemap: https://www.talyaakobi.com/sitemap.xml

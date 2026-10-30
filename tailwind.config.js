@@ -4,10 +4,9 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        'sans': ['"Goldman"', 'system-ui', 'sans-serif'],
-        'goldman': ['"Goldman"', 'system-ui', 'sans-serif'],
+        sans: ['"Heebo"', 'system-ui', 'sans-serif'],
       },
     },
   },
   plugins: [],
-} 
+}

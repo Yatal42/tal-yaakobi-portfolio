@@ -1,15 +1,11 @@
-import type { MetaFunction } from "react-router";
-import DevelopmentPage from "../components/DevelopmentPage";
+import { redirect, type LoaderFunctionArgs } from "react-router";
+import { localeFromPathname, localizePath } from "../lib/locale";
 
-export const meta: MetaFunction = () => [
-  { title: "Development | Tal Yaakobi" },
-  {
-    name: "description",
-    content:
-      "Software engineering projects, technical experiments, and the stack Tal Yaakobi builds with.",
-  },
-];
+export function loader({ request }: LoaderFunctionArgs) {
+  const locale = localeFromPathname(new URL(request.url).pathname);
+  return redirect(localizePath("/", locale), 301);
+}
 
 export default function DevelopmentRoute() {
-  return <DevelopmentPage />;
+  return null;
 }
