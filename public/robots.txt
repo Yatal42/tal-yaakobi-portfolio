@@ -6,5 +6,6 @@ Disallow: /auth/
 Disallow: /api/
 Disallow: /my
 Disallow: /en/my
+Disallow: /grammer
 
 Sitemap: https://www.talyaakobi.com/sitemap.xml
