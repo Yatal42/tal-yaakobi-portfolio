@@ -1,0 +1,7 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "rewrites": [
+    { "source": "/grammer", "destination": "https://grammar-quest.vercel.app/grammer/" },
+    { "source": "/grammer/:path*", "destination": "https://grammar-quest.vercel.app/grammer/:path*" }
+  ]
+}
