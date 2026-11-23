@@ -1,6 +1,9 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "rewrites": [
+    { "source": "/grammar", "destination": "https://talyaakobi-grammer.vercel.app/grammar/" },
+    { "source": "/grammar/", "destination": "https://talyaakobi-grammer.vercel.app/grammar/" },
+    { "source": "/grammar/:path*", "destination": "https://talyaakobi-grammer.vercel.app/grammar/:path*" },
     { "source": "/grammer", "destination": "https://talyaakobi-grammer.vercel.app/grammer/" },
     { "source": "/grammer/", "destination": "https://talyaakobi-grammer.vercel.app/grammer/" },
     { "source": "/grammer/:path*", "destination": "https://talyaakobi-grammer.vercel.app/grammer/:path*" }
